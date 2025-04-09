@@ -16,24 +16,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 252 95% 85%;
-    --primary-foreground: 252 90% 15%;
+    --primary: 97 100% 50%;  /* #dbff00 */
+    --primary-foreground: 210 40% 15%;
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220 14.3% 15%;
+    --secondary: 183 100% 50%; /* #00e8ff */
+    --secondary-foreground: 210 40% 15%;
+
+    --accent: 162 100% 50%; /* #00ffba */
+    --accent-foreground: 210 40% 98%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 262 83% 58%;
-    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 262 83% 58%;
+    --ring: 183 100% 50%; /* #00e8ff */
 
     --radius: 0.6rem;
 
@@ -57,33 +57,33 @@
     --popover: 230 25% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 252 95% 65%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 97 100% 50%; /* #dbff00 */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 230 25% 18%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 183 100% 50%; /* #00e8ff */
+    --secondary-foreground: 0 0% 0%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 262 83% 48%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 162 100% 50%; /* #00ffba */
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 262 83% 48%;
+    --ring: 183 100% 50%; /* #00e8ff */
 
     --sidebar-background: 230 25% 12%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 252 95% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary: 97 100% 50%; /* #dbff00 */
+    --sidebar-primary-foreground: 0 0% 0%;
     --sidebar-accent: 230 25% 18%;
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 217.2 32.6% 17.5%;
-    --sidebar-ring: 262 83% 48%;
+    --sidebar-ring: 183 100% 50%; /* #00e8ff */
   }
 }
 
@@ -104,23 +104,23 @@
 
 @layer components {
   .ministry-gradient-text {
-    @apply bg-gradient-to-r from-ministry-purple to-ministry-blue text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-[#dbff00] to-[#00e8ff] text-transparent bg-clip-text;
   }
 
   .ministry-gradient-bg {
-    @apply bg-gradient-to-r from-ministry-purple to-ministry-blue;
+    @apply bg-gradient-to-r from-[#dbff00] to-[#00e8ff];
   }
 
   .gold-gradient-text {
-    @apply bg-gradient-to-r from-ministry-gold to-ministry-cream text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-[#dbff00] to-[#00ffba] text-transparent bg-clip-text;
   }
 
   .gold-gradient-bg {
-    @apply bg-gradient-to-r from-ministry-gold to-ministry-cream;
+    @apply bg-gradient-to-r from-[#dbff00] to-[#00ffba];
   }
 
-  .crimson-gradient-bg {
-    @apply bg-gradient-to-r from-ministry-crimson to-black;
+  .turquoise-gradient-bg {
+    @apply bg-gradient-to-r from-[#00e8ff] to-[#00ffba];
   }
 
   .glow-effect {
@@ -129,7 +129,7 @@
 
   .glow-effect::after {
     content: '';
-    @apply absolute inset-0 rounded-lg bg-ministry-purple opacity-0 transition-opacity duration-700 blur-md -z-10;
+    @apply absolute inset-0 rounded-lg bg-[#00e8ff] opacity-0 transition-opacity duration-700 blur-md -z-10;
   }
 
   .glow-effect:hover::after {
@@ -141,7 +141,7 @@
   }
 
   .donate-button {
-    @apply relative overflow-hidden ministry-gradient-bg text-white font-bold py-3 px-6 rounded-lg 
+    @apply relative overflow-hidden bg-gradient-to-r from-[#dbff00] to-[#00e8ff] text-gray-900 font-bold py-3 px-6 rounded-lg 
            transition-all duration-700 hover:shadow-lg hover:scale-105 animate-pulse-glow;
   }
 
@@ -160,7 +160,7 @@
 
   .scripture-card::before {
     content: '';
-    @apply absolute top-0 left-0 w-1 h-full ministry-gradient-bg;
+    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-r from-[#dbff00] to-[#00e8ff];
   }
 }
 

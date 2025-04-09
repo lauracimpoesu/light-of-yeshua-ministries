@@ -45,10 +45,14 @@ const MissionSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
+              whileHover={{ 
+                y: -10,
+                boxShadow: "0 20px 40px rgba(0,232,255,0.2)",
+                background: "rgba(255, 255, 255, 0.15)",
+              }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-ministry-purple/30 via-ministry-blue/20 to-transparent pointer-events-none z-0 opacity-60"></div>
-              <div className="absolute -inset-[1px] bg-gradient-to-br from-ministry-purple/30 via-transparent to-ministry-blue/30 z-0 rounded-lg"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#dbff00]/30 via-[#00e8ff]/20 to-transparent pointer-events-none z-0 opacity-60"></div>
+              <div className="absolute -inset-[1px] bg-gradient-to-br from-[#dbff00]/30 via-transparent to-[#00e8ff]/30 z-0 rounded-lg"></div>
               <div className="p-8 relative z-10 bg-white/80 dark:bg-gray-900/80">
                 <h3 className="text-2xl font-bold mb-4 ministry-gradient-text">
                   {statement.title}
@@ -69,7 +73,7 @@ const MissionSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-2xl mx-auto dark:bg-gradient-to-r dark:from-ministry-gold dark:via-white dark:to-ministry-gold dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-ministry-gold via-ministry-purple to-ministry-gold bg-clip-text text-transparent">
+            <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-2xl mx-auto dark:bg-gradient-to-r dark:from-[#dbff00] dark:via-white dark:to-[#00e8ff] dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-[#dbff00] via-[#00e8ff] to-[#00ffba] bg-clip-text text-transparent">
               "The harvest is plentiful, but the workers are few. Ask the Lord of the harvest, 
               therefore, to send out workers into his harvest field."
               <footer className="mt-4 text-lg text-gray-700 dark:text-gray-300">

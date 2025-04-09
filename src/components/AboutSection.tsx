@@ -42,10 +42,11 @@ const AboutSection = () => {
           {scriptures.map((scripture, index) => (
             <motion.div
               key={index}
-              className="scripture-card backdrop-blur-md bg-white/40 dark:bg-gray-800/40 border border-white/30 dark:border-gray-700/30"
+              className="scripture-card backdrop-blur-md relative overflow-hidden"
               style={{
                 borderRadius: "1rem",
                 boxShadow: "0 8px 32px rgba(31, 38, 135, 0.15)",
+                background: `linear-gradient(145deg, ${hoveredCard === index ? 'rgba(219,255,0,0.1)' : 'rgba(219,255,0,0.05)'} 0%, ${hoveredCard === index ? 'rgba(0,232,255,0.2)' : 'rgba(0,232,255,0.05)'} 100%)`,
                 WebkitBackdropFilter: "blur(8px)",
                 backdropFilter: "blur(8px)"
               }}
@@ -55,19 +56,46 @@ const AboutSection = () => {
               viewport={{ once: true }}
               onHoverStart={() => setHoveredCard(index)}
               onHoverEnd={() => setHoveredCard(null)}
+              whileHover={{ 
+                y: -10,
+                boxShadow: "0 20px 40px rgba(0,232,255,0.3)"
+              }}
             >
-              <h3 className="text-xl font-bold mb-4 ministry-gradient-text">
-                {scripture.verse}
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300">
-                {scripture.text}
-              </p>
-              <div 
-                className={`absolute bottom-0 left-0 right-0 h-1 ministry-gradient-bg transition-transform duration-500 ${
-                  hoveredCard === index ? "scale-x-100" : "scale-x-0"
-                }`}
-                style={{ transformOrigin: "left" }}
-              ></div>
+              {/* Animated gradient overlay */}
+              <motion.div
+                className="absolute inset-0 opacity-0 z-0"
+                animate={{
+                  opacity: hoveredCard === index ? 0.15 : 0,
+                  background: `linear-gradient(135deg, rgba(219,255,0,0.7) 0%, rgba(0,232,255,0.7) 50%, rgba(0,255,186,0.7) 100%)`
+                }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              {/* Content */}
+              <div className="p-6 relative z-10">
+                <h3 className="text-xl font-bold mb-4 ministry-gradient-text">
+                  {scripture.verse}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  {scripture.text}
+                </p>
+              </div>
+              
+              {/* Animated corner decoration */}
+              <motion.div 
+                className="absolute top-0 right-0 w-12 h-12"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ 
+                  opacity: hoveredCard === index ? 1 : 0,
+                  scale: hoveredCard === index ? 1 : 0,
+                  rotate: hoveredCard === index ? 0 : -90
+                }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: "linear-gradient(135deg, transparent 50%, rgba(219,255,0,0.3) 50%)",
+                  borderTopRightRadius: "0.5rem"
+                }}
+              />
             </motion.div>
           ))}
         </div>

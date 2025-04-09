@@ -5,6 +5,12 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Check, CircleDollarSign, ArrowRight, Heart } from "lucide-react";
 import { toast } from "sonner";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import StripeCheckoutForm from "@/components/StripeCheckoutForm";
+
+// Load Stripe (in a real app, put your publishable key here)
+const stripePromise = loadStripe("pk_test_51O64MoFWK9YeDRpEoDuVkXq9vZh1bdjUDqcARVpSZWE9BQxbhXWOw1YmBsGJEtKVbxhgcdQkXfmTOYnAO1FaYSTw00c7FW28zD");
 
 const donationOptions = [
   { amount: 20, impact: "Sends evangelistic materials to the streets" },
@@ -24,21 +30,11 @@ const Donate = () => {
   const [customAmount, setCustomAmount] = useState("");
   const [isMonthly, setIsMonthly] = useState(false);
   const [paymentStep, setPaymentStep] = useState(1);
-  const [paymentInfo, setPaymentInfo] = useState({
-    cardName: "",
-    cardNumber: "",
-    expiry: "",
-    cvc: "",
-  });
+  const [clientSecret, setClientSecret] = useState("");
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomAmount(e.target.value);
     setSelectedAmount(null);
-  };
-
-  const handlePaymentInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setPaymentInfo(prev => ({ ...prev, [name]: value }));
   };
 
   const handleContinue = () => {
@@ -46,24 +42,28 @@ const Donate = () => {
       toast.error("Please select or enter a donation amount");
       return;
     }
-    setPaymentStep(2);
+    
+    // In a real app, you would fetch the client secret from your backend
+    // This is a mock implementation
+    const mockFetchClientSecret = () => {
+      // Simulated API response delay
+      setTimeout(() => {
+        setClientSecret("mock_client_secret");
+        setPaymentStep(2);
+      }, 500);
+    };
+    
+    mockFetchClientSecret();
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Here you would typically process the payment
+  const handlePaymentSuccess = () => {
     toast.success("Thank you for your donation! Your generosity helps spread the light of Yeshua.");
     // Reset form
     setSelectedAmount(null);
     setCustomAmount("");
     setIsMonthly(false);
     setPaymentStep(1);
-    setPaymentInfo({
-      cardName: "",
-      cardNumber: "",
-      expiry: "",
-      cvc: "",
-    });
+    setClientSecret("");
   };
 
   return (
@@ -107,8 +107,8 @@ const Donate = () => {
                         }}
                         className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center ${
                           selectedAmount === option.amount
-                            ? "border-ministry-purple bg-ministry-purple/10"
-                            : "border-gray-200 dark:border-gray-700 hover:border-ministry-purple/50"
+                            ? "border-[#00e8ff] bg-[#00e8ff]/10"
+                            : "border-gray-200 dark:border-gray-700 hover:border-[#00e8ff]/50"
                         }`}
                       >
                         <span className="text-xl font-bold mb-1">${option.amount}</span>
@@ -141,7 +141,7 @@ const Donate = () => {
                     <button
                       onClick={() => setIsMonthly(!isMonthly)}
                       className={`relative w-12 h-6 rounded-full transition-colors duration-500 ${
-                        isMonthly ? "bg-ministry-purple" : "bg-gray-300 dark:bg-gray-600"
+                        isMonthly ? "bg-[#00e8ff]" : "bg-gray-300 dark:bg-gray-600"
                       }`}
                     >
                       <span
@@ -158,15 +158,15 @@ const Donate = () => {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
+                    className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-gray-900 font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
                     onClick={handleContinue}
                   >
                     <ArrowRight size={20} />
-                    Continue
+                    Continue to Payment
                   </motion.button>
                 </>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <>
                   <div className="mb-6 text-center">
                     <p className="text-lg font-semibold">
                       {isMonthly 
@@ -174,90 +174,17 @@ const Donate = () => {
                         : `One-time Donation: $${selectedAmount || customAmount}`}
                     </p>
                   </div>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Cardholder Name
-                      </label>
-                      <input
-                        name="cardName"
-                        type="text"
-                        required
-                        value={paymentInfo.cardName}
-                        onChange={handlePaymentInfoChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Card Number
-                      </label>
-                      <input
-                        name="cardNumber"
-                        type="text"
-                        required
-                        value={paymentInfo.cardNumber}
-                        onChange={handlePaymentInfoChange}
-                        placeholder="0000 0000 0000 0000"
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                      />
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          Expiry Date
-                        </label>
-                        <input
-                          name="expiry"
-                          type="text"
-                          required
-                          value={paymentInfo.expiry}
-                          onChange={handlePaymentInfoChange}
-                          placeholder="MM/YY"
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                          CVC
-                        </label>
-                        <input
-                          name="cvc"
-                          type="text"
-                          required
-                          value={paymentInfo.cvc}
-                          onChange={handlePaymentInfoChange}
-                          placeholder="123"
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex space-x-4 mb-6">
-                    <button
-                      type="button"
-                      onClick={() => setPaymentStep(1)}
-                      className="w-1/2 py-3 px-4 rounded-lg border border-gray-300 dark:border-gray-600 font-medium transition-all duration-500"
-                    >
-                      Back
-                    </button>
-                    
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-1/2 py-3 px-4 rounded-lg ministry-gradient-bg text-white font-bold flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
-                    >
-                      <Heart size={18} />
-                      {isMonthly ? "Donate Monthly" : "Donate Now"}
-                    </motion.button>
-                  </div>
-                </form>
+
+                  {/* This is where the Stripe elements will render */}
+                  <Elements stripe={stripePromise}>
+                    <StripeCheckoutForm 
+                      amount={selectedAmount || Number(customAmount)} 
+                      isMonthly={isMonthly}
+                      onSuccess={handlePaymentSuccess}
+                      onCancel={() => setPaymentStep(1)}
+                    />
+                  </Elements>
+                </>
               )}
               
               <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">

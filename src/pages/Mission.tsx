@@ -2,13 +2,30 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import MissionSection from "@/components/MissionSection";
 import { motion } from "framer-motion";
 
 const Mission = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const missionStatements = [
+    {
+      title: "Global Streets. Eternal Souls.",
+      description:
+        "We take the message of salvation to the streets of nations worldwide, reaching those who need to hear the Good News.",
+    },
+    {
+      title: "Expose Darkness. Preach Light.",
+      description:
+        "As instructed in Ephesians 5:11, we boldly confront darkness while offering the light of Yeshua's truth.",
+    },
+    {
+      title: "Yeshua Saves.",
+      description:
+        "The simple, powerful truth that drives our ministry: Jesus Christ (Yeshua) is the way, the truth, and the life.",
+    },
+  ];
 
   return (
     <>
@@ -29,8 +46,56 @@ const Mission = () => {
               We are committed to reaching the lost, proclaiming truth, and making disciples of all nations.
             </p>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {missionStatements.map((statement, index) => (
+              <motion.div
+                key={index}
+                className="relative overflow-hidden rounded-lg shadow-xl backdrop-blur-sm border border-white/20 dark:border-white/10"
+                style={{
+                  background: "rgba(255, 255, 255, 0.1)",
+                  backdropFilter: "blur(10px)",
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: "0 20px 40px rgba(0,232,255,0.2)",
+                  background: "rgba(255, 255, 255, 0.15)",
+                }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#dbff00]/30 via-[#00e8ff]/20 to-transparent pointer-events-none z-0 opacity-60"></div>
+                <div className="absolute -inset-[1px] bg-gradient-to-br from-[#dbff00]/30 via-transparent to-[#00e8ff]/30 z-0 rounded-lg"></div>
+                <div className="p-8 relative z-10 bg-white/80 dark:bg-gray-900/80">
+                  <h3 className="text-2xl font-bold mb-4 ministry-gradient-text">
+                    {statement.title}
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300">
+                    {statement.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <motion.div
+              className="inline-block"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-2xl mx-auto dark:bg-gradient-to-r dark:from-[#dbff00] dark:via-white dark:to-[#00e8ff] dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-[#dbff00] via-[#00e8ff] to-[#00ffba] bg-clip-text text-transparent">
+                "The harvest is plentiful, but the workers are few. Ask the Lord of the harvest, 
+                therefore, to send out workers into his harvest field."
+                <footer className="mt-4 text-lg text-gray-700 dark:text-gray-300">
+                  — Matthew 9:37-38
+                </footer>
+              </blockquote>
+            </motion.div>
+          </div>
         </motion.div>
-        <MissionSection />
       </div>
       <Footer />
     </>

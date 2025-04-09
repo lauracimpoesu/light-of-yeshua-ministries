@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Dove } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -47,11 +47,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-        <a href="#" className="flex items-center">
-          <h1 className="text-lg md:text-2xl font-heading font-bold text-foreground">
-            <span className="text-yellow-300">Light of</span> <span className="text-[#40e0d0]">Yeshua</span> <span className="font-normal text-sm md:text-base text-yellow-300">Ministries</span>
+          <Dove className="h-6 w-6 mr-2 text-[#dbff00]" />
+          <h1 className="text-lg md:text-2xl font-heading font-bold text-white">
+            <span className="text-[#dbff00]">Light of</span>{" "}
+            <span className="text-[#00e8ff]">Yeshua</span>{" "}
+            <span className="font-normal text-sm md:text-base text-[#00ffba]">Ministries</span>
           </h1>
-        </a>
         </Link>
 
         {/* Desktop Menu */}
@@ -60,13 +61,13 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="px-3 py-2 text-sm font-medium rounded-md hover:bg-white/10 text-white transition-colors"
             >
               {item.name}
             </Link>
           ))}
           <Link to="/donate">
-            <Button className="donate-button ml-2">Donate</Button>
+            <Button className="donate-button ml-2 text-white">Donate</Button>
           </Link>
           <ThemeToggle />
         </div>
@@ -76,7 +77,7 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={toggleMenu}
-            className="ml-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="ml-2 p-2 rounded-md hover:bg-white/10 text-white"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -102,7 +103,7 @@ const Navbar = () => {
               className="px-3 py-4"
               onClick={() => setIsOpen(false)}
             >
-              <Button className="donate-button w-full">Donate</Button>
+              <Button className="donate-button w-full text-white">Donate</Button>
             </Link>
           </div>
         </div>

@@ -26,11 +26,11 @@ const Hero = () => {
     <div className="relative min-h-screen flex items-center">
       {/* Enhanced Background with Animated Overlay */}
       <div className="absolute inset-0 bg-cover bg-center z-0 overflow-hidden" 
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1602516102413-a74ae1a03a0c?q=80&w=1974')" }}>
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1454709359660-832555be6d91?q=80&w=2064&h=1380&auto=format&fit=crop&ixlib=rb-4.0.3')" }}>
         
         {/* Animated Gradient Overlay */}
         <div 
-          className="absolute inset-0 bg-gradient-to-r from-black/90 to-ministry-purple/70"
+          className="absolute inset-0 bg-gradient-to-r from-black/90 to-purple/70"
           style={{ 
             transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
             transition: 'transform 0.2s ease-out'
@@ -41,7 +41,7 @@ const Hero = () => {
         <div 
           className="absolute w-[80vw] h-[80vh] rounded-full blur-[100px] opacity-30"
           style={{
-            background: 'radial-gradient(circle, rgba(139,92,246,0.4) 0%, rgba(59,130,246,0.2) 50%, transparent 80%)',
+            background: 'radial-gradient(circle, rgba(0,232,255,0.4) 0%, rgba(0,255,186,0.2) 50%, transparent 80%)',
             left: `${mousePosition.x * 100}%`,
             top: `${mousePosition.y * 100}%`,
             transform: 'translate(-50%, -50%)',
@@ -58,14 +58,14 @@ const Hero = () => {
             repeat: Infinity,
             repeatType: "reverse"
           }}
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ministry-purple/30 via-transparent to-transparent"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#00e8ff]/30 via-transparent to-transparent"
         ></motion.div>
         
         {/* Enhanced Floating Particles with more variety */}
         {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
-            className={`absolute rounded-full ${i % 3 === 0 ? 'bg-ministry-purple/80' : i % 3 === 1 ? 'bg-ministry-blue/80' : 'bg-white/80'}`}
+            className={`absolute rounded-full ${i % 3 === 0 ? 'bg-[#dbff00]/80' : i % 3 === 1 ? 'bg-[#00e8ff]/80' : 'bg-[#00ffba]/80'}`}
             style={{
               width: `${Math.random() * 5 + 2}px`,
               height: `${Math.random() * 5 + 2}px`,

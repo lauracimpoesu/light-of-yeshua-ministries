@@ -101,6 +101,23 @@
   }
 }
 
+/* Navigation styles */
+.nav-link {
+  @apply relative text-gray-800 dark:text-gray-200 hover:text-purple-700 dark:hover:text-purple-400 transition-colors duration-300;
+}
+
+.nav-link::after {
+  @apply content-[''] absolute w-full scale-x-0 h-0.5 left-0 bottom-0 bg-purple-700 dark:bg-purple-400 transition-transform duration-300 origin-bottom-right;
+}
+
+.nav-link:hover::after {
+  @apply scale-x-100 origin-bottom-left;
+}
+
+.nav-link-mobile {
+  @apply block py-2 px-4 text-gray-800 dark:text-gray-200 hover:text-purple-700 dark:hover:text-purple-400 transition-colors;
+}
+
 /* Glass effect utility classes */
 .glass-card {
   @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl;
@@ -108,6 +125,23 @@
 
 .text-gradient-gold {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-100;
+}
+
+/* Ministry-specific styles */
+.ministry-gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-purple-700 via-indigo-600 to-blue-500;
+}
+
+.ministry-gradient-bg {
+  @apply bg-gradient-to-r from-purple-700 via-indigo-600 to-blue-500;
+}
+
+.scripture-card {
+  @apply relative p-6 rounded-lg bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden;
+}
+
+.mission-card {
+  @apply flex items-center justify-center p-8 rounded-lg bg-white dark:bg-gray-800 shadow-lg transition-all duration-300 min-h-[200px];
 }
 
 /* Custom animation keyframes */
@@ -119,6 +153,16 @@
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 /* Slow down button hover transitions */

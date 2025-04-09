@@ -51,8 +51,7 @@ const Navbar = () => {
           <Bird className="h-6 w-6 mr-2 text-primary dark:text-[#dbff00]" />
           <h1 className="text-lg md:text-2xl font-heading font-bold text-gray-900 dark:text-white">
             <span className="text-primary dark:text-[#dbff00]">Light of</span>{" "}
-            <span className="text-secondary dark:text-[#00e8ff]">Yeshua</span>{" "}
-            <span className="font-normal text-sm md:text-base text-accent dark:text-[#00ffba]">Ministries</span>
+            <span className="text-secondary dark:text-[#00e8ff]">Yeshua</span>
           </h1>
         </Link>
 
@@ -66,8 +65,12 @@ const Navbar = () => {
             >
               <Link
                 to={item.path}
-                className="px-3 py-2 text-sm font-medium rounded-full hover:bg-white/15 
-                           text-white dark:text-white transition-colors"
+                className={cn(
+                  "px-3 py-2 text-sm font-medium rounded-full transition-colors",
+                  scrolled 
+                    ? "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-white/15" 
+                    : "text-white hover:bg-white/15"
+                )}
               >
                 {item.name}
               </Link>
@@ -89,7 +92,12 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={toggleMenu}
-            className="ml-2 p-2 rounded-full hover:bg-white/15 text-white dark:text-white"
+            className={cn(
+              "ml-2 p-2 rounded-full",
+              scrolled 
+                ? "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-white/15" 
+                : "text-white hover:bg-white/15"
+            )}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

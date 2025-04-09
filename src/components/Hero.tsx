@@ -11,8 +11,8 @@ const Hero = () => {
   const mouseY = useMotionValue(0);
   
   // Create transforms for parallax effect
-  const rotateX = useTransform(mouseY, [-300, 300], [3, -3]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-3, 3]);
+  const rotateX = useTransform(mouseY, [-300, 300], [2, -2]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-2, 2]);
   const lightX = useTransform(mouseX, [0, 1000], [-30, 30]);
   const lightY = useTransform(mouseY, [0, 1000], [-30, 30]);
   
@@ -46,19 +46,19 @@ const Hero = () => {
     <div 
       ref={containerRef}
       className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Enhanced 4K Background with Fixed Position */}
-      <div className="absolute inset-0 bg-center z-0 overflow-hidden will-change-transform bg-fixed" 
+      
+      {/* Clean gradient background instead of photo */}
+      <div className="absolute inset-0 z-0 overflow-hidden will-change-transform" 
         style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1533134486753-c833f0ed4866?q=95&w=3840&auto=format&fit=crop')",
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center center",
           transform: `perspective(1000px) rotateX(${rotateX.get()}deg) rotateY(${rotateY.get()}deg)`,
         }}>
         
+        {/* Enhanced purple gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-purple-800/80 to-indigo-900/90 dark:from-purple-900 dark:via-purple-700 dark:to-indigo-900"></div>
+        
         {/* Enhanced Gradient Overlay with stronger purple */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-black/80 via-purple-900/70 to-black/70 dark:from-black/90 dark:via-purple-900/80 dark:to-black/80"
+          className="absolute inset-0 bg-gradient-to-r from-black/50 via-purple-900/60 to-black/50 dark:from-black/70 dark:via-purple-900/80 dark:to-black/70"
           style={{ 
             x: mouseX,
             y: mouseY,
@@ -77,9 +77,9 @@ const Hero = () => {
         
         {/* Enhanced Interactive Spotlight Effect */}
         <motion.div 
-          className="absolute w-[70vw] h-[70vh] rounded-full blur-[100px] opacity-50 dark:opacity-60 will-change-transform"
+          className="absolute w-[70vw] h-[70vh] rounded-full blur-[100px] opacity-50 dark:opacity-70 will-change-transform"
           style={{
-            background: 'radial-gradient(circle, rgba(139,92,246,0.6) 0%, rgba(0,232,255,0.4) 50%, transparent 80%)',
+            background: 'radial-gradient(circle, rgba(139,92,246,0.8) 0%, rgba(0,232,255,0.5) 50%, transparent 80%)',
             left: lightX,
             top: lightY,
             translateX: "-50%",
@@ -97,17 +97,17 @@ const Hero = () => {
         />
         
         {/* More vibrant floating particles */}
-        {[...Array(50)].map((_, i) => (
+        {[...Array(60)].map((_, i) => (
           <motion.div
             key={i}
             className={`absolute rounded-full ${
               i % 4 === 0 
-                ? 'bg-[#dbff00]/70 dark:bg-[#8B5CF6]/90' 
+                ? 'bg-[#dbff00]/80 dark:bg-[#8B5CF6]/90' 
                 : i % 4 === 1 
                   ? 'bg-[#00e8ff]/80' 
                   : i % 4 === 2 
                     ? 'bg-[#00ffba]/70' 
-                    : 'bg-white/60'
+                    : 'bg-white/70'
             }`}
             style={{
               width: `${Math.random() * 10 + 2}px`,
@@ -193,7 +193,7 @@ const Hero = () => {
       </div>
 
       {/* Smoother Gradient Bottom Transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-background via-background/95 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-background via-background/80 to-transparent z-10"></div>
     </div>
   );
 };

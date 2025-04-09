@@ -50,10 +50,13 @@ const Donate = () => {
       // This simulates the redirect with a delay
       toast.info("Redirecting to secure payment page...");
       
+      // Get the final amount to use
+      const donationAmount = selectedAmount || parseFloat(customAmount);
+      
       // Simulate API call to create Checkout session
       setTimeout(() => {
-        // In a real app, this would redirect to Stripe checkout URL
-        window.location.href = `https://checkout.stripe.com/pay/cs_test_example?amount=${selectedAmount || customAmount}`;
+        // In a real app, this would redirect to Stripe checkout URL with the actual amount
+        window.location.href = `https://checkout.stripe.com/pay/cs_test_example?amount=${donationAmount}&recurring=${isMonthly ? 'monthly' : 'once'}`;
       }, 1500);
     } catch (error) {
       console.error("Error redirecting to payment:", error);

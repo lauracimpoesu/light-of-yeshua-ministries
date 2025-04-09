@@ -2,9 +2,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-// Adding framer-motion as a dependency
-<lov-add-dependency>framer-motion@latest</lov-add-dependency>
-
 const scriptures = [
   {
     verse: "Colossians 2:9",

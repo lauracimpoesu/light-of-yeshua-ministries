@@ -1,126 +1,152 @@
 
 import { useState } from "react";
+import { Check, CircleDollarSign } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Euro, Heart } from "lucide-react";
 
-const donationImpacts = [
-  { amount: 20, impact: "Funds 2 hours of street evangelism" },
-  { amount: 50, impact: "Provides 10 Bibles for new believers" },
-  { amount: 100, impact: "Sponsors a day of outreach in a major city" },
-  { amount: 250, impact: "Helps with travel costs for missionary work" },
-  { amount: 500, impact: "Funds a week-long evangelistic campaign" },
-  { amount: 1000, impact: "Sponsors a full mission trip to a new region" }
+const donationOptions = [
+  { amount: 20, impact: "Sends evangelistic materials to the streets" },
+  { amount: 50, impact: "Supports a day of street ministry in local areas" },
+  { amount: 100, impact: "Helps fund outreach in underserved communities" },
+  { amount: 200, impact: "Sponsors evangelistic equipment and resources" },
+  { amount: 500, impact: "Funds a missionary for a week-long outreach" },
+  { amount: 1000, impact: "Supports a major international mission trip" },
 ];
 
 const DonationSection = () => {
-  const [selectedAmount, setSelectedAmount] = useState(50);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
+  const [customAmount, setCustomAmount] = useState("");
+  const [isMonthly, setIsMonthly] = useState(false);
+
+  const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCustomAmount(e.target.value);
+    setSelectedAmount(null);
+  };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-100"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Support Our Mission
-          </motion.h2>
-          <motion.p 
-            className="text-lg text-white/90 mb-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Your generous gift helps us take the light of Yeshua to the darkest places on earth.
-            Every donation directly supports our street evangelism efforts.
-          </motion.p>
-        </div>
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold mb-6 ministry-gradient-text"
+            >
+              Support Our Global Mission
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-lg text-gray-700 dark:text-gray-300"
+            >
+              Your generous donation helps bring the light of Yeshua to the streets of nations worldwide.
+            </motion.p>
+          </div>
 
-        <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="p-8 md:p-12">
-              <h3 className="text-2xl font-bold mb-6">Choose Your Impact</h3>
-              
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {donationImpacts.slice(0, 6).map((option) => (
-                  <motion.button
-                    key={option.amount}
-                    className={`p-4 rounded-xl border ${
-                      selectedAmount === option.amount 
-                        ? 'border-amber-400 bg-white/20' 
-                        : 'border-white/20 hover:bg-white/10'
-                    } transition-all duration-300`}
-                    onClick={() => setSelectedAmount(option.amount)}
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="text-xl font-bold mb-1 flex items-center justify-center">
-                      <Euro className="w-4 h-4 mr-1" />
-                      {option.amount}
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-              
-              <div className="mb-8 p-6 rounded-xl bg-white/10">
-                <div className="flex items-center text-amber-300 mb-3">
-                  <Heart className="w-5 h-5 mr-2 fill-amber-300" />
-                  <p className="font-semibold">Your Impact</p>
-                </div>
-                <p className="text-lg">
-                  {donationImpacts.find(d => d.amount === selectedAmount)?.impact}
-                </p>
-              </div>
-              
-              <Link to="/donate">
-                <Button 
-                  size="lg" 
-                  className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white transition-all duration-300 shadow-lg hover:shadow-amber-500/30 h-14 text-lg"
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
+            <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+              Choose a donation amount
+            </h3>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+              {donationOptions.map((option) => (
+                <button
+                  key={option.amount}
+                  onClick={() => {
+                    setSelectedAmount(option.amount);
+                    setCustomAmount("");
+                  }}
+                  className={`p-4 rounded-lg border-2 transition-all duration-300 flex flex-col items-center ${
+                    selectedAmount === option.amount
+                      ? "border-ministry-purple bg-ministry-purple/10"
+                      : "border-gray-200 dark:border-gray-700 hover:border-ministry-purple/50"
+                  }`}
                 >
-                  Donate €{selectedAmount}
-                </Button>
-              </Link>
+                  <span className="text-xl font-bold mb-1">${option.amount}</span>
+                  <span className="text-xs text-gray-600 dark:text-gray-400 text-center">
+                    {option.impact}
+                  </span>
+                </button>
+              ))}
             </div>
-            
-            <div className="bg-gradient-to-br from-indigo-900 to-purple-900 p-8 md:p-12 flex items-center">
-              <div>
-                <h3 className="text-2xl font-bold mb-6">Become a Monthly Partner</h3>
-                <p className="mb-8">
-                  Join our community of dedicated supporters who make our ongoing ministry possible through monthly giving.
-                </p>
-                <div className="bg-white/10 rounded-xl p-6 mb-8">
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-400 mr-3 mt-1" />
-                      <p>Regular prayer updates and ministry news</p>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-400 mr-3 mt-1" />
-                      <p>Exclusive video content from the mission field</p>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-amber-400 mr-3 mt-1" />
-                      <p>Special partnership gifts throughout the year</p>
-                    </li>
-                  </ul>
-                </div>
-                <Link to="/donate?partner=true">
-                  <Button 
-                    size="lg" 
-                    variant="outline"
-                    className="w-full border-2 border-white/80 text-white hover:bg-white/10 transition-all duration-300 h-14 text-lg"
-                  >
-                    Become a Partner
-                  </Button>
-                </Link>
+
+            <div className="mb-8">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Or enter a custom amount
+              </label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                  $
+                </span>
+                <input
+                  type="number"
+                  value={customAmount}
+                  onChange={handleCustomAmountChange}
+                  placeholder="Enter amount"
+                  className="w-full pl-8 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                />
               </div>
             </div>
+
+            <div className="flex items-center mb-8">
+              <button
+                onClick={() => setIsMonthly(!isMonthly)}
+                className={`relative w-12 h-6 rounded-full transition-colors ${
+                  isMonthly ? "bg-ministry-purple" : "bg-gray-300 dark:bg-gray-600"
+                }`}
+              >
+                <span
+                  className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${
+                    isMonthly ? "transform translate-x-6" : ""
+                  }`}
+                ></span>
+              </button>
+              <span className="ml-3 text-sm text-gray-700 dark:text-gray-300">
+                Make this a monthly donation
+              </span>
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg"
+            >
+              <CircleDollarSign size={20} />
+              {isMonthly
+                ? `Donate $${selectedAmount || customAmount || "0"} Monthly`
+                : `Donate $${selectedAmount || customAmount || "0"} Now`}
+            </motion.button>
+
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
+              All donations are secure and encrypted
+            </p>
+          </div>
+
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+            <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+              Why Your Support Matters
+            </h3>
+            <ul className="space-y-3">
+              {[
+                "100% of donations go directly to evangelism efforts",
+                "Support missionaries taking the Gospel to unreached areas",
+                "Provide Bibles and evangelistic materials",
+                "Enable street preaching and outreach events",
+                "Help train new evangelists to spread the Word",
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-start text-gray-700 dark:text-gray-300"
+                >
+                  <Check className="text-green-500 mr-2 mt-1 flex-shrink-0" size={18} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

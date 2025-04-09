@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 const scriptures = [
   {
     verse: "Colossians 2:9",
-    text: "For in Christ all the fullness of the Deity lives in bodily form."
+    text: "For in Christ all the fullness of the Deity lives in bodily form.",
   },
   {
     verse: "Ephesians 5:11",
-    text: "Have nothing to do with the fruitless deeds of darkness, but rather expose them."
+    text: "Have nothing to do with the fruitless deeds of darkness, but rather expose them.",
   },
   {
     verse: "Matthew 28:19-20",
-    text: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you."
-  }
+    text: "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you.",
+  },
 ];
 
 const AboutSection = () => {
@@ -42,7 +42,13 @@ const AboutSection = () => {
           {scriptures.map((scripture, index) => (
             <motion.div
               key={index}
-              className="scripture-card"
+              className="scripture-card backdrop-blur-md bg-white/40 dark:bg-gray-800/40 border border-white/30 dark:border-gray-700/30"
+              style={{
+                borderRadius: "1rem",
+                boxShadow: "0 8px 32px rgba(31, 38, 135, 0.15)",
+                WebkitBackdropFilter: "blur(8px)",
+                backdropFilter: "blur(8px)"
+              }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -57,11 +63,11 @@ const AboutSection = () => {
                 {scripture.text}
               </p>
               <div 
-                className={`absolute bottom-0 left-0 right-0 h-1 ministry-gradient-bg transition-transform duration-300 ${
+                className={`absolute bottom-0 left-0 right-0 h-1 ministry-gradient-bg transition-transform duration-500 ${
                   hoveredCard === index ? "scale-x-100" : "scale-x-0"
                 }`}
                 style={{ transformOrigin: "left" }}
-              />
+              ></div>
             </motion.div>
           ))}
         </div>

@@ -1,29 +1,39 @@
 
+import { useEffect } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import MissionSection from "@/components/MissionSection";
 import { motion } from "framer-motion";
-import MissionSection from "../components/MissionSection";
 
 const Mission = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="pt-20">
-      <div className="bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 py-20">
-        <div className="container mx-auto px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold mb-6 text-center text-white"
-          >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-200 via-yellow-100 to-white">
-              Our Mission & Vision
-            </span>
-          </motion.h1>
-        </div>
+    <>
+      <Navbar />
+      <div className="pt-20">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="container mx-auto px-4 py-16"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
+            Our Mission
+          </h1>
+          <div className="max-w-3xl mx-auto mb-12">
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+              Taking the light of Yeshua to the nations through bold street evangelism is the heart of our ministry.
+              We are committed to reaching the lost, proclaiming truth, and making disciples of all nations.
+            </p>
+          </div>
+        </motion.div>
+        <MissionSection />
       </div>
-      
-      <MissionSection />
-      
-      {/* Additional mission content would go here */}
-    </div>
+      <Footer />
+    </>
   );
 };
 

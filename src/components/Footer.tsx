@@ -1,85 +1,95 @@
 
-import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Youtube, Twitter } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Facebook, Instagram, Youtube, Twitter, ArrowRight } from "lucide-react";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here you would handle the newsletter signup
+    console.log("Email submitted:", email);
+    setEmail("");
+    alert("Thank you for subscribing to our newsletter!");
+  };
+
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 className="text-2xl font-bold mb-4 text-gradient-gold">Light of Yeshua Ministries</h3>
-            <p className="text-gray-400 mb-4">
-              Taking the Light of Yeshua to the nations through street evangelism and truth.
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div className="col-span-1 md:col-span-2">
+            <h3 className="text-2xl font-bold mb-4 ministry-gradient-text">Light of Yeshua Ministries</h3>
+            <p className="text-gray-400 mb-6 max-w-md">
+              Taking the light of Yeshua to the streets of nations worldwide. Join us in our mission to spread the Gospel and bring salvation.
             </p>
             <div className="flex space-x-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
-                <Instagram />
+              <a href="#" className="hover:text-ministry-purple transition-colors">
+                <Facebook size={24} />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
-                <Facebook />
+              <a href="#" className="hover:text-ministry-purple transition-colors">
+                <Instagram size={24} />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
-                <Youtube />
+              <a href="#" className="hover:text-ministry-purple transition-colors">
+                <Youtube size={24} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">
-                <Twitter />
+              <a href="#" className="hover:text-ministry-purple transition-colors">
+                <Twitter size={24} />
               </a>
             </div>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/mission" className="text-gray-400 hover:text-white transition-colors">Our Mission</Link>
-              </li>
-              <li>
-                <Link to="/media" className="text-gray-400 hover:text-white transition-colors">Media Gallery</Link>
-              </li>
+              {["Home", "About", "Mission", "Media", "Events", "Contact", "Donate"].map((item) => (
+                <li key={item}>
+                  <Link 
+                    to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Get Involved</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/events" className="text-gray-400 hover:text-white transition-colors">Events & Outreach</Link>
-              </li>
-              <li>
-                <Link to="/donate" className="text-gray-400 hover:text-white transition-colors">Support Our Mission</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
-            <p className="text-gray-400 mb-4">Stay updated with our latest outreach and events</p>
-            <form className="flex flex-col space-y-2">
-              <Input type="email" placeholder="Your email" className="bg-gray-800 border-gray-700" />
-              <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700">
-                Subscribe
-              </Button>
+            <h4 className="text-lg font-bold mb-4">Newsletter</h4>
+            <p className="text-gray-400 mb-4">
+              Subscribe to our newsletter for updates on our missions and outreach.
+            </p>
+            <form onSubmit={handleSubmit} className="flex">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email"
+                required
+                className="bg-gray-800 text-white px-4 py-2 rounded-l-lg flex-grow focus:outline-none focus:ring-2 focus:ring-ministry-purple"
+              />
+              <button
+                type="submit"
+                className="ministry-gradient-bg px-4 py-2 rounded-r-lg"
+              >
+                <ArrowRight size={20} />
+              </button>
             </form>
           </div>
         </div>
         
-        <div className="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Light of Yeshua Ministries. All rights reserved.</p>
-          <div className="mt-2 flex justify-center space-x-4">
-            <Link to="/privacy" className="hover:text-gray-300">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-gray-300">Terms of Use</Link>
+        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} Light of Yeshua Ministries. All rights reserved.
+          </p>
+          <div className="flex space-x-4">
+            <Link to="/privacy" className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
+              Terms of Use
+            </Link>
           </div>
         </div>
       </div>

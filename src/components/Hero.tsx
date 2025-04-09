@@ -1,129 +1,45 @@
 
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  
-  // Create transforms for parallax effect
-  const rotateX = useTransform(mouseY, [-300, 300], [2, -2]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-2, 2]);
-  const lightX = useTransform(mouseX, [0, 1000], [-30, 30]);
-  const lightY = useTransform(mouseY, [0, 1000], [-30, 30]);
-  
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      
-      const rect = containerRef.current.getBoundingClientRect();
-      
-      // Calculate mouse position relative to container
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      mouseX.set(x - rect.width / 2);
-      mouseY.set(y - rect.height / 2);
-      
-      setMousePosition({
-        x: x / rect.width,
-        y: y / rect.height,
-      });
-    };
-    
-    window.addEventListener("mousemove", handleMouseMove);
-    
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [mouseX, mouseY]);
-
   return (
-    <div 
-      ref={containerRef}
-      className="relative min-h-screen flex items-center overflow-hidden">
-      
-      {/* Clean gradient background instead of photo */}
-      <div className="absolute inset-0 z-0 overflow-hidden will-change-transform" 
-        style={{ 
-          transform: `perspective(1000px) rotateX(${rotateX.get()}deg) rotateY(${rotateY.get()}deg)`,
-        }}>
-        
-        {/* Enhanced purple gradient background */}
+    <div className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Static Purple Gradient Background */}
+      <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-purple-800/80 to-indigo-900/90 dark:from-purple-900 dark:via-purple-700 dark:to-indigo-900"></div>
         
-        {/* Enhanced Gradient Overlay with stronger purple */}
-        <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-black/50 via-purple-900/60 to-black/50 dark:from-black/70 dark:via-purple-900/80 dark:to-black/70"
-          style={{ 
-            x: mouseX,
-            y: mouseY,
-            scale: 1.2,
-          }}
-          animate={{
-            x: mousePosition.x * -20,
-            y: mousePosition.y * -20,
-          }}
-          transition={{
-            type: "spring",
-            damping: 60,
-            stiffness: 90,
-          }}
-        />
+        {/* Static Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-purple-900/60 to-black/50 dark:from-black/70 dark:via-purple-900/80 dark:to-black/70"></div>
         
-        {/* Enhanced Interactive Spotlight Effect */}
-        <motion.div 
-          className="absolute w-[70vw] h-[70vh] rounded-full blur-[100px] opacity-50 dark:opacity-70 will-change-transform"
-          style={{
-            background: 'radial-gradient(circle, rgba(139,92,246,0.8) 0%, rgba(0,232,255,0.5) 50%, transparent 80%)',
-            left: lightX,
-            top: lightY,
-            translateX: "-50%",
-            translateY: "-50%",
-          }}
-          animate={{
-            left: `${mousePosition.x * 100}%`,
-            top: `${mousePosition.y * 100}%`,
-          }}
-          transition={{
-            type: "spring",
-            damping: 40,
-            stiffness: 180,
-          }}
-        />
-        
-        {/* More vibrant floating particles */}
-        {[...Array(60)].map((_, i) => (
+        {/* Subtle Particle Effect */}
+        {[...Array(40)].map((_, i) => (
           <motion.div
             key={i}
             className={`absolute rounded-full ${
               i % 4 === 0 
-                ? 'bg-[#dbff00]/80 dark:bg-[#8B5CF6]/90' 
+                ? 'bg-[#dbff00]/50 dark:bg-[#8B5CF6]/60' 
                 : i % 4 === 1 
-                  ? 'bg-[#00e8ff]/80' 
+                  ? 'bg-[#00e8ff]/40' 
                   : i % 4 === 2 
-                    ? 'bg-[#00ffba]/70' 
-                    : 'bg-white/70'
+                    ? 'bg-[#00ffba]/30' 
+                    : 'bg-white/40'
             }`}
             style={{
-              width: `${Math.random() * 10 + 2}px`,
-              height: `${Math.random() * 10 + 2}px`,
+              width: `${Math.random() * 8 + 2}px`,
+              height: `${Math.random() * 8 + 2}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               filter: 'blur(1px)'
             }}
             animate={{
-              y: [0, -Math.random() * 180 - 50, 0],
-              x: [0, Math.random() * 120 - 60, 0],
-              opacity: [0.3, 0.9, 0.3],
-              scale: [1, Math.random() * 0.7 + 1.1, 1],
+              y: [0, -Math.random() * 100 - 30, 0],
+              x: [0, Math.random() * 80 - 40, 0],
+              opacity: [0.3, 0.7, 0.3],
             }}
             transition={{
-              duration: 5 + Math.random() * 12,
+              duration: 5 + Math.random() * 10,
               repeat: Infinity,
               delay: Math.random() * 5,
               ease: "easeInOut"
@@ -199,3 +115,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

@@ -42,7 +42,13 @@ const AboutSection = () => {
           {scriptures.map((scripture, index) => (
             <motion.div
               key={index}
-              className="scripture-card"
+              className="scripture-card backdrop-blur-md bg-white/40 dark:bg-gray-800/40 border border-white/30 dark:border-gray-700/30"
+              style={{
+                borderRadius: "1rem",
+                boxShadow: "0 8px 32px rgba(31, 38, 135, 0.15)",
+                WebkitBackdropFilter: "blur(8px)",
+                backdropFilter: "blur(8px)"
+              }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -57,7 +63,7 @@ const AboutSection = () => {
                 {scripture.text}
               </p>
               <div 
-                className={`absolute bottom-0 left-0 right-0 h-1 ministry-gradient-bg transition-transform duration-300 ${
+                className={`absolute bottom-0 left-0 right-0 h-1 ministry-gradient-bg transition-transform duration-500 ${
                   hoveredCard === index ? "scale-x-100" : "scale-x-0"
                 }`}
                 style={{ transformOrigin: "left" }}

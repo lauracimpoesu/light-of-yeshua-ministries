@@ -36,7 +36,7 @@ const MissionSection = () => {
           {missionStatements.map((statement, index) => (
             <motion.div
               key={index}
-              className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
+              className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-500"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
@@ -61,7 +61,7 @@ const MissionSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-2xl mx-auto gold-gradient-text">
+            <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-2xl mx-auto bg-gradient-to-r from-ministry-gold via-ministry-cream to-ministry-gold bg-clip-text text-transparent">
               "The harvest is plentiful, but the workers are few. Ask the Lord of the harvest, 
               therefore, to send out workers into his harvest field."
               <footer className="mt-4 text-lg text-gray-700 dark:text-gray-300">

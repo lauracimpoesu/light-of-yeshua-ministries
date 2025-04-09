@@ -129,7 +129,7 @@
 
   .glow-effect::after {
     content: '';
-    @apply absolute inset-0 rounded-lg bg-ministry-purple opacity-0 transition-opacity duration-500 blur-md -z-10;
+    @apply absolute inset-0 rounded-lg bg-ministry-purple opacity-0 transition-opacity duration-700 blur-md -z-10;
   }
 
   .glow-effect:hover::after {
@@ -137,17 +137,17 @@
   }
 
   .card-hover {
-    @apply transition-all duration-500 hover:shadow-lg hover:-translate-y-1;
+    @apply transition-all duration-700 hover:shadow-lg hover:-translate-y-1;
   }
 
   .donate-button {
     @apply relative overflow-hidden ministry-gradient-bg text-white font-bold py-3 px-6 rounded-lg 
-           transition-all duration-500 hover:shadow-lg hover:scale-105 animate-pulse-glow;
+           transition-all duration-700 hover:shadow-lg hover:scale-105 animate-pulse-glow;
   }
 
   .donate-button::before {
     content: '';
-    @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-500;
+    @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-700;
   }
 
   .donate-button:hover::before {

@@ -116,17 +116,19 @@ const Index = () => {
       </div>
 
       {/* Add custom keyframes for animations */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fade-in {
-          opacity: 0;
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-      `}</style>
+      <style>
+        {`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          
+          .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+          }
+        `}
+      </style>
     </div>
   );
 };

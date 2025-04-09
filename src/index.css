@@ -18,13 +18,13 @@
 
     /* Light mode uses purple instead of yellow */
     --primary: 265 89% 66%;  /* Purple #8B5CF6 */
-    --primary-foreground: 210 40% 15%;
+    --primary-foreground: 0 0% 0%;  /* Changed to black for better contrast */
 
     --secondary: 183 100% 40%; /* Darker version of #00e8ff */
-    --secondary-foreground: 210 40% 15%;
+    --secondary-foreground: 0 0% 0%; /* Changed to black for better contrast */
 
     --accent: 186 100% 29%; /* Darker version of #00ffba */
-    --accent-foreground: 210 40% 98%;
+    --accent-foreground: 0 0% 0%; /* Changed to black for better contrast */
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -36,7 +36,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 183 100% 50%; /* #00e8ff */
 
-    --radius: 0.6rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -49,13 +49,13 @@
   }
 
   .dark {
-    --background: 255 30% 13%; /* More purple-tinted dark background */
+    --background: 260 30% 13%; /* More saturated purple-tinted dark background */
     --foreground: 210 40% 98%;
 
-    --card: 255 30% 18%; /* More purple-tinted card */
+    --card: 260 30% 18%; /* More saturated purple-tinted card */
     --card-foreground: 210 40% 98%;
 
-    --popover: 255 30% 18%; /* More purple-tinted popover */
+    --popover: 260 30% 18%; /* More saturated purple-tinted popover */
     --popover-foreground: 210 40% 98%;
 
     --primary: 97 100% 50%; /* #dbff00 */
@@ -64,7 +64,7 @@
     --secondary: 183 100% 50%; /* #00e8ff */
     --secondary-foreground: 0 0% 0%;
 
-    --muted: 255 27% 25%;
+    --muted: 260 27% 25%;
     --muted-foreground: 215 20.2% 65.1%;
 
     --accent: 162 100% 50%; /* #00ffba */
@@ -73,17 +73,17 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 255 27% 27%; /* Purple-tinted border */
-    --input: 255 27% 27%;  /* Purple-tinted input */
+    --border: 260 27% 27%; /* Purple-tinted border */
+    --input: 260 27% 27%;  /* Purple-tinted input */
     --ring: 183 100% 50%; /* #00e8ff */
 
-    --sidebar-background: 255 30% 18%; /* More purple-tinted sidebar */
+    --sidebar-background: 260 30% 18%; /* More saturated purple-tinted sidebar */
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 97 100% 50%; /* #dbff00 */
     --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 255 30% 24%; /* More purple-tinted sidebar accent */
+    --sidebar-accent: 260 30% 24%; /* More saturated purple-tinted sidebar accent */
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 255 27% 27%; /* Purple-tinted sidebar border */
+    --sidebar-border: 260 27% 27%; /* Purple-tinted sidebar border */
     --sidebar-ring: 183 100% 50%; /* #00e8ff */
   }
 }
@@ -141,15 +141,15 @@
     @apply transition-all duration-700 hover:shadow-lg hover:-translate-y-1;
   }
 
-  /* Updated donate button with improved contrast in light mode */
+  /* Updated donate button with improved design */
   .donate-button {
-    @apply relative overflow-hidden ministry-gradient-bg text-gray-900 dark:text-gray-900 font-bold py-3 px-6 rounded-lg 
-           transition-all duration-700 hover:shadow-lg hover:scale-105 animate-pulse-glow;
+    @apply relative overflow-hidden ministry-gradient-bg text-gray-900 dark:text-gray-900 font-bold
+           transition-all duration-500 shadow-md hover:shadow-xl dark:shadow-purple-500/30;
   }
 
   .donate-button::before {
     content: '';
-    @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-700;
+    @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-500;
   }
 
   .donate-button:hover::before {
@@ -157,22 +157,38 @@
   }
 
   .scripture-card {
-    @apply relative p-6 rounded-lg overflow-hidden card-hover;
+    @apply relative p-6 rounded-xl overflow-hidden card-hover border-0 bg-gradient-to-br from-white to-gray-50
+           dark:from-gray-800 dark:to-gray-900/90 backdrop-blur-sm shadow-md hover:shadow-lg
+           transition-all duration-500;
   }
 
-  .scripture-card::before {
-    content: '';
-    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-r from-primary to-secondary;
+  /* Instagram-like card styles */
+  .instagram-card {
+    @apply rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300
+           bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700;
   }
   
-  /* New smooth intro background border */
-  .intro-background {
-    @apply relative overflow-hidden;
+  .instagram-card-header {
+    @apply flex items-center gap-3 p-3;
   }
   
-  .intro-background::after {
-    content: '';
-    @apply absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent;
+  .instagram-card-content {
+    @apply p-4;
+  }
+  
+  .instagram-card-footer {
+    @apply p-3 border-t border-gray-100 dark:border-gray-700 flex justify-between;
+  }
+  
+  /* Modern smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Improved intro background with better transition */
+  .intro-background-transition {
+    @apply absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t 
+           from-background via-background/80 to-transparent;
   }
 }
 
@@ -200,4 +216,23 @@
 
 .animate-pulse-slow {
   animation: pulse-slow 5s ease-in-out infinite;
+}
+
+/* Instagram-inspired animations */
+@keyframes like-animation {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.animate-like {
+  animation: like-animation 0.3s ease-in-out;
+}
+
+/* Subtle image zoom on hover */
+.img-zoom {
+  @apply transition-transform duration-700;
+}
+
+.img-zoom:hover {
+  @apply scale-105;
 }

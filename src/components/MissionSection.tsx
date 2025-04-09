@@ -1,87 +1,118 @@
 
 import { motion } from "framer-motion";
-
-const missionStatements = [
-  {
-    title: "Global Streets. Eternal Souls.",
-    description:
-      "We take the message of salvation to the streets of nations worldwide, reaching those who need to hear the Good News.",
-  },
-  {
-    title: "Expose Darkness. Preach Light.",
-    description:
-      "As instructed in Ephesians 5:11, we boldly confront darkness while offering the light of Yeshua's truth.",
-  },
-  {
-    title: "Yeshua Saves.",
-    description:
-      "The simple, powerful truth that drives our ministry: Jesus Christ (Yeshua) is the way, the truth, and the life.",
-  },
-];
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { BookOpenText, Globe, Heart, Users } from "lucide-react";
 
 const MissionSection = () => {
-  return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 ministry-gradient-text">
-            Our Mission
-          </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300">
-            Taking the light of Yeshua to the nations through bold street evangelism and truth.
-          </p>
-        </div>
+  const missionData = [
+    {
+      title: "Evangelism",
+      description: "Taking the Gospel to the streets and public places, sharing the truth of salvation through Yeshua.",
+      icon: <BookOpenText className="h-8 w-8 text-primary dark:text-[#dbff00]" />,
+    },
+    {
+      title: "Outreach",
+      description: "Reaching communities in need with both spiritual guidance and practical support.",
+      icon: <Heart className="h-8 w-8 text-secondary dark:text-[#00e8ff]" />,
+    },
+    {
+      title: "Discipleship",
+      description: "Training believers to grow in their faith and effectively share the Gospel with others.",
+      icon: <Users className="h-8 w-8 text-accent dark:text-[#00ffba]" />,
+    },
+    {
+      title: "Global Impact",
+      description: "Extending our ministry beyond borders to reach people of all nations with the light of Yeshua.",
+      icon: <Globe className="h-8 w-8 text-purple-500 dark:text-purple-400" />,
+    },
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {missionStatements.map((statement, index) => (
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
+  return (
+    <section className="py-20 px-4 bg-gray-50 dark:bg-gray-900/50">
+      <div className="container mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 ministry-gradient-text">Our Mission</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            Bringing the light of Yeshua to the nations through strategic evangelism and discipleship.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+        >
+          {missionData.map((item, index) => (
             <motion.div
               key={index}
-              className="relative overflow-hidden rounded-lg shadow-xl backdrop-blur-sm border border-white/20 dark:border-white/10"
-              style={{
-                background: "rgba(255, 255, 255, 0.1)",
-                backdropFilter: "blur(10px)",
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              viewport={{ once: true }}
+              variants={itemVariants}
               whileHover={{ 
-                y: -10,
-                boxShadow: "0 20px 40px rgba(0,232,255,0.2)",
-                background: "rgba(255, 255, 255, 0.15)",
+                y: -5, 
+                transition: { 
+                  type: "spring", 
+                  stiffness: 400 
+                }
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#dbff00]/30 via-[#00e8ff]/20 to-transparent pointer-events-none z-0 opacity-60"></div>
-              <div className="absolute -inset-[1px] bg-gradient-to-br from-[#dbff00]/30 via-transparent to-[#00e8ff]/30 z-0 rounded-lg"></div>
-              <div className="p-8 relative z-10 bg-white/80 dark:bg-gray-900/80">
-                <h3 className="text-2xl font-bold mb-4 ministry-gradient-text">
-                  {statement.title}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300">
-                  {statement.description}
-                </p>
-              </div>
+              <Card className="p-6 h-full border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300">
+                <div className="flex flex-col h-full">
+                  <div className="mb-4">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{item.title}</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">{item.description}</p>
+                </div>
+              </Card>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-16 text-center">
-          <motion.div
-            className="inline-block"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-2xl mx-auto dark:bg-gradient-to-r dark:from-[#dbff00] dark:via-white dark:to-[#00e8ff] dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-[#dbff00] via-[#00e8ff] to-[#00ffba] bg-clip-text text-transparent">
-              "The harvest is plentiful, but the workers are few. Ask the Lord of the harvest, 
-              therefore, to send out workers into his harvest field."
-              <footer className="mt-4 text-lg text-gray-700 dark:text-gray-300">
-                — Matthew 9:37-38
-              </footer>
-            </blockquote>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="text-center mt-12"
+        >
+          <Link to="/mission">
+            <Button className="bg-primary hover:bg-primary/90 text-white dark:bg-[#dbff00] dark:text-black dark:hover:bg-[#dbff00]/90 rounded-full px-8 py-6 font-medium">
+              Learn More About Our Mission
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

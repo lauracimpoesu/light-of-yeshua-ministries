@@ -5,6 +5,7 @@ import { Menu, X, Bird } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,9 +40,9 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-50 transition-all duration-300",
+        "fixed w-full z-50 transition-all duration-500",
         scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md py-2"
+          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2"
           : "bg-transparent py-4"
       )}
     >
@@ -55,20 +56,31 @@ const Navbar = () => {
           </h1>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-1">
+        {/* Desktop Menu with improved animations */}
+        <div className="hidden md:flex items-center space-x-2">
           {navItems.map((item) => (
-            <Link
+            <motion.div
               key={item.name}
-              to={item.path}
-              className="px-3 py-2 text-sm font-medium rounded-md hover:bg-white/10 text-gray-900 dark:text-white transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {item.name}
-            </Link>
+              <Link
+                to={item.path}
+                className="px-3 py-2 text-sm font-medium rounded-full hover:bg-white/15 
+                           text-white dark:text-white transition-colors"
+              >
+                {item.name}
+              </Link>
+            </motion.div>
           ))}
-          <Link to="/donate">
-            <Button className="donate-button ml-2 text-gray-900">Donate</Button>
-          </Link>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link to="/donate">
+              <Button className="donate-button ml-2 text-gray-900 rounded-full">Donate</Button>
+            </Link>
+          </motion.div>
           <ThemeToggle />
         </div>
 
@@ -77,22 +89,30 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={toggleMenu}
-            className="ml-2 p-2 rounded-md hover:bg-white/10 text-gray-900 dark:text-white"
+            className="ml-2 p-2 rounded-full hover:bg-white/15 text-white dark:text-white"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Instagram-inspired design */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg absolute w-full">
-          <div className="container mx-auto px-4 py-2 flex flex-col">
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg absolute w-full"
+        >
+          <div className="container mx-auto px-4 py-4 flex flex-col">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className="px-3 py-4 border-b border-gray-100 dark:border-gray-800 text-sm font-medium text-gray-900 dark:text-white"
+                className="px-3 py-4 border-b border-gray-100 dark:border-gray-800 text-sm font-medium 
+                           text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50 
+                           transition-colors rounded-lg my-1"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -100,13 +120,13 @@ const Navbar = () => {
             ))}
             <Link
               to="/donate"
-              className="px-3 py-4"
+              className="px-3 py-4 mt-2"
               onClick={() => setIsOpen(false)}
             >
-              <Button className="donate-button w-full text-gray-900">Donate</Button>
+              <Button className="donate-button w-full text-gray-900 rounded-full">Donate</Button>
             </Link>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );

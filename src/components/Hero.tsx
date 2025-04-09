@@ -11,10 +11,10 @@ const Hero = () => {
   const mouseY = useMotionValue(0);
   
   // Create transforms for parallax effect
-  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
-  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
-  const lightX = useTransform(mouseX, [0, 1000], [-50, 50]);
-  const lightY = useTransform(mouseY, [0, 1000], [-50, 50]);
+  const rotateX = useTransform(mouseY, [-300, 300], [3, -3]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-3, 3]);
+  const lightX = useTransform(mouseX, [0, 1000], [-30, 30]);
+  const lightY = useTransform(mouseY, [0, 1000], [-30, 30]);
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -46,38 +46,40 @@ const Hero = () => {
     <div 
       ref={containerRef}
       className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Enhanced 4K Background with Interactive Elements */}
-      <div className="absolute inset-0 bg-cover bg-center z-0 overflow-hidden will-change-transform" 
+      {/* Enhanced 4K Background with Fixed Position */}
+      <div className="absolute inset-0 bg-center z-0 overflow-hidden will-change-transform bg-fixed" 
         style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1533134486753-c833f0ed4866?q=90&w=3840&auto=format&fit=crop')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1533134486753-c833f0ed4866?q=95&w=3840&auto=format&fit=crop')",
           backgroundSize: "cover",
-          transform: `scale(1.05) perspective(1000px) rotateX(${rotateX.get()}deg) rotateY(${rotateY.get()}deg)`,
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center center",
+          transform: `perspective(1000px) rotateX(${rotateX.get()}deg) rotateY(${rotateY.get()}deg)`,
         }}>
         
-        {/* Dynamic Gradient Overlay - Different for light/dark modes */}
+        {/* Enhanced Gradient Overlay with stronger purple */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-r from-black/80 via-purple-900/60 to-black/70 dark:from-black/90 dark:via-purple-900/70 dark:to-black/80"
+          className="absolute inset-0 bg-gradient-to-r from-black/80 via-purple-900/70 to-black/70 dark:from-black/90 dark:via-purple-900/80 dark:to-black/80"
           style={{ 
             x: mouseX,
             y: mouseY,
             scale: 1.2,
           }}
           animate={{
-            x: mousePosition.x * -30,
-            y: mousePosition.y * -30,
+            x: mousePosition.x * -20,
+            y: mousePosition.y * -20,
           }}
           transition={{
             type: "spring",
-            damping: 50,
-            stiffness: 100,
+            damping: 60,
+            stiffness: 90,
           }}
         />
         
-        {/* Interactive Spotlight Effect */}
+        {/* Enhanced Interactive Spotlight Effect */}
         <motion.div 
-          className="absolute w-[60vw] h-[60vh] rounded-full blur-[120px] opacity-40 dark:opacity-50 will-change-transform"
+          className="absolute w-[70vw] h-[70vh] rounded-full blur-[100px] opacity-50 dark:opacity-60 will-change-transform"
           style={{
-            background: 'radial-gradient(circle, rgba(139,92,246,0.5) 0%, rgba(0,232,255,0.3) 50%, transparent 80%)',
+            background: 'radial-gradient(circle, rgba(139,92,246,0.6) 0%, rgba(0,232,255,0.4) 50%, transparent 80%)',
             left: lightX,
             top: lightY,
             translateX: "-50%",
@@ -89,39 +91,39 @@ const Hero = () => {
           }}
           transition={{
             type: "spring",
-            damping: 30,
-            stiffness: 200,
+            damping: 40,
+            stiffness: 180,
           }}
         />
         
-        {/* Enhanced Floating Particles with more variety */}
-        {[...Array(40)].map((_, i) => (
+        {/* More vibrant floating particles */}
+        {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
             className={`absolute rounded-full ${
               i % 4 === 0 
-                ? 'bg-[#dbff00]/60 dark:bg-[#8B5CF6]/80' 
+                ? 'bg-[#dbff00]/70 dark:bg-[#8B5CF6]/90' 
                 : i % 4 === 1 
-                  ? 'bg-[#00e8ff]/70' 
+                  ? 'bg-[#00e8ff]/80' 
                   : i % 4 === 2 
-                    ? 'bg-[#00ffba]/60' 
-                    : 'bg-white/50'
+                    ? 'bg-[#00ffba]/70' 
+                    : 'bg-white/60'
             }`}
             style={{
-              width: `${Math.random() * 8 + 2}px`,
-              height: `${Math.random() * 8 + 2}px`,
+              width: `${Math.random() * 10 + 2}px`,
+              height: `${Math.random() * 10 + 2}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               filter: 'blur(1px)'
             }}
             animate={{
-              y: [0, -Math.random() * 150 - 50, 0],
-              x: [0, Math.random() * 100 - 50, 0],
-              opacity: [0.2, 0.8, 0.2],
-              scale: [1, Math.random() * 0.5 + 1, 1],
+              y: [0, -Math.random() * 180 - 50, 0],
+              x: [0, Math.random() * 120 - 60, 0],
+              opacity: [0.3, 0.9, 0.3],
+              scale: [1, Math.random() * 0.7 + 1.1, 1],
             }}
             transition={{
-              duration: 5 + Math.random() * 10,
+              duration: 5 + Math.random() * 12,
               repeat: Infinity,
               delay: Math.random() * 5,
               ease: "easeInOut"
@@ -181,7 +183,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/mission">
-                <button className="bg-white/10 backdrop-blur-sm text-white border border-white/20 font-bold py-4 px-8 rounded-full transition-all duration-500 hover:bg-white/20 w-full sm:w-auto">
+                <button className="bg-white/15 backdrop-blur-md text-white border border-white/30 font-bold py-4 px-8 rounded-full transition-all duration-500 hover:bg-white/25 w-full sm:w-auto">
                   Our Mission
                 </button>
               </Link>
@@ -191,7 +193,7 @@ const Hero = () => {
       </div>
 
       {/* Smoother Gradient Bottom Transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/90 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-background via-background/95 to-transparent z-10"></div>
     </div>
   );
 };

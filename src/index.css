@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +99,29 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Glass effect utility classes */
+.glass-card {
+  @apply backdrop-blur-lg bg-white/10 border border-white/20 shadow-xl;
+}
+
+.text-gradient-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-100;
+}
+
+/* Custom animation keyframes */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Slow down button hover transitions */
+.btn-transition {
+  @apply transition-all duration-500;
 }

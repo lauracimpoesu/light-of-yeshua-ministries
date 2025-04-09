@@ -37,7 +37,7 @@ const StripeCheckoutForm = ({ amount, isMonthly, onSuccess, onCancel }: StripeCh
       setBillingDetails(prev => ({
         ...prev,
         [parent]: {
-          ...prev[parent],
+          ...prev[parent as keyof typeof prev] as Record<string, string>,
           [child]: value
         }
       }));
@@ -79,44 +79,6 @@ const StripeCheckoutForm = ({ amount, isMonthly, onSuccess, onCancel }: StripeCh
         setLoading(false);
         onSuccess();
       }, 2000);
-      
-      // In a real implementation, you'd use code like this:
-      /*
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
-        type: 'card',
-        card: cardElement,
-        billing_details: billingDetails,
-      });
-      
-      if (error) {
-        setError(error.message || "Payment failed. Please try again.");
-        setLoading(false);
-        return;
-      }
-      
-      // Send paymentMethod.id to your server to complete the payment
-      const response = await fetch('/api/complete-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          payment_method_id: paymentMethod.id,
-          amount: amount * 100, // convert to cents
-          is_subscription: isMonthly,
-        }),
-      });
-      
-      const result = await response.json();
-      
-      if (result.error) {
-        setError(result.error);
-        setLoading(false);
-      } else {
-        onSuccess();
-      }
-      */
-      
     } catch (err) {
       console.error("Payment error:", err);
       setError("An unexpected error occurred. Please try again.");

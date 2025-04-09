@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, X, Dove } from "lucide-react";
+import { Menu, X, Bird } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -47,7 +47,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <Dove className="h-6 w-6 mr-2 text-[#dbff00]" />
+          <Bird className="h-6 w-6 mr-2 text-[#dbff00]" />
           <h1 className="text-lg md:text-2xl font-heading font-bold text-white">
             <span className="text-[#dbff00]">Light of</span>{" "}
             <span className="text-[#00e8ff]">Yeshua</span>{" "}

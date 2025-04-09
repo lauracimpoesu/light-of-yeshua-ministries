@@ -16,13 +16,14 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 97 100% 50%;  /* #dbff00 */
+    /* Light mode uses purple instead of yellow */
+    --primary: 265 89% 66%;  /* Purple #8B5CF6 */
     --primary-foreground: 210 40% 15%;
 
-    --secondary: 183 100% 50%; /* #00e8ff */
+    --secondary: 183 100% 40%; /* Darker version of #00e8ff */
     --secondary-foreground: 210 40% 15%;
 
-    --accent: 162 100% 50%; /* #00ffba */
+    --accent: 186 100% 29%; /* Darker version of #00ffba */
     --accent-foreground: 210 40% 98%;
 
     --muted: 210 40% 96.1%;
@@ -48,13 +49,13 @@
   }
 
   .dark {
-    --background: 230 25% 8%;
+    --background: 255 30% 13%; /* More purple-tinted dark background */
     --foreground: 210 40% 98%;
 
-    --card: 230 25% 12%;
+    --card: 255 30% 18%; /* More purple-tinted card */
     --card-foreground: 210 40% 98%;
 
-    --popover: 230 25% 12%;
+    --popover: 255 30% 18%; /* More purple-tinted popover */
     --popover-foreground: 210 40% 98%;
 
     --primary: 97 100% 50%; /* #dbff00 */
@@ -63,7 +64,7 @@
     --secondary: 183 100% 50%; /* #00e8ff */
     --secondary-foreground: 0 0% 0%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 255 27% 25%;
     --muted-foreground: 215 20.2% 65.1%;
 
     --accent: 162 100% 50%; /* #00ffba */
@@ -72,17 +73,17 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 255 27% 27%; /* Purple-tinted border */
+    --input: 255 27% 27%;  /* Purple-tinted input */
     --ring: 183 100% 50%; /* #00e8ff */
 
-    --sidebar-background: 230 25% 12%;
+    --sidebar-background: 255 30% 18%; /* More purple-tinted sidebar */
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 97 100% 50%; /* #dbff00 */
     --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 230 25% 18%;
+    --sidebar-accent: 255 30% 24%; /* More purple-tinted sidebar accent */
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-border: 255 27% 27%; /* Purple-tinted sidebar border */
     --sidebar-ring: 183 100% 50%; /* #00e8ff */
   }
 }
@@ -104,23 +105,23 @@
 
 @layer components {
   .ministry-gradient-text {
-    @apply bg-gradient-to-r from-[#dbff00] to-[#00e8ff] text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text;
   }
 
   .ministry-gradient-bg {
-    @apply bg-gradient-to-r from-[#dbff00] to-[#00e8ff];
+    @apply bg-gradient-to-r from-primary to-secondary;
   }
 
   .gold-gradient-text {
-    @apply bg-gradient-to-r from-[#dbff00] to-[#00ffba] text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text;
   }
 
   .gold-gradient-bg {
-    @apply bg-gradient-to-r from-[#dbff00] to-[#00ffba];
+    @apply bg-gradient-to-r from-primary to-accent;
   }
 
   .turquoise-gradient-bg {
-    @apply bg-gradient-to-r from-[#00e8ff] to-[#00ffba];
+    @apply bg-gradient-to-r from-secondary to-accent;
   }
 
   .glow-effect {
@@ -129,7 +130,7 @@
 
   .glow-effect::after {
     content: '';
-    @apply absolute inset-0 rounded-lg bg-[#00e8ff] opacity-0 transition-opacity duration-700 blur-md -z-10;
+    @apply absolute inset-0 rounded-lg bg-secondary opacity-0 transition-opacity duration-700 blur-md -z-10;
   }
 
   .glow-effect:hover::after {
@@ -140,8 +141,9 @@
     @apply transition-all duration-700 hover:shadow-lg hover:-translate-y-1;
   }
 
+  /* Updated donate button with improved contrast in light mode */
   .donate-button {
-    @apply relative overflow-hidden bg-gradient-to-r from-[#dbff00] to-[#00e8ff] text-gray-900 font-bold py-3 px-6 rounded-lg 
+    @apply relative overflow-hidden ministry-gradient-bg text-gray-900 dark:text-gray-900 font-bold py-3 px-6 rounded-lg 
            transition-all duration-700 hover:shadow-lg hover:scale-105 animate-pulse-glow;
   }
 
@@ -160,7 +162,17 @@
 
   .scripture-card::before {
     content: '';
-    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-r from-[#dbff00] to-[#00e8ff];
+    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-r from-primary to-secondary;
+  }
+  
+  /* New smooth intro background border */
+  .intro-background {
+    @apply relative overflow-hidden;
+  }
+  
+  .intro-background::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent;
   }
 }
 

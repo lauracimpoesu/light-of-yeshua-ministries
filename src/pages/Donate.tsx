@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Check, CircleDollarSign, ArrowRight, Heart } from "lucide-react";
+import { Check, ArrowRight, Heart } from "lucide-react";
 import { toast } from "sonner";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
@@ -29,41 +29,37 @@ const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [isMonthly, setIsMonthly] = useState(false);
-  const [paymentStep, setPaymentStep] = useState(1);
-  const [clientSecret, setClientSecret] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomAmount(e.target.value);
     setSelectedAmount(null);
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (!selectedAmount && !customAmount) {
       toast.error("Please select or enter a donation amount");
       return;
     }
     
-    // In a real app, you would fetch the client secret from your backend
-    // This is a mock implementation
-    const mockFetchClientSecret = () => {
-      // Simulated API response delay
-      setTimeout(() => {
-        setClientSecret("mock_client_secret");
-        setPaymentStep(2);
-      }, 500);
-    };
+    // Set loading state
+    setIsLoading(true);
     
-    mockFetchClientSecret();
-  };
-
-  const handlePaymentSuccess = () => {
-    toast.success("Thank you for your donation! Your generosity helps spread the light of Yeshua.");
-    // Reset form
-    setSelectedAmount(null);
-    setCustomAmount("");
-    setIsMonthly(false);
-    setPaymentStep(1);
-    setClientSecret("");
+    try {
+      // In a real app, you would redirect to Stripe Checkout here
+      // This simulates the redirect with a delay
+      toast.info("Redirecting to secure payment page...");
+      
+      // Simulate API call to create Checkout session
+      setTimeout(() => {
+        // In a real app, this would redirect to Stripe checkout URL
+        window.location.href = `https://checkout.stripe.com/pay/cs_test_example?amount=${selectedAmount || customAmount}`;
+      }, 1500);
+    } catch (error) {
+      console.error("Error redirecting to payment:", error);
+      toast.error("There was a problem processing your request. Please try again.");
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -89,103 +85,103 @@ const Donate = () => {
           
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-2xl font-bold mb-6 text-center">Make a Donation</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Make a Donation</h2>
               
-              {paymentStep === 1 ? (
-                <>
-                  <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
-                    Choose a donation amount
-                  </h3>
-                  
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-                    {donationOptions.map((option) => (
-                      <button
-                        key={option.amount}
-                        onClick={() => {
-                          setSelectedAmount(option.amount);
-                          setCustomAmount("");
-                        }}
-                        className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center ${
-                          selectedAmount === option.amount
-                            ? "border-[#00e8ff] bg-[#00e8ff]/10"
-                            : "border-gray-200 dark:border-gray-700 hover:border-[#00e8ff]/50"
-                        }`}
-                      >
-                        <span className="text-xl font-bold mb-1">${option.amount}</span>
-                        <span className="text-xs text-gray-600 dark:text-gray-400 text-center">
-                          {option.impact}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                  
-                  <div className="mb-8">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Or enter a custom amount
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-                        $
-                      </span>
-                      <input
-                        type="number"
-                        value={customAmount}
-                        onChange={handleCustomAmountChange}
-                        placeholder="Enter amount"
-                        className="w-full pl-8 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center mb-8">
-                    <button
-                      onClick={() => setIsMonthly(!isMonthly)}
-                      className={`relative w-12 h-6 rounded-full transition-colors duration-500 ${
-                        isMonthly ? "bg-[#00e8ff]" : "bg-gray-300 dark:bg-gray-600"
-                      }`}
-                    >
-                      <span
-                        className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-500 ${
-                          isMonthly ? "transform translate-x-6" : ""
-                        }`}
-                      ></span>
-                    </button>
-                    <span className="ml-3 text-sm text-gray-700 dark:text-gray-300">
-                      Make this a monthly donation
-                    </span>
-                  </div>
-                  
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-gray-900 font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
-                    onClick={handleContinue}
+              <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
+                Choose a donation amount
+              </h3>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                {donationOptions.map((option) => (
+                  <button
+                    key={option.amount}
+                    onClick={() => {
+                      setSelectedAmount(option.amount);
+                      setCustomAmount("");
+                    }}
+                    className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center ${
+                      selectedAmount === option.amount
+                        ? "border-secondary bg-secondary/10 dark:border-[#00e8ff] dark:bg-[#00e8ff]/10"
+                        : "border-gray-200 dark:border-gray-700 hover:border-secondary/50 dark:hover:border-[#00e8ff]/50"
+                    }`}
                   >
+                    <span className="text-xl font-bold mb-1 text-gray-900 dark:text-white">${option.amount}</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-300 text-center">
+                      {option.impact}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              
+              <div className="mb-8">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Or enter a custom amount
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                    $
+                  </span>
+                  <input
+                    type="number"
+                    value={customAmount}
+                    onChange={handleCustomAmountChange}
+                    placeholder="Enter amount"
+                    className="w-full pl-8 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex items-center mb-8">
+                <button
+                  onClick={() => setIsMonthly(!isMonthly)}
+                  className={`relative w-12 h-6 rounded-full transition-colors duration-500 ${
+                    isMonthly ? "bg-secondary dark:bg-[#00e8ff]" : "bg-gray-300 dark:bg-gray-600"
+                  }`}
+                >
+                  <span
+                    className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-500 ${
+                      isMonthly ? "transform translate-x-6" : ""
+                    }`}
+                  ></span>
+                </button>
+                <span className="ml-3 text-sm text-gray-700 dark:text-gray-300">
+                  Make this a monthly donation
+                </span>
+              </div>
+              
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-gray-900 font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
+                onClick={handleContinue}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                      <circle 
+                        className="opacity-25" 
+                        cx="12" 
+                        cy="12" 
+                        r="10" 
+                        stroke="currentColor" 
+                        strokeWidth="4"
+                      ></circle>
+                      <path 
+                        className="opacity-75" 
+                        fill="currentColor" 
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Processing...
+                  </>
+                ) : (
+                  <>
                     <ArrowRight size={20} />
                     Continue to Payment
-                  </motion.button>
-                </>
-              ) : (
-                <>
-                  <div className="mb-6 text-center">
-                    <p className="text-lg font-semibold">
-                      {isMonthly 
-                        ? `Monthly Donation: $${selectedAmount || customAmount}` 
-                        : `One-time Donation: $${selectedAmount || customAmount}`}
-                    </p>
-                  </div>
-
-                  {/* This is where the Stripe elements will render */}
-                  <Elements stripe={stripePromise}>
-                    <StripeCheckoutForm 
-                      amount={selectedAmount || Number(customAmount)} 
-                      isMonthly={isMonthly}
-                      onSuccess={handlePaymentSuccess}
-                      onCancel={() => setPaymentStep(1)}
-                    />
-                  </Elements>
-                </>
-              )}
+                  </>
+                )}
+              </motion.button>
               
               <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
                 All donations are secure and encrypted

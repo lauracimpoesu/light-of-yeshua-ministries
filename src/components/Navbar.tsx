@@ -47,11 +47,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <Bird className="h-6 w-6 mr-2 text-[#dbff00]" />
-          <h1 className="text-lg md:text-2xl font-heading font-bold text-white">
-            <span className="text-[#dbff00]">Light of</span>{" "}
-            <span className="text-[#00e8ff]">Yeshua</span>{" "}
-            <span className="font-normal text-sm md:text-base text-[#00ffba]">Ministries</span>
+          <Bird className="h-6 w-6 mr-2 text-primary dark:text-[#dbff00]" />
+          <h1 className="text-lg md:text-2xl font-heading font-bold text-gray-900 dark:text-white">
+            <span className="text-primary dark:text-[#dbff00]">Light of</span>{" "}
+            <span className="text-secondary dark:text-[#00e8ff]">Yeshua</span>{" "}
+            <span className="font-normal text-sm md:text-base text-accent dark:text-[#00ffba]">Ministries</span>
           </h1>
         </Link>
 
@@ -61,13 +61,13 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className="px-3 py-2 text-sm font-medium rounded-md hover:bg-white/10 text-white transition-colors"
+              className="px-3 py-2 text-sm font-medium rounded-md hover:bg-white/10 text-gray-900 dark:text-white transition-colors"
             >
               {item.name}
             </Link>
           ))}
           <Link to="/donate">
-            <Button className="donate-button ml-2 text-white">Donate</Button>
+            <Button className="donate-button ml-2 text-gray-900">Donate</Button>
           </Link>
           <ThemeToggle />
         </div>
@@ -77,7 +77,7 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             onClick={toggleMenu}
-            className="ml-2 p-2 rounded-md hover:bg-white/10 text-white"
+            className="ml-2 p-2 rounded-md hover:bg-white/10 text-gray-900 dark:text-white"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -92,7 +92,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="px-3 py-4 border-b border-gray-100 dark:border-gray-800 text-sm font-medium"
+                className="px-3 py-4 border-b border-gray-100 dark:border-gray-800 text-sm font-medium text-gray-900 dark:text-white"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
@@ -103,7 +103,7 @@ const Navbar = () => {
               className="px-3 py-4"
               onClick={() => setIsOpen(false)}
             >
-              <Button className="donate-button w-full text-white">Donate</Button>
+              <Button className="donate-button w-full text-gray-900">Donate</Button>
             </Link>
           </div>
         </div>

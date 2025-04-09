@@ -47,9 +47,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <h1 className="text-xl font-extrabold ministry-gradient-text">
-            LIGHT OF YESHUA
+        <a href="#" className="flex items-center">
+          <h1 className="text-lg md:text-2xl font-heading font-bold text-foreground">
+            <span className="text-yellow-300">Light of</span> <span className="text-[#40e0d0]">Yeshua</span> <span className="font-normal text-sm md:text-base text-yellow-300">Ministries</span>
           </h1>
+        </a>
         </Link>
 
         {/* Desktop Menu */}

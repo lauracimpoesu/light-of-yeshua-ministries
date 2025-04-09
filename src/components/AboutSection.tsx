@@ -18,7 +18,7 @@ const scriptures = [
 ];
 
 const AboutSection = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
     <section className="py-20 bg-white dark:bg-gray-900">

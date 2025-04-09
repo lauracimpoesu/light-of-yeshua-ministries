@@ -36,19 +36,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -165,7 +158,46 @@
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+/* Button hover effects */
+.btn-glow:hover {
+  box-shadow: 0 0 15px 5px rgba(167, 139, 250, 0.5);
+}
+
+.btn-floating {
+  transition: transform 0.3s ease;
+}
+
+.btn-floating:hover {
+  transform: translateY(-5px);
+}
+
 /* Slow down button hover transitions */
 .btn-transition {
   @apply transition-all duration-500;
+}
+
+/* Image zoom effect */
+.img-zoom-container {
+  overflow: hidden;
+}
+
+.img-zoom {
+  transition: transform 0.5s ease;
+}
+
+.img-zoom:hover {
+  transform: scale(1.1);
+}
+
+/* Custom gradients */
+.gradient-text-gold {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-yellow-300 to-amber-200;
+}
+
+.gradient-button-primary {
+  @apply bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700;
+}
+
+.gradient-bg-hero {
+  @apply bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700;
 }

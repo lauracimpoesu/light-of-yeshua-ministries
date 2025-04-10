@@ -82,7 +82,7 @@ const AboutSection = () => {
               whileHover="hover"
               className="h-full"
             >
-              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-purple-900/10">
+              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-indigo-900/10">
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 -z-10" />
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary" />
                 
@@ -101,7 +101,7 @@ const AboutSection = () => {
                 <CardFooter className="pt-2">
                   <Link 
                     to="/about" 
-                    className="text-primary dark:text-[#dbff00] font-medium text-sm inline-flex items-center group"
+                    className="text-teal-600 dark:text-[#dbff00] font-medium text-sm inline-flex items-center group"
                   >
                     Learn more
                     <ArrowRightIcon className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

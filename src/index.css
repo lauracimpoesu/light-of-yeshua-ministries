@@ -142,13 +142,13 @@
 
   /* Updated donate button with improved design */
   .donate-button {
-    @apply relative overflow-hidden ministry-gradient-bg text-gray-900 dark:text-gray-900 font-bold
+    @apply relative overflow-hidden ministry-gradient-bg dark:text-white font-bold
            transition-all duration-500 shadow-md hover:shadow-xl dark:shadow-purple-500/30;
   }
 
   .donate-button::before {
     content: '';
-    @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-500;
+    @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-500 text-white;
   }
 
   .donate-button:hover::before {

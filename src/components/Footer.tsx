@@ -15,25 +15,31 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="bg-gradient-to-r from-indigo-900 via-cyan-900 to-teal-900 text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 ministry-gradient-text">Light of Yeshua Ministries</h3>
+          <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-yellow-300 via-cyan-400 to-teal-300 bg-clip-text text-transparent">
+  Light of Yeshua Ministries
+</h3>
             <p className="text-gray-400 mb-6 max-w-md">
               Taking the light of Yeshua to the streets of nations worldwide. Join us in our mission to spread the Gospel and bring salvation.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-ministry-purple transition-colors">
+              <a href="#" className="hover:text-indigo-300 
+              
+              transition-colors">
                 <Facebook size={24} />
               </a>
-              <a href="#" className="hover:text-ministry-purple transition-colors">
+              <a href="#" className="hover:text-indigo-300
+              
+              transition-colors">
                 <Instagram size={24} />
               </a>
-              <a href="#" className="hover:text-ministry-purple transition-colors">
+              <a href="#" className="hover:text-indigo-300 transition-colors">
                 <Youtube size={24} />
               </a>
-              <a href="#" className="hover:text-ministry-purple transition-colors">
+              <a href="#" className="hover:text-indigo-300 transition-colors">
                 <Twitter size={24} />
               </a>
             </div>

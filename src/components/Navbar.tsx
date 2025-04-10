@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { m, motion } from "framer-motion";
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
@@ -65,9 +65,9 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed w-full z-50 transition-all duration-500",
+        "fixed w-full z-50 transition-all duration-500 text-white",
         scrolled
-          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2"
+          ? "bg-white/90 text-black dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2"
           : "bg-transparent py-4"
       )}
     >
@@ -76,17 +76,20 @@ const Navbar = () => {
           <h1 className="text-lg md:text-2xl font-heading font-bold">
             <span className={cn(
               "font-light transition-colors",
-              isLightMode && pastHeroSection 
+              isLightMode && pastHeroSection
                 ? "text-purple-600" // Purple in light mode past hero
-                : "text-yellow-100" // Default color
-            )}>
+                : "text-yellow-100",
+                scrolled && "text-black"
+            ) 
+            }>
               Light of
             </span>{" "}
             <span className={cn(
               "italic transition-colors",
               isLightMode && pastHeroSection
                 ? "text-blue-500" // Blueish in light mode past hero
-                : "text-teal-200" // Default color
+                : "text-teal-200",
+                 scrolled && "text-indigo-400"
             )}>
               Yeshua
             </span>
@@ -104,7 +107,7 @@ const Navbar = () => {
               <Link
                 to={item.path}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-full transition-colors",
+                  "px-3 py-2 text-sm font-medium rounded-full transition-colors dartext-white",
                   scrolled || pastHeroSection 
                     ? isLightMode
                       ? "text-gray-900 hover:bg-gray-100" 

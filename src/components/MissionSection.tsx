@@ -10,22 +10,22 @@ const MissionSection = () => {
     {
       title: "Evangelism",
       description: "Taking the Gospel to the streets and public places, sharing the truth of salvation through Yeshua.",
-      icon: <BookOpenText className="h-8 w-8 text-primary dark:text-[#dbff00]" />,
+      icon: <BookOpenText className="h-8 w-8 text-teal-500 dark:text-[#dbff00]" />,
     },
     {
       title: "Outreach",
       description: "Reaching communities in need with both spiritual guidance and practical support.",
-      icon: <Heart className="h-8 w-8 text-secondary dark:text-[#00e8ff]" />,
+      icon: <Heart className="h-8 w-8 text-indigo-400 dark:text-[#00e8ff]" />,
     },
     {
       title: "Discipleship",
       description: "Training believers to grow in their faith and effectively share the Gospel with others.",
-      icon: <Users className="h-8 w-8 text-accent dark:text-[#00ffba]" />,
+      icon: <Users className="h-8 w-8 text-indigo-400 dark:text-[#00ffba]" />,
     },
     {
       title: "Global Impact",
       description: "Extending our ministry beyond borders to reach people of all nations with the light of Yeshua.",
-      icon: <Globe className="h-8 w-8 text-purple-500 dark:text-purple-400" />,
+      icon: <Globe className="h-8 w-8 text-teal-500 dark:text-purple-400" />,
     },
   ];
 
@@ -108,7 +108,7 @@ const MissionSection = () => {
           className="text-center mt-12"
         >
           <Link to="/mission">
-            <Button className="bg-primary hover:bg-primary/90 text-white dark:bg-[#dbff00] dark:text-black dark:hover:bg-[#dbff00]/90 rounded-full px-8 py-6 font-medium">
+            <Button className="bg-teal-600 hover:bg-teal-500 text-white dark:bg-[#dbff00] dark:text-black dark:hover:bg-[#dbff00]/90 rounded-full px-8 py-6 font-medium">
               Learn More About Our Mission
             </Button>
           </Link>

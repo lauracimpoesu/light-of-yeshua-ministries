@@ -108,7 +108,7 @@
   }
 
   .ministry-gradient-bg {
-    @apply bg-gradient-to-r from-primary to-secondary;
+    @apply bg-gradient-to-r from-teal-600 to-indigo-500;
   }
 
   .gold-gradient-text {

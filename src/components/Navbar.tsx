@@ -32,8 +32,8 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Mission", path: "/mission" },
-    { name: "Media", path: "/media" },
-    { name: "Events", path: "/events" },
+    /* { name: "Media", path: "/media" },
+    { name: "Events", path: "/events" }, */
     { name: "Contact", path: "/contact" },
   ];
 
@@ -48,10 +48,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <Bird className="h-6 w-6 mr-2 text-primary dark:text-[#dbff00]" />
           <h1 className="text-lg md:text-2xl font-heading font-bold text-gray-900 dark:text-white">
-            <span className="text-primary dark:text-[#dbff00]">Light of</span>{" "}
-            <span className="text-secondary dark:text-[#00e8ff]">Yeshua</span>
+            <span className="text-yellow-100 font-light">Light of</span>{" "}
+            <span className="text-teal-200 italic">Yeshua</span>
           </h1>
         </Link>
 
@@ -81,7 +80,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Link to="/donate">
-              <Button className="donate-button ml-2 text-gray-900 rounded-full">Donate</Button>
+              <Button className="donate-button ml-2 text-white rounded-full">Donate</Button>
             </Link>
           </motion.div>
           <ThemeToggle />
@@ -131,7 +130,7 @@ const Navbar = () => {
               className="px-3 py-4 mt-2"
               onClick={() => setIsOpen(false)}
             >
-              <Button className="donate-button w-full text-gray-900 rounded-full">Donate</Button>
+              <Button className="donate-button w-full text-white rounded-full">Donate</Button>
             </Link>
           </div>
         </motion.div>

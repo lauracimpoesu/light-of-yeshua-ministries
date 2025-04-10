@@ -8,10 +8,10 @@ const Hero = () => {
     <div className="relative min-h-screen flex items-center overflow-hidden">
       {/* Static Purple Gradient Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-purple-800/80 to-indigo-900/90 dark:from-purple-900 dark:via-purple-700 dark:to-indigo-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/90 via-indigo-800/80 to-cyan-500/90 dark:from-purple-900 dark:via-purple-700 dark:to-indigo-900"></div>
         
         {/* Static Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-purple-900/60 to-black/50 dark:from-black/70 dark:via-purple-900/80 dark:to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-indigo-900/60 to-black/50 dark:from-black/70 dark:via-purple-900/80 dark:to-black/70"></div>
         
         {/* Subtle Particle Effect */}
         {[...Array(40)].map((_, i) => (
@@ -61,13 +61,13 @@ const Hero = () => {
           }}
         >
           <motion.h1 
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight text-center md:text-left"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Take the Light of Yeshua to the Nations
-          </motion.h1>
+  className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight text-center md:text-left"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
+  Take the <span className="bg-gradient-to-r from-yellow-200 to-cyan-400 bg-clip-text text-transparent">Light of Yeshua</span> to the Nations
+</motion.h1>
           <motion.p 
             className="text-xl md:text-2xl text-gray-100 mb-10 text-center md:text-left"
             initial={{ opacity: 0, y: 30 }}
@@ -85,7 +85,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/donate">
-                <button className="donate-button flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full">
+                <button className="donate-button text-white flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full">
                   Donate Now
                   <ArrowRight size={18} />
                 </button>

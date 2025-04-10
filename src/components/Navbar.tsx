@@ -1,22 +1,34 @@
 
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, X, Bird } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [pastHeroSection, setPastHeroSection] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
+      // Basic scrolled detection for navbar background
       if (window.scrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
+      }
+      
+      // Detect when we've scrolled past the hero section
+      // Assuming hero section height is around 100vh (adjust as needed)
+      if (window.scrollY > window.innerHeight * 0.7) {
+        setPastHeroSection(true);
+      } else {
+        setPastHeroSection(false);
       }
     };
 
@@ -32,10 +44,23 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Mission", path: "/mission" },
-     { name: "Media", path: "/media" },
+    { name: "Media", path: "/media" },
     { name: "Events", path: "/events" }, 
     { name: "Contact", path: "/contact" },
   ];
+
+  const isLightMode = theme === "light";
+  
+  // Dynamic text color logic for light mode
+  const getTextColor = () => {
+    if (isLightMode) {
+      return pastHeroSection || scrolled 
+        ? "text-gray-900" 
+        : "text-white";
+    } else {
+      return "text-white"; // Dark mode always uses white text
+    }
+  };
 
   return (
     <nav
@@ -48,9 +73,23 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <h1 className="text-lg md:text-2xl font-heading font-bold text-gray-900 dark:text-white">
-            <span className="text-yellow-100 font-light">Light of</span>{" "}
-            <span className="text-teal-200 italic">Yeshua</span>
+          <h1 className="text-lg md:text-2xl font-heading font-bold">
+            <span className={cn(
+              "font-light transition-colors",
+              isLightMode && pastHeroSection 
+                ? "text-purple-600" // Purple in light mode past hero
+                : "text-yellow-100" // Default color
+            )}>
+              Light of
+            </span>{" "}
+            <span className={cn(
+              "italic transition-colors",
+              isLightMode && pastHeroSection
+                ? "text-blue-500" // Blueish in light mode past hero
+                : "text-teal-200" // Default color
+            )}>
+              Yeshua
+            </span>
           </h1>
         </Link>
 
@@ -66,9 +105,13 @@ const Navbar = () => {
                 to={item.path}
                 className={cn(
                   "px-3 py-2 text-sm font-medium rounded-full transition-colors",
-                  scrolled 
-                    ? "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-white/15" 
-                    : "text-white hover:bg-white/15"
+                  scrolled || pastHeroSection 
+                    ? isLightMode
+                      ? "text-gray-900 hover:bg-gray-100" 
+                      : "dark:text-white dark:hover:bg-white/15"
+                    : isLightMode 
+                      ? "text-white hover:bg-white/15" 
+                      : "dark:text-white dark:hover:bg-white/15"
                 )}
               >
                 {item.name}
@@ -93,9 +136,13 @@ const Navbar = () => {
             onClick={toggleMenu}
             className={cn(
               "ml-2 p-2 rounded-full",
-              scrolled 
-                ? "text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-white/15" 
-                : "text-white hover:bg-white/15"
+              scrolled || pastHeroSection 
+                ? isLightMode
+                  ? "text-gray-900 hover:bg-gray-100" 
+                  : "dark:text-white dark:hover:bg-white/15"
+                : isLightMode 
+                  ? "text-white hover:bg-white/15" 
+                  : "dark:text-white dark:hover:bg-white/15"
             )}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

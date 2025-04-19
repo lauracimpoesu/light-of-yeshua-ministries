@@ -53,7 +53,7 @@ const About = () => {
         </motion.div>
 
         {/* Custom version of AboutSection without duplicate title */}
-        <section className="pb-32 pt-24 md:pt-0 bg-white dark:bg-gray-900">
+        <section className="pb-32 pt-24 md:pt-12 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[

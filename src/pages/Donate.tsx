@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -94,30 +93,34 @@ const Donate = () => {
                           : "border-2 border-gray-200 dark:border-gray-700 hover:border-gold/50"
                       }`}
                   >
-                    <div 
+                    <div
                       className={`absolute inset-0 bg-gradient-to-r from-gold/20 via-gold/10 to-gold/20 opacity-0 transition-opacity duration-500
-                        ${selectedAmount === option.amount ? 'animate-gold-shine-slow opacity-30' : 'group-hover:opacity-10'}`}
+                        ${
+                          selectedAmount === option.amount
+                            ? "animate-gold-shine-slow opacity-30"
+                            : "group-hover:opacity-10"
+                        }`}
                     />
-                    <span 
+                    <span
                       className={`text-xl font-bold mb-1 relative z-10 transition-all duration-500 ${
-                        selectedAmount === option.amount 
-                          ? 'bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 bg-clip-text text-transparent scale-110'
-                          : 'text-gray-900 dark:text-white'
+                        selectedAmount === option.amount
+                          ? "bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 bg-clip-text text-transparent scale-110"
+                          : "text-gray-900 dark:text-white"
                       }`}
                     >
                       ${option.amount}
                     </span>
-                    <span 
+                    <span
                       className={`text-xs text-center relative z-10 transition-all duration-500 ${
                         selectedAmount === option.amount
-                          ? 'text-cyan-600 dark:text-cyan-400'
-                          : 'text-gray-600 dark:text-gray-400'
+                          ? "text-cyan-600 dark:text-cyan-400"
+                          : "text-gray-600 dark:text-gray-400"
                       }`}
                     >
                       {option.impact}
                     </span>
                     {selectedAmount === option.amount && (
-                      <div className="absolute inset-0 bg-gold/5 dark:bg-gold/10 blur-sm animate-pulse-glow"/>
+                      <div className="absolute inset-0 bg-gold/5 dark:bg-gold/10 blur-sm animate-pulse-glow" />
                     )}
                   </button>
                 ))}
@@ -152,11 +155,13 @@ const Donate = () => {
                 >
                   <span
                     className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${
-                      isMonthly ? "transform translate-x-6 animate-pulse-glow shadow-gold/50" : ""
+                      isMonthly
+                        ? "transform translate-x-6 animate-pulse-glow shadow-gold/50"
+                        : ""
                     }`}
                   ></span>
                 </button>
-                <span 
+                <span
                   className={`ml-3 text-sm ${
                     isMonthly
                       ? "bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 bg-clip-text text-transparent font-semibold"

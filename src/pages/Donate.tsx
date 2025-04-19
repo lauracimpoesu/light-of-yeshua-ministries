@@ -35,21 +35,21 @@ const Donate = () => {
     }
 
     const donationAmount = selectedAmount || parseFloat(customAmount);
-      
+
     if (isNaN(donationAmount) || donationAmount <= 0) {
       toast.error("Please enter a valid donation amount");
       return;
     }
 
     const paypalUrl = `https://paypal.me/loyministries/${donationAmount}`;
-    window.open(paypalUrl, '_blank');
+    window.open(paypalUrl, "_blank");
   };
 
   return (
     <>
       <Navbar />
       <div className="pt-20">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -58,22 +58,25 @@ const Donate = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
             Support Our Ministry
           </h1>
-          
+
           <div className="max-w-3xl mx-auto mb-12">
             <p className="text-lg text-gray-700 dark:text-gray-300 text-center">
-              Your generous donation helps bring the light of Yeshua to the streets of nations worldwide.
-              Every contribution makes a difference in our mission to spread the Gospel.
+              Your generous donation helps bring the light of Yeshua to the
+              streets of nations worldwide. Every contribution makes a
+              difference in our mission to spread the Gospel.
             </p>
           </div>
-          
+
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Make a Donation</h2>
-              
+              <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
+                Make a Donation
+              </h2>
+
               <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
                 Choose a donation amount
               </h3>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                 {donationOptions.map((option) => (
                   <button
@@ -88,14 +91,16 @@ const Donate = () => {
                         : "border-gray-200 dark:border-gray-700 hover:border-secondary/50 dark:hover:border-[#00e8ff]/50"
                     }`}
                   >
-                    <span className="text-xl font-bold mb-1 text-gray-900 dark:text-white">${option.amount}</span>
+                    <span className="text-xl font-bold mb-1 text-gray-900 dark:text-white">
+                      ${option.amount}
+                    </span>
                     <span className="text-xs text-gray-600 dark:text-gray-300 text-center">
                       {option.impact}
                     </span>
                   </button>
                 ))}
               </div>
-              
+
               <div className="mb-8">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Or enter a custom amount
@@ -113,12 +118,14 @@ const Donate = () => {
                   />
                 </div>
               </div>
-              
+
               <div className="flex items-center mb-8">
                 <button
                   onClick={() => setIsMonthly(!isMonthly)}
                   className={`relative w-12 h-6 rounded-full transition-colors duration-500 ${
-                    isMonthly ? "bg-secondary dark:bg-[#00e8ff]" : "bg-gray-300 dark:bg-gray-600"
+                    isMonthly
+                      ? "bg-secondary dark:bg-[#00e8ff]"
+                      : "bg-gray-300 dark:bg-gray-600"
                   }`}
                 >
                   <span
@@ -131,21 +138,21 @@ const Donate = () => {
                   Make this a monthly donation
                 </span>
               </div>
-              
+
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-gray-900 font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
+                className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
                 onClick={handleContinue}
               >
                 Continue to Payment
               </motion.button>
-              
+
               <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
                 All donations are secure and encrypted
               </p>
             </div>
-            
+
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
               <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                 Why Your Support Matters
@@ -162,7 +169,10 @@ const Donate = () => {
                     key={index}
                     className="flex items-start text-gray-700 dark:text-gray-300"
                   >
-                    <Check className="text-green-500 mr-2 mt-1 flex-shrink-0" size={18} />
+                    <Check
+                      className="text-green-500 mr-2 mt-1 flex-shrink-0"
+                      size={18}
+                    />
                     <span>{item}</span>
                   </li>
                 ))}

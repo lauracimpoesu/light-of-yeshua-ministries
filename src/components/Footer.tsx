@@ -50,7 +50,7 @@ const Footer = () => {
                 className="h-24 w-auto"
               />
 
-              <h3 className="text-2xl mb-[-10px] font-bold bg-gradient-to-r from-ministry-gold via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+              <h3 className="text-2xl mb-[-10px] font-bold bg-gradient-to-r from-gold-light via-gold to-gold bg-clip-text text-transparent">
                 Light of Yeshua
               </h3>
             </div>

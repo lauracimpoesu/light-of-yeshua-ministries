@@ -178,7 +178,7 @@ const DonationSection = () => {
               whileTap={{ scale: 0.98 }}
               onClick={handleDonateClick}
               disabled={isLoading}
-              className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-black font-bold text-lg flex items-center justify-center gap-2 shadow-lg disabled:opacity-70"
+              className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-black font-bold text-lg flex items-center justify-center gap-2 shadow-lg disabled:opacity-70 bg-gradient-to-r from-gold-light via-gold to-gold bg-clip-text text-transparent"
             >
               {isLoading ? (
                 <>

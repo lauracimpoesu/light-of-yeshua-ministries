@@ -39,13 +39,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-cyan-600/90 via-indigo-800/80 to-cyan-500/90 
-                       dark:from-indigo-800 dark:via-purple-900 dark:to-indigo-900 
-                       text-white pt-16 pb-8">
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-indigo-900/60 to-purple/50 
-                      dark:from-cyan-900 dark:via-purple-900 dark:to-[#1e172b] pointer-events-none"></div>
-      
-      <div className="container mx-auto px-4 relative z-10">
+    <footer className="bg-gradient-to-r from-indigo-900 via-cyan-900 to-teal-900 text-white pt-16 pb-8">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-6 md:justify-start justify-around">

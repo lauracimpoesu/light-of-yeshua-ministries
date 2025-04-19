@@ -18,13 +18,13 @@ const MissionSection = () => {
       title: "Outreach",
       description:
         "Reaching communities in need with both spiritual guidance and practical support.",
-      icon: <Heart className="h-8 w-8 text-cyan-500 dark:text-indigo-300" />,
+      icon: <Heart className="h-8 w-8 text-indigo-400 dark:text-indigo-300" />,
     },
     {
       title: "Discipleship",
       description:
         "Training believers to grow in their faith and effectively share the Gospel with others.",
-      icon: <Users className="h-8 w-8 text-cyan-500 dark:text-indigo-300" />,
+      icon: <Users className="h-8 w-8 text-indigo-400 dark:text-indigo-300" />,
     },
     {
       title: "Global Impact",
@@ -118,7 +118,7 @@ const MissionSection = () => {
           className="text-center mt-12"
         >
           <Link to="/mission">
-            <Button className="bg-gradient-to-r from-indigo-500 via-cyan-600 to-indigo-400 hover:shadow-xl dark:text-white rounded-full px-8 py-6 font-bold text-lg transform hover:scale-105 transition-all duration-900 text-white hover:text-black">
+            <Button className="bg-gradient-to-r from-indigo-500 via-cyan-600 to-indigo-400 hover:shadow-xl dark:text-white rounded-full px-8 py-6 font-bold text-lg transform hover:scale-105 transition-all duration-900 text-white hover:text-black dark:hover:text-black">
               Learn More About Our Mission
             </Button>
           </Link>

@@ -56,7 +56,7 @@ const Donate = () => {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 py-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent">
             Support Our Ministry
           </h1>
 
@@ -70,7 +70,7 @@ const Donate = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine-slow">
+              <h2 className="text-2xl font-bold mb-6 text-center ">
                 Join The Fight
               </h2>
 
@@ -144,7 +144,7 @@ const Donate = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handleContinue}
-                className="w-full py-4 px-6 rounded-lg bg-gradient-to-r from-indigo via-cyan to-indigo-light text-white hover:shadow-xl dark:text-white hover:from-indigo-light hover:via-cyan hover:to-indigo rounded-full px-8 py-6 animate-pulse-glow font-bold text-lg transform hover:scale-105 transition-all duration-300"
+                className="w-full rounded-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 text-white hover:shadow-xl font-bold text-lg py-4 px-8 transition-all duration-300"
               >
                 Continue to Payment
               </motion.button>

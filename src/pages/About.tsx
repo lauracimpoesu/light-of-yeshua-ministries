@@ -19,7 +19,7 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 py-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text text-center">
             About Our Ministry
           </h1>
           <div className="max-w-3xl mx-auto mb-12">
@@ -53,7 +53,7 @@ const About = () => {
         </motion.div>
 
         {/* Custom version of AboutSection without duplicate title */}
-        <section className="pb-32 pt-24 bg-white dark:bg-gray-900">
+        <section className="pb-32 pt-24 md:pt-0 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[

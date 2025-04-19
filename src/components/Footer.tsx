@@ -43,7 +43,7 @@ const Footer = () => {
     <footer className="relative text-white pt-16 pb-8">
       {/* Hero-like background for footer */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-700 via-indigo-600 to-violet-600 dark:from-black dark:via-gold-darkest/30 dark:to-gold-dark/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-700 via-indigo-600 to-teal-600 dark:from-black dark:via-gold-darkest/30 dark:to-gold-dark/20"></div>
         <div className="absolute inset-0 bg-gradient-to-br  dark:from-gold-darkest/40 dark:via-gold-dark/30 dark:to-gold/20 opacity-80"></div>
 
         {/* Subtle particles for footer */}

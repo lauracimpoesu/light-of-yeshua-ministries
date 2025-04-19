@@ -15,9 +15,9 @@ const donationOptions = [
 
 export const BibleVerseSection = () => {
   return (
-    <div className="mt-8 bg-gradient-to-br from-gold-lightest/10 to-gold-light/80 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/10">
+    <div className="mt-8 bg-gradient-to-br dark:from-cyan-800 dark:to-teal-600 from-white to-cyan-100 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/10 dark:text-white">
       <div className="flex items-start space-x-4 mb-4">
-        <Quote className="text-[#FFD700] dark:text-purple-800 w-8 h-8 flex-shrink-0" />
+        <Quote className="text-indigo-400 dark:text-indigo-400 w-8 h-8 flex-shrink-0" />
         <div>
           {/* 
           <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
@@ -178,7 +178,7 @@ const DonationSection = () => {
               whileTap={{ scale: 0.98 }}
               onClick={handleDonateClick}
               disabled={isLoading}
-              className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-black font-bold text-lg flex items-center justify-center gap-2 shadow-lg disabled:opacity-70 bg-gradient-to-r from-gold-light via-gold to-gold bg-clip-text text-transparent"
+              className="w-full py-4 px-6 rounded-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg disabled:opacity-70 transition-all duration-300"
             >
               {isLoading ? (
                 <>

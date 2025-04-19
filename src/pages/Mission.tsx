@@ -36,7 +36,7 @@ const Mission = () => {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 py-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-gold-light via-cyan to-indigo bg-clip-text text-transparent animate-gold-shine-slow text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text text-center">
             Our Mission
           </h1>
           <div className="max-w-3xl mx-auto mb-16">
@@ -81,12 +81,12 @@ const Mission = () => {
           </div>
 
           <motion.div
-            className="inline-block"
+            className="text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <blockquote className="text-xl md:text-3xl font-semibold italic max-w-3xl mx-auto bg-gradient-to-r from-gold via-cyan to-indigo bg-clip-text text-transparent">
+            <blockquote className="text-xl md:text-3xl font-semibold italic max-w-5xl mx-auto bg-gradient-to-r from-indigo-500 via-cyan-600 to-indigo-400 bg-clip-text text-transparent text-center dark:from-indigo-300 dark:via-cyan-300 dark:to-indigo-200">
               "The harvest is plentiful, but the workers are few. Ask the Lord
               of the harvest, therefore, to send out workers into his harvest
               field."

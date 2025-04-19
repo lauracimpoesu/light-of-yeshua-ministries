@@ -60,7 +60,7 @@ const Donate = () => {
             Support Our Ministry
           </h1>
 
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-4xl mx-auto mb-12">
             <p className="text-lg text-gray-700 dark:text-gray-300 text-center">
               Your generous donation helps bring the light of Yeshua to the
               streets of nations worldwide. Every contribution makes a
@@ -70,7 +70,7 @@ const Donate = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-3xl font-bold mb-6 text-center text-[#4222e2] dark:text-cyan-200">
+              <h2 className="text-2xl font-bold mb-6 text-center text-black dark:text-cyan-200">
                 Join The Fight
               </h2>
 
@@ -89,7 +89,7 @@ const Donate = () => {
                     className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center ${
                       selectedAmount === option.amount
                         ? "border-secondary bg-secondary/10 dark:border-[#00e8ff] dark:bg-[#00e8ff]/10"
-                        : "border-gray-200 dark:border-gray-700 hover:border-[#4222e2] dark:hover:border-[#00e8ff]/50"
+                        : "border-gray-200 dark:border-gray-700 dark:hover:border-[#00e8ff]/50"
                     }`}
                   >
                     <span className="text-xl font-bold mb-1 text-gray-900 dark:text-white">

@@ -43,16 +43,17 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-6 md:justify-start justify-around">
               <img
                 src={whitelogo}
                 alt="Light of Yeshua Logo"
-                className="h-16 w-auto"
+                className="h-24 w-auto"
               />
+
+              <h3 className="text-2xl mb-[-10px] font-bold bg-gradient-to-r from-ministry-gold via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+                Light of Yeshua
+              </h3>
             </div>
-            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-ministry-gold via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
-              Light of Yeshua
-            </h3>
             <p className="text-gray-400 mb-6 max-w-md">
               Taking the light of Yeshua to the streets of nations worldwide.
               Join us in our mission to spread the Gospel and bring salvation.

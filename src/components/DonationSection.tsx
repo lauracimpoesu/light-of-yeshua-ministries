@@ -112,11 +112,11 @@ const DonationSection = () => {
                     setSelectedAmount(option.amount);
                     setCustomAmount("");
                   }}
-                  className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center 
+                  className={`p-4 rounded-lg border-2 transition-all duration-800 flex flex-col items-center 
                     ${
                       selectedAmount === option.amount
-                      ? "border-ministry-gold bg-white/5 dark:bg-white/5 backdrop-blur-md animate-menorah-glow"
-                      : "border-gray-200 dark:border-gray-700 hover:border-ministry-gold hover:bg-white/5 dark:hover:bg-white/5 hover:backdrop-blur-md"
+                        ? "border-ministry-gold bg-white/5 dark:bg-white/5 backdrop-blur-md animate-menorah-glow"
+                        : "border-gray-200 dark:border-gray-700 hover:border-ministry-gold hover:bg-white/5 dark:hover:bg-white/5 hover:backdrop-blur-md"
                     }`}
                 >
                   <span className="text-xl font-bold mb-1">
@@ -162,7 +162,13 @@ const DonationSection = () => {
                   }`}
                 ></span>
               </button>
-              <span className={`ml-3 text-sm ${isMonthly ? 'text-ministry-gold font-semibold' : 'text-gray-700 dark:text-gray-300'}`}>
+              <span
+                className={`ml-3 text-sm ${
+                  isMonthly
+                    ? "text-ministry-gold font-semibold"
+                    : "text-gray-700 dark:text-gray-300"
+                }`}
+              >
                 Make this a monthly donation
               </span>
             </div>

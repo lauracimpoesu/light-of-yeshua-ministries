@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Check, CircleDollarSign } from "lucide-react";
 import { motion } from "framer-motion";
@@ -32,19 +31,9 @@ const DonationSection = () => {
       return;
     }
     
-    setIsLoading(true);
-    
-    // In a production environment, this would redirect to your backend first
-    // to create a Stripe checkout session with the correct amount
-    
-    // For demo purposes, simulate redirection to Stripe with a delay
-    toast.info("Redirecting to secure payment page...");
-    
-    setTimeout(() => {
-      // This is a mock URL - in production, use your actual Stripe checkout URL
-      const stripeUrl = `https://checkout.stripe.com/pay/cs_test_example?amount=${amount * 100}&recurring=${isMonthly ? 'monthly' : 'once'}`;
-      window.location.href = stripeUrl;
-    }, 1000);
+    // Redirect to PayPal.me with the specified amount
+    const paypalUrl = `https://paypal.me/loyministries/${amount}`;
+    window.open(paypalUrl, '_blank');
   };
 
   return (

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,7 +22,6 @@ const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [isMonthly, setIsMonthly] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomAmount(e.target.value);
@@ -35,37 +33,16 @@ const Donate = () => {
       toast.error("Please select or enter a donation amount");
       return;
     }
-    
-    // Set loading state
-    setIsLoading(true);
-    
-    try {
-      // Get the final amount to use
-      const donationAmount = selectedAmount || parseFloat(customAmount);
-      
-      if (isNaN(donationAmount) || donationAmount <= 0) {
-        toast.error("Please enter a valid donation amount");
-        setIsLoading(false);
-        return;
-      }
 
-      // In a production environment, this would redirect to your backend first
-      // to create a Stripe checkout session with the correct amount
+    const donationAmount = selectedAmount || parseFloat(customAmount);
       
-      // For demo purposes, simulate redirection to Stripe with a delay
-      toast.info("Redirecting to secure payment page...");
-      
-      // Simulate API call to create Checkout session
-      setTimeout(() => {
-        // This is a mock URL - in production, use your actual Stripe checkout URL
-        const stripeUrl = `https://checkout.stripe.com/pay/cs_test_example?amount=${donationAmount * 100}&recurring=${isMonthly ? 'monthly' : 'once'}`;
-        window.location.href = stripeUrl;
-      }, 1500);
-    } catch (error) {
-      console.error("Error redirecting to payment:", error);
-      toast.error("There was a problem processing your request. Please try again.");
-      setIsLoading(false);
+    if (isNaN(donationAmount) || donationAmount <= 0) {
+      toast.error("Please enter a valid donation amount");
+      return;
     }
+
+    const paypalUrl = `https://paypal.me/loyministries/${donationAmount}`;
+    window.open(paypalUrl, '_blank');
   };
 
   return (
@@ -160,33 +137,8 @@ const Donate = () => {
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-gray-900 font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
                 onClick={handleContinue}
-                disabled={isLoading}
               >
-                {isLoading ? (
-                  <>
-                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
-                      <circle 
-                        className="opacity-25" 
-                        cx="12" 
-                        cy="12" 
-                        r="10" 
-                        stroke="currentColor" 
-                        strokeWidth="4"
-                      ></circle>
-                      <path 
-                        className="opacity-75" 
-                        fill="currentColor" 
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Processing...
-                  </>
-                ) : (
-                  <>
-                    <ArrowRight size={20} />
-                    Continue to Payment
-                  </>
-                )}
+                Continue to Payment
               </motion.button>
               
               <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">

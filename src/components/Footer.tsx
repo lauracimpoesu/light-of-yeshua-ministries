@@ -1,43 +1,16 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, FileVideo2, ArrowRight } from "lucide-react";
-import { toast } from "sonner";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!email) {
-      toast.error("Please enter your email address");
-      return;
-    }
-    
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      toast.error("Please enter a valid email address");
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // In a real app, you would send the email to your newsletter service here
-      console.log("Newsletter subscription:", email);
-      
-      toast.success("Thank you for subscribing to our newsletter!");
-      setEmail("");
-    } catch (error) {
-      console.error("Error subscribing to newsletter:", error);
-      toast.error("Failed to subscribe. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Here you would handle the newsletter signup
+    console.log("Email submitted:", email);
+    setEmail("");
+    alert("Thank you for subscribing to our newsletter!");
   };
 
   return (
@@ -55,25 +28,21 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="http://instagram.com/light.of.yeshua"
-                className="hover:text-indigo-300 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
+                className="hover:text-indigo-300
+              
+              transition-colors"
               >
                 <Instagram size={24} />
               </a>
               <a
                 href="https://www.youtube.com/@LightOfYeshuaMinistries"
                 className="hover:text-indigo-300 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <Youtube size={24} />
               </a>
               <a
                 href="https://www.tiktok.com/@light.of.yeshua"
                 className="hover:text-indigo-300 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <FileVideo2 size={24} />
               </a>
@@ -113,28 +82,9 @@ const Footer = () => {
               />
               <button
                 type="submit"
-                disabled={isSubmitting}
                 className="ministry-gradient-bg px-4 py-2 rounded-r-lg"
               >
-                {isSubmitting ? (
-                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                    <circle 
-                      className="opacity-25" 
-                      cx="12" 
-                      cy="12" 
-                      r="10" 
-                      stroke="currentColor" 
-                      strokeWidth="4"
-                    ></circle>
-                    <path 
-                      className="opacity-75" 
-                      fill="currentColor" 
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                ) : (
-                  <ArrowRight size={20} />
-                )}
+                <ArrowRight size={20} />
               </button>
             </form>
           </div>

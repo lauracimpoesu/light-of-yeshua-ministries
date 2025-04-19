@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { m, motion } from "framer-motion";
@@ -13,8 +12,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [pastHeroSection, setPastHeroSection] = useState(false);
   const { theme } = useTheme();
-  const location = useLocation();
-  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,25 +23,17 @@ const Navbar = () => {
       }
 
       // Detect when we've scrolled past the hero section
-      // Only needed on homepage
-      if (isHomePage) {
-        if (window.scrollY > window.innerHeight * 0.7) {
-          setPastHeroSection(true);
-        } else {
-          setPastHeroSection(false);
-        }
-      } else {
-        // On other pages, always set to true to keep text black in light mode
+      // Assuming hero section height is around 100vh (adjust as needed)
+      if (window.scrollY > window.innerHeight * 0.7) {
         setPastHeroSection(true);
+      } else {
+        setPastHeroSection(false);
       }
     };
 
-    // Initial check when navigating to a new page
-    handleScroll();
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHomePage]);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -83,10 +72,10 @@ const Navbar = () => {
             <span
               className={cn(
                 "font-light transition-colors",
-                isLightMode && (pastHeroSection || !isHomePage || scrolled)
-                  ? "text-purple-600" // Purple in light mode past hero or on other pages
+                isLightMode && pastHeroSection
+                  ? "text-purple-600" // Purple in light mode past hero
                   : "text-yellow-100",
-                scrolled && isLightMode ? "text-purple-700" : ""
+                scrolled && "text-black"
               )}
             >
               Light of
@@ -94,10 +83,10 @@ const Navbar = () => {
             <span
               className={cn(
                 "italic transition-colors",
-                isLightMode && (pastHeroSection || !isHomePage || scrolled)
-                  ? "text-blue-500" // Blueish in light mode past hero or on other pages
+                isLightMode && pastHeroSection
+                  ? "text-blue-500" // Blueish in light mode past hero
                   : "text-teal-200",
-                scrolled && isLightMode ? "text-blue-600" : ""
+                scrolled && "text-indigo-400"
               )}
             >
               Yeshua
@@ -116,8 +105,8 @@ const Navbar = () => {
               <Link
                 to={item.path}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-full transition-colors",
-                  scrolled || pastHeroSection || !isHomePage
+                  "px-3 py-2 text-sm font-medium rounded-full transition-colors dartext-white",
+                  scrolled || pastHeroSection
                     ? isLightMode
                       ? "text-gray-900 hover:bg-gray-100"
                       : "dark:text-white dark:hover:bg-white/15"
@@ -147,7 +136,7 @@ const Navbar = () => {
             onClick={toggleMenu}
             className={cn(
               "ml-2 p-2 rounded-full",
-              scrolled || pastHeroSection || !isHomePage
+              scrolled || pastHeroSection
                 ? isLightMode
                   ? "text-gray-900 hover:bg-gray-100"
                   : "dark:text-white dark:hover:bg-white/15"

@@ -1,11 +1,11 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Youtube, ArrowRight, TiktokIcon } from "lucide-react";
+import { Instagram, Youtube, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 
-// TikTok icon component as it's not available in Lucide core
-const TiktokIcon = (props) => (
+// Custom TikTok icon component as it's not available in Lucide core
+const TiktokIcon = (props: { size?: number; className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={props.size || 24}

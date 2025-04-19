@@ -1,4 +1,3 @@
-
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -8,10 +7,10 @@ const Hero = () => {
     <div className="relative min-h-screen flex items-center overflow-hidden">
       {/* Hero Gradient Background - Gold tones */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-gold-darkest/90 via-gold-dark/80 to-gold-medium/70 dark:from-black dark:via-gold-darkest/30 dark:to-gold-dark/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-700 via-indigo-600 to-teal-600 dark:from-black dark:via-gold-darkest/30 dark:to-gold-dark/20"></div>
 
         {/* Enhanced Gold Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gold-dark/50 via-gold/40 to-gold-light/30 dark:from-gold-darkest/40 dark:via-gold-dark/30 dark:to-gold/20 opacity-80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br  dark:from-gold-darkest/40 dark:via-gold-dark/30 dark:to-gold/20 opacity-80"></div>
 
         {/* Subtle Gold Particle Effect */}
         {[...Array(40)].map((_, i) => (
@@ -67,7 +66,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             Take the{" "}
-            <span className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine-slow font-black">
+            <span className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark bg-clip-text text-transparent font-black">
               Light of Yeshua
             </span>{" "}
             to the Nations

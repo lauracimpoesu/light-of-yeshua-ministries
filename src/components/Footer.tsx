@@ -43,9 +43,9 @@ const Footer = () => {
     <footer className="relative text-white pt-16 pb-8">
       {/* Hero-like background for footer */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/90 via-indigo-900 to-indigo-800 dark:from-indigo-900 dark:via-indigo-800 dark:to-cyan-900"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/90 via-indigo-500/80 to-cyan-700/80 dark:from-cyan-500/70 dark:via-indigo-600/70 dark:to-cyan-800/70 opacity-80"></div>
-        
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-700 via-indigo-600 to-violet-600 dark:from-black dark:via-gold-darkest/30 dark:to-gold-dark/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br  dark:from-gold-darkest/40 dark:via-gold-dark/30 dark:to-gold/20 opacity-80"></div>
+
         {/* Subtle particles for footer */}
         {[...Array(20)].map((_, i) => (
           <motion.div

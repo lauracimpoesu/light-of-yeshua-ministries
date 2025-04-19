@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,26 +11,26 @@ const MissionSection = () => {
       description:
         "Taking the Gospel to the streets and public places, sharing the truth of salvation through Yeshua.",
       icon: (
-        <BookOpenText className="h-8 w-8 text-teal-500 dark:text-teal-300" />
+        <BookOpenText className="h-8 w-8 text-cyan-500 dark:text-teal-300" />
       ),
     },
     {
       title: "Outreach",
       description:
         "Reaching communities in need with both spiritual guidance and practical support.",
-      icon: <Heart className="h-8 w-8 text-indigo-500 dark:text-indigo-300" />,
+      icon: <Heart className="h-8 w-8 text-cyan-500 dark:text-indigo-300" />,
     },
     {
       title: "Discipleship",
       description:
         "Training believers to grow in their faith and effectively share the Gospel with others.",
-      icon: <Users className="h-8 w-8 text-indigo-400 dark:text-indigo-300" />,
+      icon: <Users className="h-8 w-8 text-cyan-500 dark:text-indigo-300" />,
     },
     {
       title: "Global Impact",
       description:
         "Extending our ministry beyond borders to reach people of all nations with the light of Yeshua.",
-      icon: <Globe className="h-8 w-8 text-teal-500 dark:text-teal-300" />,
+      icon: <Globe className="h-8 w-8 text-cyan-500 dark:text-teal-300" />,
     },
   ];
 
@@ -68,7 +67,7 @@ const MissionSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-light via-cyan to-indigo text-transparent bg-clip-text">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text">
             Our Mission
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto">
@@ -119,7 +118,7 @@ const MissionSection = () => {
           className="text-center mt-12"
         >
           <Link to="/mission">
-            <Button className="bg-gradient-to-r from-indigo via-cyan to-indigo-light text-white hover:shadow-xl dark:text-white hover:from-indigo-light hover:via-cyan hover:to-indigo rounded-full px-8 py-6 animate-pulse-glow font-bold text-lg transform hover:scale-105 transition-all duration-300">
+            <Button className="bg-gradient-to-r from-indigo-500 via-cyan-600 to-indigo-400 hover:shadow-xl dark:text-white rounded-full px-8 py-6 font-bold text-lg transform hover:scale-105 transition-all duration-900 text-white hover:text-black">
               Learn More About Our Mission
             </Button>
           </Link>

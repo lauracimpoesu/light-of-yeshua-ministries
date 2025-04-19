@@ -91,7 +91,7 @@ const Footer = () => {
                 className="h-24 w-auto"
               />
 
-              <h3 className="text-2xl mb-[-10px] font-bold bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text animate-gold-shine-slow">
+              <h3 className="text-2xl mb-[-10px] font-bold bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text">
                 Light of Yeshua
               </h3>
             </div>
@@ -166,7 +166,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-800/30">
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-300/30">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} Light of Yeshua. All rights
             reserved.

@@ -15,7 +15,7 @@ const donationOptions = [
 
 export const BibleVerseSection = () => {
   return (
-    <div className="mt-8 bg-gradient-to-br from-[#FFD700]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/10">
+    <div className="mt-8 bg-gradient-to-br from-gold-lightest/10 to-gold-light/80 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/10">
       <div className="flex items-start space-x-4 mb-4">
         <Quote className="text-[#FFD700] dark:text-purple-800 w-8 h-8 flex-shrink-0" />
         <div>
@@ -83,7 +83,7 @@ const DonationSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold mb-6 ministry-gradient-text"
+              className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text"
             >
               Support Our Global Mission
             </motion.h2>

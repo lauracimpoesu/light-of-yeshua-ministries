@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Check, CircleDollarSign, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import blacklogo from "../assets/black.png";
 
 const donationOptions = [
   { amount: 20, impact: "Sends evangelistic materials to the streets" },
@@ -111,11 +112,12 @@ const DonationSection = () => {
                     setSelectedAmount(option.amount);
                     setCustomAmount("");
                   }}
-                  className={`p-4 rounded-lg border-2 transition-all duration-300 flex flex-col items-center ${
-                    selectedAmount === option.amount
-                      ? "border-ministry-purple bg-ministry-purple/10"
-                      : "border-gray-200 dark:border-gray-700 hover:border-indigo-300"
-                  }`}
+                  className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center 
+                    ${
+                      selectedAmount === option.amount
+                      ? "border-ministry-gold bg-white/5 dark:bg-white/5 backdrop-blur-md animate-menorah-glow"
+                      : "border-gray-200 dark:border-gray-700 hover:border-ministry-gold hover:bg-white/5 dark:hover:bg-white/5 hover:backdrop-blur-md"
+                    }`}
                 >
                   <span className="text-xl font-bold mb-1">
                     ${option.amount}
@@ -150,7 +152,7 @@ const DonationSection = () => {
                 onClick={() => setIsMonthly(!isMonthly)}
                 className={`relative w-12 h-6 rounded-full transition-colors ${
                   isMonthly
-                    ? "bg-ministry-purple"
+                    ? "bg-ministry-gold shadow-lg shadow-ministry-gold/30"
                     : "bg-gray-300 dark:bg-gray-600"
                 }`}
               >
@@ -160,7 +162,7 @@ const DonationSection = () => {
                   }`}
                 ></span>
               </button>
-              <span className="ml-3 text-sm text-gray-700 dark:text-gray-300">
+              <span className={`ml-3 text-sm ${isMonthly ? 'text-ministry-gold font-semibold' : 'text-gray-700 dark:text-gray-300'}`}>
                 Make this a monthly donation
               </span>
             </div>

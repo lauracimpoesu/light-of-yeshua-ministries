@@ -56,11 +56,11 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3 -my-2">
           <img
             src={!isHomePage || scrolled ? blacklogo : whitelogo}
             alt="Light of Yeshua Logo"
-            className="h-12 w-auto transition-opacity duration-300"
+            className="h-16 w-auto transition-opacity duration-300"
           />
           <h1 className="text-lg md:text-2xl font-seasons"></h1>
         </Link>

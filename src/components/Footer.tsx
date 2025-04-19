@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import whitelogo from "../assets/white.png";
 
-// Custom TikTok icon component as it's not available in Lucide core
 const TiktokIcon = (props: { size?: number; className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -27,14 +27,12 @@ const Footer = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address");
       return;
     }
 
-    // Here you would handle the newsletter signup
     console.log("Email submitted:", email);
     toast.success("Thank you for subscribing to our newsletter!");
     setEmail("");
@@ -45,6 +43,13 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
+            <div className="flex items-center mb-4">
+              <img
+                src={whitelogo}
+                alt="Light of Yeshua Logo"
+                className="h-16 w-auto"
+              />
+            </div>
             <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-yellow-300 via-cyan-400 to-teal-300 bg-clip-text text-transparent">
               Light of Yeshua
             </h3>

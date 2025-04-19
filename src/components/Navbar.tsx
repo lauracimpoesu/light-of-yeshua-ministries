@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -63,7 +62,7 @@ const Navbar = () => {
               className={cn(
                 "font-light transition-colors",
                 (!isHomePage || scrolled) && isLightMode
-                  ? "text-purple-600"
+                  ? "text-black"  // Changed to black when scrolled or not on homepage in light mode
                   : "text-yellow-100"
               )}
             >
@@ -73,7 +72,7 @@ const Navbar = () => {
               className={cn(
                 "italic transition-colors",
                 (!isHomePage || scrolled) && isLightMode
-                  ? "text-blue-500"
+                  ? "text-ministry-purple"  // Changed to ministry purple when scrolled or not on homepage in light mode
                   : "text-teal-200"
               )}
             >

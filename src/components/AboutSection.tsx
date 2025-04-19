@@ -1,6 +1,12 @@
-
 import { motion } from "framer-motion";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "lucide-react";
 
@@ -8,16 +14,19 @@ const AboutSection = () => {
   const cardsData = [
     {
       title: "Who We Are",
-      description: "A dedicated ministry spreading the light of Yeshua to all nations through evangelism and outreach."
+      description:
+        "A dedicated ministry spreading the light of Yeshua to all nations through evangelism and outreach.",
     },
     {
       title: "Our Vision",
-      description: "To see lives transformed by the truth of the Gospel, bringing hope and salvation to the world."
+      description:
+        "To see lives transformed by the truth of the Gospel, bringing hope and salvation to the world.",
     },
     {
       title: "Our Approach",
-      description: "Meeting people where they are, speaking truth with love, and discipleship training."
-    }
+      description:
+        "Meeting people where they are, speaking truth with love, and discipleship training.",
+    },
   ];
 
   const containerVariants = {
@@ -25,31 +34,32 @@ const AboutSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
     hidden: { y: 50, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 12
-      }
+        damping: 12,
+      },
     },
     hover: {
       y: -10,
-      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      boxShadow:
+        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       transition: {
         type: "spring",
         stiffness: 400,
-        damping: 10
-      }
-    }
+        damping: 10,
+      },
+    },
   };
 
   return (
@@ -62,13 +72,16 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 ministry-gradient-text">About Our Ministry</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 ministry-gradient-text">
+            About Our Ministry
+          </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            Dedicated to spreading the Gospel and bringing the light of Yeshua to the darkest corners of the world.
+            Dedicated to spreading the Gospel and bringing the light of Yeshua
+            to the darkest corners of the world.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -85,23 +98,23 @@ const AboutSection = () => {
               <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-indigo-900/10 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 -z-10" />
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark animate-gold-shine" />
-                
+
                 <CardHeader>
                   <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">
                     {card.title}
                   </CardTitle>
                 </CardHeader>
-                
+
                 <CardContent>
                   <CardDescription className="text-gray-700 dark:text-gray-300 text-base">
                     {card.description}
                   </CardDescription>
                 </CardContent>
-                
+
                 <CardFooter className="pt-2">
-                  <Link 
-                    to="/about" 
-                    className="text-teal-600 dark:text-[#dbff00] font-medium text-sm inline-flex items-center group"
+                  <Link
+                    to="/about"
+                    className="text-cyan-600 dark:text-[#dbff00] font-medium text-sm inline-flex items-center group"
                   >
                     Learn more
                     <ArrowRightIcon className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -9,23 +8,29 @@ const MissionSection = () => {
   const missionData = [
     {
       title: "Evangelism",
-      description: "Taking the Gospel to the streets and public places, sharing the truth of salvation through Yeshua.",
-      icon: <BookOpenText className="h-8 w-8 text-teal-500 dark:text-[#dbff00]" />,
+      description:
+        "Taking the Gospel to the streets and public places, sharing the truth of salvation through Yeshua.",
+      icon: (
+        <BookOpenText className="h-8 w-8 text-teal-500 dark:text-teal-300" />
+      ),
     },
     {
       title: "Outreach",
-      description: "Reaching communities in need with both spiritual guidance and practical support.",
-      icon: <Heart className="h-8 w-8 text-indigo-400 dark:text-[#00e8ff]" />,
+      description:
+        "Reaching communities in need with both spiritual guidance and practical support.",
+      icon: <Heart className="h-8 w-8 text-indigo-500 dark:text-indigo-300" />,
     },
     {
       title: "Discipleship",
-      description: "Training believers to grow in their faith and effectively share the Gospel with others.",
-      icon: <Users className="h-8 w-8 text-indigo-400 dark:text-[#00ffba]" />,
+      description:
+        "Training believers to grow in their faith and effectively share the Gospel with others.",
+      icon: <Users className="h-8 w-8 text-indigo-400 dark:text-indigo-300" />,
     },
     {
       title: "Global Impact",
-      description: "Extending our ministry beyond borders to reach people of all nations with the light of Yeshua.",
-      icon: <Globe className="h-8 w-8 text-teal-500 dark:text-purple-400" />,
+      description:
+        "Extending our ministry beyond borders to reach people of all nations with the light of Yeshua.",
+      icon: <Globe className="h-8 w-8 text-teal-500 dark:text-teal-300" />,
     },
   ];
 
@@ -34,22 +39,22 @@ const MissionSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
+        staggerChildren: 0.15,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10
-      }
-    }
+        damping: 10,
+      },
+    },
   };
 
   return (
@@ -62,9 +67,12 @@ const MissionSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 ministry-gradient-text">Our Mission</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 ministry-gradient-text">
+            Our Mission
+          </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-            Bringing the light of Yeshua to the nations through strategic evangelism and discipleship.
+            Bringing the light of Yeshua to the nations through strategic
+            evangelism and discipleship.
           </p>
         </motion.div>
 
@@ -79,21 +87,23 @@ const MissionSection = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
-                y: -5, 
-                transition: { 
-                  type: "spring", 
-                  stiffness: 400 
-                }
+              whileHover={{
+                y: -5,
+                transition: {
+                  type: "spring",
+                  stiffness: 400,
+                },
               }}
             >
               <Card className="p-6 h-full border-0 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-all duration-300">
                 <div className="flex flex-col h-full">
-                  <div className="mb-4">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{item.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">{item.description}</p>
+                  <div className="mb-4">{item.icon}</div>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
+                    {item.description}
+                  </p>
                 </div>
               </Card>
             </motion.div>
@@ -108,7 +118,7 @@ const MissionSection = () => {
           className="text-center mt-12"
         >
           <Link to="/mission">
-            <Button className="bg-teal-600 hover:bg-teal-500 text-white dark:bg-[#dbff00] dark:text-black dark:hover:bg-[#dbff00]/90 rounded-full px-8 py-6 font-medium">
+            <Button className="bg-teal-600 hover:bg-teal-500 text-black dark:bg-[#dbff00] dark:text-black dark:hover:bg-[#dbff00]/90 rounded-full px-8 py-6 font-bold">
               Learn More About Our Mission
             </Button>
           </Link>

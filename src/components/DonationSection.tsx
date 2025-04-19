@@ -114,7 +114,7 @@ const DonationSection = () => {
                   className={`p-4 rounded-lg border-2 transition-all duration-300 flex flex-col items-center ${
                     selectedAmount === option.amount
                       ? "border-ministry-purple bg-ministry-purple/10"
-                      : "border-gray-200 dark:border-gray-700 hover:border-ministry-purple/50"
+                      : "border-gray-200 dark:border-gray-700 hover:border-indigo-300"
                   }`}
                 >
                   <span className="text-xl font-bold mb-1">
@@ -170,7 +170,7 @@ const DonationSection = () => {
               whileTap={{ scale: 0.98 }}
               onClick={handleDonateClick}
               disabled={isLoading}
-              className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg disabled:opacity-70"
+              className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-black font-bold text-lg flex items-center justify-center gap-2 shadow-lg disabled:opacity-70"
             >
               {isLoading ? (
                 <>

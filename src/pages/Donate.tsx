@@ -70,7 +70,7 @@ const Donate = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-2xl font-bold mb-6 text-center text-indigo-500 dark:text-white">
+              <h2 className="text-3xl font-bold mb-6 text-center text-[#4222e2] dark:text-white">
                 Join The Fight
               </h2>
 
@@ -89,7 +89,7 @@ const Donate = () => {
                     className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center ${
                       selectedAmount === option.amount
                         ? "border-secondary bg-secondary/10 dark:border-[#00e8ff] dark:bg-[#00e8ff]/10"
-                        : "border-gray-200 dark:border-gray-700 hover:border-secondary/50 dark:hover:border-[#00e8ff]/50"
+                        : "border-gray-200 dark:border-gray-700 hover:border-[#4222e2] dark:hover:border-[#00e8ff]/50"
                     }`}
                   >
                     <span className="text-xl font-bold mb-1 text-gray-900 dark:text-white">

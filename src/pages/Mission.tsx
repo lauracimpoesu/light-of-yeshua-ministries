@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -31,7 +30,7 @@ const Mission = () => {
     <>
       <Navbar />
       <div className="pt-20">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -42,8 +41,10 @@ const Mission = () => {
           </h1>
           <div className="max-w-3xl mx-auto mb-12">
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-              Taking the light of Yeshua to the nations through bold street evangelism is the heart of our ministry.
-              We are committed to reaching the lost, proclaiming truth, and making disciples of all nations.
+              Taking the light of Yeshua to the nations through bold street
+              evangelism is the heart of our ministry. We are committed to
+              reaching the lost, proclaiming truth, and making disciples of all
+              nations.
             </p>
           </div>
 
@@ -59,7 +60,7 @@ const Mission = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                whileHover={{ 
+                whileHover={{
                   y: -10,
                   boxShadow: "0 20px 40px rgba(0,232,255,0.2)",
                   background: "rgba(255, 255, 255, 0.15)",
@@ -86,9 +87,10 @@ const Mission = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-2xl mx-auto dark:bg-gradient-to-r dark:from-[#dbff00] dark:via-white dark:to-[#00e8ff] dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-[#dbff00] via-[#00e8ff] to-[#00ffba] bg-clip-text text-transparent">
-                "The harvest is plentiful, but the workers are few. Ask the Lord of the harvest, 
-                therefore, to send out workers into his harvest field."
+              <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-3xl mx-auto dark:bg-gradient-to-r dark:from-[#dbff00] dark:via-white dark:to-[#00e8ff] dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-[#dbff00] via-[#00e8ff] to-[#00ffba] bg-clip-text text-transparent">
+                "The harvest is plentiful, but the workers are few. Ask the Lord
+                of the harvest, therefore, to send out workers into his harvest
+                field."
                 <footer className="mt-4 text-lg text-gray-700 dark:text-gray-300">
                   — Matthew 9:37-38
                 </footer>

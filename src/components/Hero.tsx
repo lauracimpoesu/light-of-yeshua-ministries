@@ -7,10 +7,10 @@ const Hero = () => {
     <div className="relative min-h-screen flex items-center overflow-hidden">
       {/* Static Purple Gradient Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/90 via-indigo-800/80 to-cyan-500/90 dark:from-purple-900 dark:via-purple-700 dark:to-indigo-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/90 via-indigo-800/80 to-cyan-500/90 dark:from-indigo-900 dark:via-indigo-700 dark:to-indigo-900"></div>
 
         {/* Static Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-indigo-900/60 to-black/50 dark:from-black/70 dark:via-purple-900/80 dark:to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-indigo-900/60 to-purple/50 dark:from-black/70 dark:via-indigo-900/80 dark:to-purple-700"></div>
 
         {/* Subtle Particle Effect */}
         {[...Array(40)].map((_, i) => (
@@ -88,7 +88,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/donate">
-                <button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black dark:text-white flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-ministry-gold/50 font-bold">
+                <button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black  flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-ministry-gold/50 font-bold">
                   Donate Now
                   <ArrowRight size={18} />
                 </button>

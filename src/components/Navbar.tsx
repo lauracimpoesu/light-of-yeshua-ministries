@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -22,7 +21,7 @@ const Navbar = () => {
       } else {
         setScrolled(false);
       }
-      
+
       // Detect when we've scrolled past the hero section
       // Assuming hero section height is around 100vh (adjust as needed)
       if (window.scrollY > window.innerHeight * 0.7) {
@@ -44,19 +43,15 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Mission", path: "/mission" },
-    { name: "Media", path: "/media" },
-    { name: "Events", path: "/events" }, 
     { name: "Contact", path: "/contact" },
   ];
 
   const isLightMode = theme === "light";
-  
+
   // Dynamic text color logic for light mode
   const getTextColor = () => {
     if (isLightMode) {
-      return pastHeroSection || scrolled 
-        ? "text-gray-900" 
-        : "text-white";
+      return pastHeroSection || scrolled ? "text-gray-900" : "text-white";
     } else {
       return "text-white"; // Dark mode always uses white text
     }
@@ -74,23 +69,26 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
           <h1 className="text-lg md:text-2xl font-heading font-bold">
-            <span className={cn(
-              "font-light transition-colors",
-              isLightMode && pastHeroSection
-                ? "text-purple-600" // Purple in light mode past hero
-                : "text-yellow-100",
+            <span
+              className={cn(
+                "font-light transition-colors",
+                isLightMode && pastHeroSection
+                  ? "text-purple-600" // Purple in light mode past hero
+                  : "text-yellow-100",
                 scrolled && "text-black"
-            ) 
-            }>
+              )}
+            >
               Light of
             </span>{" "}
-            <span className={cn(
-              "italic transition-colors",
-              isLightMode && pastHeroSection
-                ? "text-blue-500" // Blueish in light mode past hero
-                : "text-teal-200",
-                 scrolled && "text-indigo-400"
-            )}>
+            <span
+              className={cn(
+                "italic transition-colors",
+                isLightMode && pastHeroSection
+                  ? "text-blue-500" // Blueish in light mode past hero
+                  : "text-teal-200",
+                scrolled && "text-indigo-400"
+              )}
+            >
               Yeshua
             </span>
           </h1>
@@ -108,25 +106,24 @@ const Navbar = () => {
                 to={item.path}
                 className={cn(
                   "px-3 py-2 text-sm font-medium rounded-full transition-colors dartext-white",
-                  scrolled || pastHeroSection 
+                  scrolled || pastHeroSection
                     ? isLightMode
-                      ? "text-gray-900 hover:bg-gray-100" 
+                      ? "text-gray-900 hover:bg-gray-100"
                       : "dark:text-white dark:hover:bg-white/15"
-                    : isLightMode 
-                      ? "text-white hover:bg-white/15" 
-                      : "dark:text-white dark:hover:bg-white/15"
+                    : isLightMode
+                    ? "text-white hover:bg-white/15"
+                    : "dark:text-white dark:hover:bg-white/15"
                 )}
               >
                 {item.name}
               </Link>
             </motion.div>
           ))}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
-              <Button className="donate-button ml-2 text-white rounded-full">Donate</Button>
+              <Button className="donate-button ml-2 text-white rounded-full">
+                Donate
+              </Button>
             </Link>
           </motion.div>
           <ThemeToggle />
@@ -139,13 +136,13 @@ const Navbar = () => {
             onClick={toggleMenu}
             className={cn(
               "ml-2 p-2 rounded-full",
-              scrolled || pastHeroSection 
+              scrolled || pastHeroSection
                 ? isLightMode
-                  ? "text-gray-900 hover:bg-gray-100" 
+                  ? "text-gray-900 hover:bg-gray-100"
                   : "dark:text-white dark:hover:bg-white/15"
-                : isLightMode 
-                  ? "text-white hover:bg-white/15" 
-                  : "dark:text-white dark:hover:bg-white/15"
+                : isLightMode
+                ? "text-white hover:bg-white/15"
+                : "dark:text-white dark:hover:bg-white/15"
             )}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -155,7 +152,7 @@ const Navbar = () => {
 
       {/* Mobile Menu - Instagram-inspired design */}
       {isOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
@@ -180,7 +177,9 @@ const Navbar = () => {
               className="px-3 py-4 mt-2"
               onClick={() => setIsOpen(false)}
             >
-              <Button className="donate-button w-full text-white rounded-full">Donate</Button>
+              <Button className="donate-button w-full text-white rounded-full">
+                Donate
+              </Button>
             </Link>
           </div>
         </motion.div>

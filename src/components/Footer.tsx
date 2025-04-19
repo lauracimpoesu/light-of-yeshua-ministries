@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, Twitter, ArrowRight } from "lucide-react";
+import { Instagram, Youtube, FileVideo2, ArrowRight } from "lucide-react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -19,38 +18,43 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="col-span-1 md:col-span-2">
-          <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-yellow-300 via-cyan-400 to-teal-300 bg-clip-text text-transparent">
-  Light of Yeshua Ministries
-</h3>
+            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-yellow-300 via-cyan-400 to-teal-300 bg-clip-text text-transparent">
+              Light of Yeshua Ministries
+            </h3>
             <p className="text-gray-400 mb-6 max-w-md">
-              Taking the light of Yeshua to the streets of nations worldwide. Join us in our mission to spread the Gospel and bring salvation.
+              Taking the light of Yeshua to the streets of nations worldwide.
+              Join us in our mission to spread the Gospel and bring salvation.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-indigo-300 
+              <a
+                href="http://instagram.com/light.of.yeshua"
+                className="hover:text-indigo-300
               
-              transition-colors">
-                <Facebook size={24} />
-              </a>
-              <a href="#" className="hover:text-indigo-300
-              
-              transition-colors">
+              transition-colors"
+              >
                 <Instagram size={24} />
               </a>
-              <a href="#" className="hover:text-indigo-300 transition-colors">
+              <a
+                href="https://www.youtube.com/@LightOfYeshuaMinistries"
+                className="hover:text-indigo-300 transition-colors"
+              >
                 <Youtube size={24} />
               </a>
-              <a href="#" className="hover:text-indigo-300 transition-colors">
-                <Twitter size={24} />
+              <a
+                href="https://www.tiktok.com/@light.of.yeshua"
+                className="hover:text-indigo-300 transition-colors"
+              >
+                <FileVideo2 size={24} />
               </a>
             </div>
           </div>
-          
+
           <div>
             <h4 className="text-lg font-bold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {["Home", "About", "Mission", "Media", "Events", "Contact", "Donate"].map((item) => (
+              {["Home", "About", "Mission", "Contact", "Donate"].map((item) => (
                 <li key={item}>
-                  <Link 
+                  <Link
                     to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
@@ -60,11 +64,12 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-          
+
           <div>
             <h4 className="text-lg font-bold mb-4">Newsletter</h4>
             <p className="text-gray-400 mb-4">
-              Subscribe to our newsletter for updates on our missions and outreach.
+              Subscribe to our newsletter for updates on our missions and
+              outreach.
             </p>
             <form onSubmit={handleSubmit} className="flex">
               <input
@@ -84,16 +89,23 @@ const Footer = () => {
             </form>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Light of Yeshua Ministries. All rights reserved.
+            &copy; {new Date().getFullYear()} Light of Yeshua Ministries. All
+            rights reserved.
           </p>
           <div className="flex space-x-4">
-            <Link to="/privacy" className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
+            <Link
+              to="/privacy"
+              className="text-gray-500 text-sm hover:text-gray-300 transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-gray-500 text-sm hover:text-gray-300 transition-colors">
+            <Link
+              to="/terms"
+              className="text-gray-500 text-sm hover:text-gray-300 transition-colors"
+            >
               Terms of Use
             </Link>
           </div>

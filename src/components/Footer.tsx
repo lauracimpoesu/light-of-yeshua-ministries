@@ -1,16 +1,44 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Youtube, FileVideo2, ArrowRight } from "lucide-react";
+import { Instagram, Youtube, ArrowRight, TiktokIcon } from "lucide-react";
+import { toast } from "sonner";
+
+// TikTok icon component as it's not available in Lucide core
+const TiktokIcon = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={props.size || 24}
+    height={props.size || 24}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={props.className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 const Footer = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+    
     // Here you would handle the newsletter signup
     console.log("Email submitted:", email);
+    toast.success("Thank you for subscribing to our newsletter!");
     setEmail("");
-    alert("Thank you for subscribing to our newsletter!");
   };
 
   return (
@@ -28,23 +56,24 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="http://instagram.com/light.of.yeshua"
-                className="hover:text-indigo-300
-              
-              transition-colors"
+                className="hover:text-indigo-300 transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram size={24} />
               </a>
               <a
                 href="https://www.youtube.com/@LightOfYeshuaMinistries"
                 className="hover:text-indigo-300 transition-colors"
+                aria-label="YouTube"
               >
                 <Youtube size={24} />
               </a>
               <a
                 href="https://www.tiktok.com/@light.of.yeshua"
                 className="hover:text-indigo-300 transition-colors"
+                aria-label="TikTok"
               >
-                <FileVideo2 size={24} />
+                <TiktokIcon size={24} />
               </a>
             </div>
           </div>
@@ -83,6 +112,7 @@ const Footer = () => {
               <button
                 type="submit"
                 className="ministry-gradient-bg px-4 py-2 rounded-r-lg"
+                aria-label="Subscribe"
               >
                 <ArrowRight size={20} />
               </button>

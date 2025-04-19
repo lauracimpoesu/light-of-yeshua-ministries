@@ -1,10 +1,11 @@
+
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { m, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 
 const Navbar = () => {
@@ -63,8 +64,6 @@ const Navbar = () => {
                 "font-light transition-colors",
                 (!isHomePage || scrolled) && isLightMode
                   ? "text-purple-600"
-                  : isHomePage && !scrolled && isLightMode
-                  ? "text-yellow-100"
                   : "text-yellow-100"
               )}
             >
@@ -75,8 +74,6 @@ const Navbar = () => {
                 "italic transition-colors",
                 (!isHomePage || scrolled) && isLightMode
                   ? "text-blue-500"
-                  : isHomePage && !scrolled && isLightMode
-                  ? "text-teal-200"
                   : "text-teal-200"
               )}
             >
@@ -101,9 +98,7 @@ const Navbar = () => {
                     ? isLightMode
                       ? "text-gray-900 hover:bg-gray-100"
                       : "dark:text-white dark:hover:bg-white/15"
-                    : isLightMode
-                    ? "text-white hover:bg-white/15"
-                    : "dark:text-white dark:hover:bg-white/15"
+                    : "text-white hover:bg-white/15"
                 )}
               >
                 {item.name}
@@ -131,9 +126,7 @@ const Navbar = () => {
                 ? isLightMode
                   ? "text-gray-900 hover:bg-gray-100"
                   : "dark:text-white dark:hover:bg-white/15"
-                : isLightMode
-                ? "text-white hover:bg-white/15"
-                : "dark:text-white dark:hover:bg-white/15"
+                : "text-white hover:bg-white/15"
             )}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

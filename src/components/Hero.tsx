@@ -1,4 +1,3 @@
-
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -9,29 +8,29 @@ const Hero = () => {
       {/* Static Purple Gradient Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/90 via-indigo-800/80 to-cyan-500/90 dark:from-purple-900 dark:via-purple-700 dark:to-indigo-900"></div>
-        
+
         {/* Static Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-indigo-900/60 to-black/50 dark:from-black/70 dark:via-purple-900/80 dark:to-black/70"></div>
-        
+
         {/* Subtle Particle Effect */}
         {[...Array(40)].map((_, i) => (
           <motion.div
             key={i}
             className={`absolute rounded-full ${
-              i % 4 === 0 
-                ? 'bg-[#dbff00]/50 dark:bg-[#8B5CF6]/60' 
-                : i % 4 === 1 
-                  ? 'bg-[#00e8ff]/40' 
-                  : i % 4 === 2 
-                    ? 'bg-[#00ffba]/30' 
-                    : 'bg-white/40'
+              i % 4 === 0
+                ? "bg-[#dbff00]/50 dark:bg-[#8B5CF6]/60"
+                : i % 4 === 1
+                ? "bg-[#00e8ff]/40"
+                : i % 4 === 2
+                ? "bg-[#00ffba]/30"
+                : "bg-white/40"
             }`}
             style={{
               width: `${Math.random() * 8 + 2}px`,
               height: `${Math.random() * 8 + 2}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              filter: 'blur(1px)'
+              filter: "blur(1px)",
             }}
             animate={{
               y: [0, -Math.random() * 100 - 30, 0],
@@ -42,7 +41,7 @@ const Hero = () => {
               duration: 5 + Math.random() * 10,
               repeat: Infinity,
               delay: Math.random() * 5,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
           />
         ))}
@@ -50,25 +49,29 @@ const Hero = () => {
 
       {/* Content with Improved Animation */}
       <div className="container mx-auto px-4 z-10 pt-20 md:pt-10">
-        <motion.div 
+        <motion.div
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ 
+          transition={{
             duration: 1,
             delay: 0.3,
-            ease: [0.25, 0.1, 0.25, 1.0]
+            ease: [0.25, 0.1, 0.25, 1.0],
           }}
         >
-          <motion.h1 
-  className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight text-center md:text-left"
-  initial={{ opacity: 0, y: 30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8 }}
->
-  Take the <span className="bg-gradient-to-r from-yellow-200 to-cyan-400 bg-clip-text text-transparent">Light of Yeshua</span> to the Nations
-</motion.h1>
-          <motion.p 
+          <motion.h1
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight text-center md:text-left"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Take the{" "}
+            <span className="bg-gradient-to-r from-yellow-300 to-cyan-400 bg-clip-text text-transparent">
+              Light of Yeshua
+            </span>{" "}
+            to the Nations
+          </motion.h1>
+          <motion.p
             className="text-xl md:text-2xl text-gray-100 mb-10 text-center md:text-left"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,4 +118,3 @@ const Hero = () => {
 };
 
 export default Hero;
-

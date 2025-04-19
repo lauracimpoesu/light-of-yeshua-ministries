@@ -97,13 +97,7 @@ const Navbar = () => {
           ))}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
-              <Button
-                className="bg-gradient-to-r from 
-                ministry-gold-dark to-ministry-gold hover:from-ministry-gold 
-                hover:to-ministry-gold-light text-white rounded-full"
-              >
-                Donate
-              </Button>
+              <Button className=" text-white rounded-full">Donate</Button>
             </Link>
           </motion.div>
           <ThemeToggle />

@@ -163,6 +163,7 @@
     @apply opacity-20;
   }
 
+
   .scripture-card {
     @apply relative p-6 rounded-xl overflow-hidden card-hover border-0 bg-gradient-to-br from-white to-gray-50
            dark:from-gray-800 dark:to-gray-900/90 backdrop-blur-sm shadow-md hover:shadow-lg

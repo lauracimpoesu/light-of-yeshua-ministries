@@ -12,17 +12,17 @@ const Mission = () => {
     {
       title: "Global Streets. Eternal Souls.",
       description:
-        "We take the message of salvation to the streets of nations worldwide, reaching those who need to hear the Good News.",
+        "We take the message of salvation to the streets of nations worldwide, reaching those who need to hear the Good News. Every soul matters in the eyes of God.",
     },
     {
-      title: "Expose Darkness. Preach Light.",
+      title: "Exposing Darkness.",
       description:
-        "As instructed in Ephesians 5:11, we boldly confront darkness while offering the light of Yeshua's truth.",
+        "As instructed in Ephesians 5:11, we boldly confront darkness while offering the light of Yeshua's truth. We shine His light where it's needed most.",
     },
     {
       title: "Yeshua Saves.",
       description:
-        "The simple, powerful truth that drives our ministry: Jesus Christ (Yeshua) is the way, the truth, and the life.",
+        "The simple, powerful truth that drives our ministry: Jesus Christ (Yeshua) is the way, the truth, and the life. There is no salvation apart from Him.",
     },
   ];
 
@@ -39,7 +39,7 @@ const Mission = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
             Our Mission
           </h1>
-          <div className="max-w-3xl mx-auto mb-12">
+          <div className="max-w-3xl mx-auto mb-16">
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
               Taking the light of Yeshua to the nations through bold street
               evangelism is the heart of our ministry. We are committed to
@@ -87,7 +87,7 @@ const Mission = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-3xl mx-auto dark:bg-gradient-to-r dark:from-[#dbff00] dark:via-white dark:to-[#00e8ff] dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-[#dbff00] via-[#00e8ff] to-[#00ffba] bg-clip-text text-transparent">
+              <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-3xl mx-auto dark:bg-gradient-to-r dark:from-ministry-gold-light dark:via-cyan-300 dark:to-purple-300 dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-ministry-gold via-cyan-500 to-indigo-600 bg-clip-text text-transparent">
                 "The harvest is plentiful, but the workers are few. Ask the Lord
                 of the harvest, therefore, to send out workers into his harvest
                 field."

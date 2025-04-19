@@ -14,9 +14,9 @@ const donationOptions = [
 
 export const BibleVerseSection = () => {
   return (
-    <div className="mt-8 bg-gradient-to-br from-[#FFD700]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/20">
+    <div className="mt-8 bg-gradient-to-br from-[#FFD700]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/10">
       <div className="flex items-start space-x-4 mb-4">
-        <Quote className="text-[#FFD700] dark:text-[#00CED1] w-8 h-8 flex-shrink-0" />
+        <Quote className="text-[#FFD700] dark:text-purple-800 w-8 h-8 flex-shrink-0" />
         <div>
           {/* 
           <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
@@ -25,19 +25,19 @@ export const BibleVerseSection = () => {
           <div className="space-y-4">
             <blockquote className="italic text-gray-700 dark:text-gray-300">
               <p className="mb-2">
-                "The one who receives instruction in the word should share all
-                good things with their instructor."
+                "Let him that is taught in the word communicate unto him that
+                teacheth in all good things."
                 <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
-                  - Galatians 6:6 (NIV)
+                  - Galatians 6:6 (KJV)
                 </span>
               </p>
             </blockquote>
             <blockquote className="italic text-gray-700 dark:text-gray-300">
               <p>
-                "In the same way, the Lord has commanded that those who preach
-                the gospel should receive their living from the gospel."
+                "Even so hath the Lord ordained that they which preach the
+                gospel should live of the gospel."
                 <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
-                  - 1 Corinthians 9:14 (NIV)
+                  - 1 Corinthians 9:14 (KJV)
                 </span>
               </p>
             </blockquote>
@@ -228,7 +228,7 @@ const DonationSection = () => {
                   className="flex items-start text-gray-700 dark:text-gray-300"
                 >
                   <Check
-                    className="text-green-500 mr-2 mt-1 flex-shrink-0"
+                    className="text-teal-400 mr-2 mt-1 flex-shrink-0"
                     size={18}
                   />
                   <span>{item}</span>

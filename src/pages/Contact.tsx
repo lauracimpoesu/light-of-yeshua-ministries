@@ -108,7 +108,7 @@ const Contact = () => {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#dbff00] to-[#00e8ff] flex items-center justify-center mb-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark flex items-center justify-center mb-4">
                   <Mail className="text-gray-900" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Email Us</h3>
@@ -123,7 +123,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#dbff00] to-[#00e8ff] flex items-center justify-center mb-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark flex items-center justify-center mb-4">
                   <MapPin className="text-gray-900" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Our Location</h3>
@@ -138,7 +138,7 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-[#dbff00] to-[#00e8ff] flex items-center justify-center mb-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark flex items-center justify-center mb-4">
                   <Phone className="text-gray-900" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Call Us</h3>
@@ -232,7 +232,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="ministry-gradient-bg px-8 py-3 rounded-lg flex items-center justify-center gap-2 text-white transition-all duration-500 hover:shadow-lg disabled:opacity-70"
+                    className="ministry-gradient-bg px-8 py-3 rounded-lg flex items-center justify-center gap-2 text-black dark:text-black transition-all duration-500 hover:shadow-lg disabled:opacity-70"
                   >
                     {isSubmitting ? (
                       <>
@@ -260,7 +260,10 @@ const Contact = () => {
                       </>
                     ) : (
                       <>
-                        <Send size={18} className="text-white" />
+                        <Send
+                          size={18}
+                          className="text-black dark:text-black"
+                        />
                         Send Message
                       </>
                     )}
@@ -290,7 +293,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubscribing}
-                    className="ministry-gradient-bg px-6 py-3 rounded-lg text-white font-bold hover:shadow-lg disabled:opacity-70"
+                    className="ministry-gradient-bg px-8 py-6 rounded-lg text-black dark:text-black font-bold hover:shadow-lg disabled:opacity-70"
                   >
                     {isSubscribing ? (
                       <span className="flex items-center">

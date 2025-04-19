@@ -70,7 +70,7 @@ const Donate = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-3xl font-bold mb-6 text-center text-[#4222e2] dark:text-white">
+              <h2 className="text-3xl font-bold mb-6 text-center text-[#4222e2] dark:text-cyan-200">
                 Join The Fight
               </h2>
 
@@ -143,7 +143,7 @@ const Donate = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
+                className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-black dark:text-black font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
                 onClick={handleContinue}
               >
                 Continue to Payment
@@ -171,7 +171,7 @@ const Donate = () => {
                     className="flex items-start text-gray-700 dark:text-gray-300"
                   >
                     <Check
-                      className="text-green-500 mr-2 mt-1 flex-shrink-0"
+                      className="text-teal-400 mr-2 mt-1 flex-shrink-0"
                       size={18}
                     />
                     <span>{item}</span>

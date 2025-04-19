@@ -75,7 +75,7 @@ const AboutSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 ministry-gradient-text">
             About Our Ministry
           </h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto">
             Dedicated to spreading the Gospel and bringing the light of Yeshua
             to the darkest corners of the world.
           </p>
@@ -114,7 +114,7 @@ const AboutSection = () => {
                 <CardFooter className="pt-2">
                   <Link
                     to="/about"
-                    className="text-cyan-600 dark:text-[#dbff00] font-medium text-sm inline-flex items-center group"
+                    className="text-cyan-600 dark:text-cyan-300 font-medium text-sm inline-flex items-center group"
                   >
                     Learn more
                     <ArrowRightIcon className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

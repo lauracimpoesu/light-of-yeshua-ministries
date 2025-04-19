@@ -51,7 +51,7 @@ const Navbar = () => {
       className={cn(
         "fixed w-full z-50 transition-all duration-500",
         scrolled || !isHomePage
-          ? "bg-white/90 text-black dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2"
+          ? "bg-white/90 text-black dark:bg-[#101827] backdrop-blur-md shadow-md py-2"
           : "bg-transparent py-4"
       )}
     >
@@ -89,7 +89,7 @@ const Navbar = () => {
           ))}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
-              <Button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black dark:text-black  font-semibold rounded-full transition-all duration-500">
+              <Button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black dark:text-black font-sh  font-medium rounded-full transition-all duration-500">
                 Donate
               </Button>
             </Link>

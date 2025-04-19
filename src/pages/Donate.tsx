@@ -5,12 +5,6 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Heart } from "lucide-react";
 import { toast } from "sonner";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import StripeCheckoutForm from "@/components/StripeCheckoutForm";
-
-// Load Stripe (in a real app, put your publishable key here)
-const stripePromise = loadStripe("pk_test_51O64MoFWK9YeDRpEoDuVkXq9vZh1bdjUDqcARVpSZWE9BQxbhXWOw1YmBsGJEtKVbxhgcdQkXfmTOYnAO1FaYSTw00c7FW28zD");
 
 const donationOptions = [
   { amount: 20, impact: "Sends evangelistic materials to the streets" },
@@ -20,6 +14,12 @@ const donationOptions = [
   { amount: 500, impact: "Funds a missionary for a week-long outreach" },
   { amount: 1000, impact: "Supports a major international mission trip" },
 ];
+
+// Revolut account details (for demonstration - replace with real details)
+const revolutAccount = {
+  username: "@light-of-yeshua",
+  accountId: "light-of-yeshua-ministries",
+};
 
 const Donate = () => {
   useEffect(() => {
@@ -36,7 +36,7 @@ const Donate = () => {
     setSelectedAmount(null);
   };
 
-  const handleContinue = async () => {
+  const handleDonate = async () => {
     if (!selectedAmount && !customAmount) {
       toast.error("Please select or enter a donation amount");
       return;
@@ -46,21 +46,26 @@ const Donate = () => {
     setIsLoading(true);
     
     try {
-      // In a real app, you would redirect to Stripe Checkout here
-      // This simulates the redirect with a delay
-      toast.info("Redirecting to secure payment page...");
-      
       // Get the final amount to use
       const donationAmount = selectedAmount || parseFloat(customAmount);
       
-      // Simulate API call to create Checkout session
-      setTimeout(() => {
-        // In a real app, this would redirect to Stripe checkout URL with the actual amount
-        window.location.href = `https://checkout.stripe.com/pay/cs_test_example?amount=${donationAmount}&recurring=${isMonthly ? 'monthly' : 'once'}`;
-      }, 1500);
+      // Simulated payment to Revolut
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Generate Revolut deep link
+      // In a real implementation, you'd integrate with Revolut's API
+      // This is just for demonstration purposes
+      const revolutURL = `https://revolut.me/${revolutAccount.accountId}?amount=${donationAmount}&currency=USD`;
+      
+      toast.success(`Redirecting to Revolut to complete your ${isMonthly ? 'monthly' : 'one-time'} donation of $${donationAmount}`);
+      
+      // Open Revolut payment in a new tab
+      window.open(revolutURL, '_blank');
+      
+      setIsLoading(false);
     } catch (error) {
-      console.error("Error redirecting to payment:", error);
-      toast.error("There was a problem processing your request. Please try again.");
+      console.error("Error processing donation:", error);
+      toast.error("There was a problem processing your donation. Please try again.");
       setIsLoading(false);
     }
   };
@@ -152,11 +157,21 @@ const Donate = () => {
                 </span>
               </div>
               
+              <div className="mb-6 p-4 rounded-lg bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600">
+                <p className="text-sm text-gray-700 dark:text-gray-300 mb-1 flex items-center">
+                  <Heart size={16} className="text-red-500 mr-2" />
+                  <span>You'll be redirected to Revolut to complete your donation</span>
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  Revolut username: {revolutAccount.username}
+                </p>
+              </div>
+              
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-gray-900 font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
-                onClick={handleContinue}
+                onClick={handleDonate}
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -181,13 +196,13 @@ const Donate = () => {
                 ) : (
                   <>
                     <ArrowRight size={20} />
-                    Continue to Payment
+                    Donate via Revolut
                   </>
                 )}
               </motion.button>
               
               <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">
-                All donations are secure and encrypted
+                All donations are secure and go directly to our ministry
               </p>
             </div>
             

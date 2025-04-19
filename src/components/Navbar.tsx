@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -82,10 +83,10 @@ const Navbar = () => {
             <span
               className={cn(
                 "font-light transition-colors",
-                isLightMode && (pastHeroSection || !isHomePage)
+                isLightMode && (pastHeroSection || !isHomePage || scrolled)
                   ? "text-purple-600" // Purple in light mode past hero or on other pages
                   : "text-yellow-100",
-                scrolled && isLightMode ? "text-black" : ""
+                scrolled && isLightMode ? "text-purple-700" : ""
               )}
             >
               Light of
@@ -93,10 +94,10 @@ const Navbar = () => {
             <span
               className={cn(
                 "italic transition-colors",
-                isLightMode && (pastHeroSection || !isHomePage)
+                isLightMode && (pastHeroSection || !isHomePage || scrolled)
                   ? "text-blue-500" // Blueish in light mode past hero or on other pages
                   : "text-teal-200",
-                scrolled && isLightMode ? "text-indigo-400" : ""
+                scrolled && isLightMode ? "text-blue-600" : ""
               )}
             >
               Yeshua

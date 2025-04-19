@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import AnimatedLogo from "./AnimatedLogo";
 
 const Hero = () => {
   return (
@@ -51,7 +50,7 @@ const Hero = () => {
       {/* Content with Improved Animation */}
       <div className="container mx-auto px-4 z-10 pt-20 md:pt-10">
         <motion.div
-          className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8"
+          className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -60,65 +59,55 @@ const Hero = () => {
             ease: [0.25, 0.1, 0.25, 1.0],
           }}
         >
-          <div className="flex-1">
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight text-center md:text-left"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Take the{" "}
-              <span className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold-dark to-ministry-gold-light bg-clip-text text-transparent">
-                Light of Yeshua
-              </span>{" "}
-              to the Nations
-            </motion.h1>
-            <motion.p
-              className="text-xl md:text-2xl text-gray-100 mb-10 text-center md:text-left"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Join the mission. Preach the truth. Set captives free.
-            </motion.p>
-            <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link to="/donate">
-                  <button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black  flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-ministry-gold/50 font-bold">
-                    Donate Now
-                    <ArrowRight size={18} />
-                  </button>
-                </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link to="/mission">
-                  <button className="bg-white/15 backdrop-blur-md text-white border border-white/30 font-bold py-4 px-8 rounded-full transition-all duration-500 hover:bg-white/25 w-full sm:w-auto">
-                    Our Mission
-                  </button>
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="flex-shrink-0"
+          <motion.h1
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight text-center md:text-left"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <AnimatedLogo />
-          </motion.div>
+            Take the{" "}
+            <span className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold-dark to-ministry-gold-light bg-clip-text text-transparent">
+              Light of Yeshua
+            </span>{" "}
+            to the Nations
+          </motion.h1>
+          <motion.p
+            className="text-xl md:text-2xl text-gray-100 mb-10 text-center md:text-left"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Join the mission. Preach the truth. Set captives free.
+          </motion.p>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link to="/donate">
+                <button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black  flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-ministry-gold/50 font-bold">
+                  Donate Now
+                  <ArrowRight size={18} />
+                </button>
+              </Link>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link to="/mission">
+                <button className="bg-white/15 backdrop-blur-md text-white border border-white/30 font-bold py-4 px-8 rounded-full transition-all duration-500 hover:bg-white/25 w-full sm:w-auto">
+                  Our Mission
+                </button>
+              </Link>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

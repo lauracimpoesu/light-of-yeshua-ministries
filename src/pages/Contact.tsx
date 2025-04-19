@@ -96,7 +96,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 py-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine-slow text-center">
             Contact Us
           </h1>
 

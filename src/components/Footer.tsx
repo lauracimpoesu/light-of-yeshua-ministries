@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, ArrowRight } from "lucide-react";
@@ -92,7 +91,7 @@ const Footer = () => {
                 className="h-24 w-auto"
               />
 
-              <h3 className="text-2xl mb-[-10px] font-bold bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text animate-gold-shine">
+              <h3 className="text-2xl mb-[-10px] font-bold bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text animate-gold-shine-slow">
                 Light of Yeshua
               </h3>
             </div>

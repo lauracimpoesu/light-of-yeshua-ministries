@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import {
   Card,
@@ -73,7 +72,7 @@ const AboutSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text animate-gold-shine">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gold-light via-gold to-gold-dark text-transparent bg-clip-text animate-gold-shine-slow">
             About Our Ministry
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto">
@@ -98,7 +97,7 @@ const AboutSection = () => {
             >
               <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-indigo-900/10 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 -z-10" />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-light via-gold to-gold-dark animate-gold-shine" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-light via-gold to-gold-dark animate-gold-shine-slow" />
 
                 <CardHeader>
                   <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">

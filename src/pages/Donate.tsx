@@ -70,7 +70,7 @@ const Donate = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-2xl font-bold mb-6 text-center text-black dark:text-cyan-200">
+              <h2 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine-slow">
                 Join The Fight
               </h2>
 
@@ -125,12 +125,12 @@ const Donate = () => {
                   onClick={() => setIsMonthly(!isMonthly)}
                   className={`relative w-12 h-6 rounded-full transition-colors duration-500 ${
                     isMonthly
-                      ? "bg-secondary dark:bg-[#00e8ff]"
+                      ? "bg-gradient-to-r from-gold-light via-gold to-gold-dark animate-gold-shine-slow shadow-lg shadow-gold/30"
                       : "bg-gray-300 dark:bg-gray-600"
                   }`}
                 >
                   <span
-                    className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-500 ${
+                    className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${
                       isMonthly ? "transform translate-x-6" : ""
                     }`}
                   ></span>
@@ -143,8 +143,8 @@ const Donate = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-4 px-6 rounded-lg ministry-gradient-bg text-black dark:text-black font-bold text-lg flex items-center justify-center gap-2 shadow-lg transition-all duration-500"
                 onClick={handleContinue}
+                className="w-full py-4 px-6 rounded-lg bg-gradient-to-r from-indigo via-cyan to-indigo-light text-white hover:shadow-xl dark:text-white hover:from-indigo-light hover:via-cyan hover:to-indigo rounded-full px-8 py-6 animate-pulse-glow font-bold text-lg transform hover:scale-105 transition-all duration-300"
               >
                 Continue to Payment
               </motion.button>

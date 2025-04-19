@@ -36,7 +36,7 @@ const Mission = () => {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 py-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-gold-light via-cyan to-indigo bg-clip-text text-transparent animate-gold-shine-slow text-center">
             Our Mission
           </h1>
           <div className="max-w-3xl mx-auto mb-16">
@@ -80,23 +80,21 @@ const Mission = () => {
             ))}
           </div>
 
-          <div className="text-center">
-            <motion.div
-              className="inline-block"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
-              <blockquote className="text-xl md:text-3xl font-semibold italic max-w-3xl mx-auto dark:bg-gradient-to-r dark:from-ministry-gold-light dark:via-cyan-300 dark:to-purple-300 dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-ministry-gold via-cyan-500 to-indigo-600 bg-clip-text text-transparent">
-                "The harvest is plentiful, but the workers are few. Ask the Lord
-                of the harvest, therefore, to send out workers into his harvest
-                field."
-                <footer className="mt-4 text-lg text-gray-700 dark:text-gray-300">
-                  — Matthew 9:37-38
-                </footer>
-              </blockquote>
-            </motion.div>
-          </div>
+          <motion.div
+            className="inline-block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <blockquote className="text-xl md:text-3xl font-semibold italic max-w-3xl mx-auto bg-gradient-to-r from-gold via-cyan to-indigo bg-clip-text text-transparent">
+              "The harvest is plentiful, but the workers are few. Ask the Lord
+              of the harvest, therefore, to send out workers into his harvest
+              field."
+              <footer className="mt-4 text-lg bg-gradient-to-r from-cyan via-indigo to-gold bg-clip-text text-transparent">
+                — Matthew 9:37-38
+              </footer>
+            </blockquote>
+          </motion.div>
         </motion.div>
       </div>
       <Footer />

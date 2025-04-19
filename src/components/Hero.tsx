@@ -1,4 +1,3 @@
-
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -67,7 +66,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             Take the{" "}
-            <span className="bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine font-black">
+            <span className="bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine-slow font-black">
               Light of Yeshua
             </span>{" "}
             to the Nations

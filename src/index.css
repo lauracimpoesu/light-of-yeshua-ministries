@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -283,4 +282,14 @@
 
 .img-zoom:hover {
   @apply scale-105;
+}
+
+@keyframes gold-shine-slow {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.animate-gold-shine-slow {
+  background-size: 200% auto;
+  animation: gold-shine-slow 8s linear infinite;
 }

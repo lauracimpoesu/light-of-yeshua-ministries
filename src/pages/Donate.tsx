@@ -5,12 +5,6 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Heart } from "lucide-react";
 import { toast } from "sonner";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-import StripeCheckoutForm from "@/components/StripeCheckoutForm";
-
-// Load Stripe (in a real app, put your publishable key here)
-const stripePromise = loadStripe("pk_test_51O64MoFWK9YeDRpEoDuVkXq9vZh1bdjUDqcARVpSZWE9BQxbhXWOw1YmBsGJEtKVbxhgcdQkXfmTOYnAO1FaYSTw00c7FW28zD");
 
 const donationOptions = [
   { amount: 20, impact: "Sends evangelistic materials to the streets" },
@@ -46,17 +40,26 @@ const Donate = () => {
     setIsLoading(true);
     
     try {
-      // In a real app, you would redirect to Stripe Checkout here
-      // This simulates the redirect with a delay
-      toast.info("Redirecting to secure payment page...");
-      
       // Get the final amount to use
       const donationAmount = selectedAmount || parseFloat(customAmount);
       
+      if (isNaN(donationAmount) || donationAmount <= 0) {
+        toast.error("Please enter a valid donation amount");
+        setIsLoading(false);
+        return;
+      }
+
+      // In a production environment, this would redirect to your backend first
+      // to create a Stripe checkout session with the correct amount
+      
+      // For demo purposes, simulate redirection to Stripe with a delay
+      toast.info("Redirecting to secure payment page...");
+      
       // Simulate API call to create Checkout session
       setTimeout(() => {
-        // In a real app, this would redirect to Stripe checkout URL with the actual amount
-        window.location.href = `https://checkout.stripe.com/pay/cs_test_example?amount=${donationAmount}&recurring=${isMonthly ? 'monthly' : 'once'}`;
+        // This is a mock URL - in production, use your actual Stripe checkout URL
+        const stripeUrl = `https://checkout.stripe.com/pay/cs_test_example?amount=${donationAmount * 100}&recurring=${isMonthly ? 'monthly' : 'once'}`;
+        window.location.href = stripeUrl;
       }, 1500);
     } catch (error) {
       console.error("Error redirecting to payment:", error);

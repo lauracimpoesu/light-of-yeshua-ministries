@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Check, CircleDollarSign } from "lucide-react";
 import { motion } from "framer-motion";
@@ -32,15 +31,8 @@ const DonationSection = () => {
       return;
     }
     
-    let paypalUrl;
-    if (isMonthly) {
-      // For monthly donations, direct to PayPal subscription page
-      paypalUrl = 'https://www.paypal.com/subscriptions/business/create/I-123456'; // Replace with your actual PayPal subscription link
-      toast.info("You'll be redirected to set up a monthly donation.");
-    } else {
-      // For one-time donations, use PayPal.me
-      paypalUrl = `https://paypal.me/loyministries/${amount}`;
-    }
+    // Redirect to PayPal.me with the specified amount
+    const paypalUrl = `https://paypal.me/loyministries/${amount}`;
     window.open(paypalUrl, '_blank');
   };
 

@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -42,15 +41,7 @@ const Donate = () => {
       return;
     }
 
-    let paypalUrl;
-    if (isMonthly) {
-      // For monthly donations, direct to PayPal subscription page
-      paypalUrl = 'https://www.paypal.com/subscriptions/business/create/I-123456'; // Replace with your actual PayPal subscription link
-      toast.info("You'll be redirected to set up a monthly donation.");
-    } else {
-      // For one-time donations, use PayPal.me
-      paypalUrl = `https://paypal.me/loyministries/${donationAmount}`;
-    }
+    const paypalUrl = `https://paypal.me/loyministries/${donationAmount}`;
     window.open(paypalUrl, '_blank');
   };
 

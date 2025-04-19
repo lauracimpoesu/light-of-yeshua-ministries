@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import whitelogo from "../assets/white.png";
+import blacklogo from "../assets/black.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,19 +58,19 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3">
           <img
-            src={whitelogo}
+            src={(!isHomePage || scrolled) ? blacklogo : whitelogo}
             alt="Light of Yeshua Logo"
-            className="h-12 w-auto"
+            className="h-12 w-auto transition-opacity duration-300"
           />
           <h1 className="text-lg md:text-2xl font-seasons">
-            {/*  <span className={cn(
-              "transition-colors",
+            <span className={cn(
+              "transition-colors bg-gradient-to-r bg-clip-text",
               scrolled || !isHomePage
-                ? "text-ministry-gold-dark dark:text-ministry-gold-light"
-                : "text-ministry-gold-light"
+                ? "from-ministry-gold-dark via-ministry-gold to-ministry-gold-light"
+                : "from-white to-ministry-gold-light"
             )}>
               Light of Yeshua
-            </span> */}
+            </span>
           </h1>
         </Link>
 
@@ -97,7 +98,9 @@ const Navbar = () => {
           ))}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
-              <Button className=" text-white rounded-full">Donate</Button>
+              <Button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black dark:text-white rounded-full transition-all duration-500">
+                Donate
+              </Button>
             </Link>
           </motion.div>
           <ThemeToggle />

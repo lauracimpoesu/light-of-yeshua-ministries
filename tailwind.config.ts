@@ -26,7 +26,11 @@ export default {
         foreground: 'hsl(var(--foreground))',
         ministry: {
           blue: '#3B82F6',
-          purple: '#8B5CF6',
+          indigo: {
+            light: '#818CF8',
+            DEFAULT: '#6366F1',
+            dark: '#4F46E5',
+          },
           gold: {
             light: '#FFD700',
             DEFAULT: '#D4AF37',
@@ -137,6 +141,20 @@ export default {
             opacity: '0.8',
             boxShadow: '0 0 20px 6px rgba(139, 92, 246, 0.6)'
           }
+        },
+        'gold-shine': {
+          '0%': { backgroundPosition: '200% 0' },
+          '100%': { backgroundPosition: '-200% 0' }
+        },
+        'menorah-glow': {
+          '0%, 100%': {
+            boxShadow: '0 0 15px rgba(212, 175, 55, 0.5)',
+            borderColor: 'rgba(212, 175, 55, 0.6)'
+          },
+          '50%': {
+            boxShadow: '0 0 25px rgba(212, 175, 55, 0.8)',
+            borderColor: 'rgba(212, 175, 55, 1)'
+          }
         }
       },
       animation: {
@@ -145,7 +163,9 @@ export default {
         'fade-in': 'fade-in 0.5s ease-out forwards',
         'floating': 'floating 3s ease-in-out infinite',
         'glow': 'glow 3s ease-in-out infinite',
-        'pulse-glow': 'pulse-glow 3s ease-in-out infinite'
+        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+        'gold-shine': 'gold-shine 8s linear infinite',
+        'menorah-glow': 'menorah-glow 3s ease-in-out infinite'
       }
     }
   },

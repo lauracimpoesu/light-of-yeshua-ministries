@@ -82,9 +82,9 @@ const AboutSection = () => {
               whileHover="hover"
               className="h-full"
             >
-              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-indigo-900/10">
+              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-indigo-900/10 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 -z-10" />
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark animate-gold-shine" />
                 
                 <CardHeader>
                   <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">

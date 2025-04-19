@@ -88,7 +88,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/donate">
-                <button className="donate-button text-white flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full">
+                <button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black dark:text-white flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-ministry-gold/50 font-bold">
                   Donate Now
                   <ArrowRight size={18} />
                 </button>

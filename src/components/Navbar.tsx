@@ -121,7 +121,7 @@ const Navbar = () => {
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg absolute w-full"
+          className="md:hidden mt-2 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg absolute w-full"
         >
           <div className="container mx-auto px-4 py-4 flex flex-col">
             {navItems.map((item) => (
@@ -141,7 +141,7 @@ const Navbar = () => {
               className="px-3 py-4 mt-2"
               onClick={() => setIsOpen(false)}
             >
-              <Button className="donate-button w-full text-white rounded-full">
+              <Button className="donate-button w-full text-black dark:text-black rounded-full">
                 Donate
               </Button>
             </Link>

@@ -11,17 +11,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold hover:via-gold-light hover:to-gold text-black dark:text-black font-semibold animate-pulse-glow",
+          "bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold hover:via-gold-light hover:to-gold text-black dark:text-black font-semibold animate-gold-shimmer shadow-md hover:shadow-gold/30",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-input bg-background hover:bg-accent/10 hover:text-accent-foreground",
+          "border border-gold bg-background hover:bg-gold/10 text-foreground hover:text-gold-dark dark:hover:text-gold-light",
         secondary:
-          "bg-gradient-to-r from-cyan-dark to-cyan text-white hover:from-cyan hover:to-cyan-light",
-        accent:
-          "bg-gradient-to-r from-indigo-dark to-indigo text-white hover:from-indigo hover:to-indigo-light",
-        ghost: "hover:bg-accent/10 hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-gradient-to-r from-gold-medium to-gold-light text-black hover:from-gold-light hover:to-gold-medium shadow-sm",
+        royal:
+          "bg-gradient-to-r from-gold-darkest via-gold to-gold-lightest text-black font-bold animate-gold-shine-slow shadow-md hover:shadow-lg hover:shadow-gold/30",
+        ghost: "hover:bg-gold/10 hover:text-gold-dark dark:hover:text-gold-light",
+        link: "text-gold underline-offset-4 hover:underline",
       },
       size: {
         default: "h-10 px-4 py-2",

@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import {
   Card,
@@ -53,7 +54,7 @@ const AboutSection = () => {
     hover: {
       y: -10,
       boxShadow:
-        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+        "0 20px 25px -5px rgba(212, 175, 55, 0.2), 0 10px 10px -5px rgba(212, 175, 55, 0.1)",
       transition: {
         type: "spring",
         stiffness: 400,
@@ -95,7 +96,7 @@ const AboutSection = () => {
               whileHover="hover"
               className="h-full"
             >
-              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-indigo-900/10 relative">
+              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-gold-dark/10 relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 -z-10" />
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-light via-gold to-gold-dark animate-gold-shine-slow" />
 
@@ -114,7 +115,7 @@ const AboutSection = () => {
                 <CardFooter className="pt-2">
                   <Link
                     to="/about"
-                    className="text-cyan-600 dark:text-cyan-300 font-medium text-sm inline-flex items-center group"
+                    className="text-gold dark:text-gold-light font-medium text-sm inline-flex items-center group"
                   >
                     Learn more
                     <ArrowRightIcon className="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

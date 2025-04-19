@@ -13,12 +13,11 @@ const badgeVariants = cva(
           "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        accent:
-          "border-transparent bg-accent text-accent-foreground hover:bg-accent/80",
         outline: "text-foreground",
         gold: "border-transparent bg-gold text-black hover:bg-gold/90",
-        cyan: "border-transparent bg-cyan text-black hover:bg-cyan/90",
-        indigo: "border-transparent bg-indigo text-white hover:bg-indigo/90",
+        "gold-light": "border-transparent bg-gold-light text-black hover:bg-gold-light/90",
+        "gold-dark": "border-transparent bg-gold-dark text-white hover:bg-gold-dark/90",
+        royal: "border-transparent bg-gradient-to-r from-gold-dark via-gold to-gold-light text-black animate-gold-shine",
       },
     },
     defaultVariants: {

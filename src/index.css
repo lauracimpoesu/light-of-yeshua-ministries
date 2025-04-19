@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,89 +16,81 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
+    --background: 0 0% 100%; /* White */
+    --foreground: 0 0% 10%; /* Near black */
     
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 0 0% 10%; /* Near black */
     
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 0 0% 10%; /* Near black */
     
     /* Gold as primary */
     --primary: 45 65% 52%;  /* D4AF37 converted to HSL */
-    --primary-foreground: 0 0% 0%;
+    --primary-foreground: 0 0% 0%; /* Black */
     
-    /* Cyan as secondary */
-    --secondary: 187 90% 43%;  /* 06B6D4 converted to HSL */
-    --secondary-foreground: 0 0% 0%;
+    /* Light gold as secondary */
+    --secondary: 45 80% 75%;  /* F5D76E converted to HSL */
+    --secondary-foreground: 0 0% 0%; /* Black */
     
-    /* Indigo as accent */
-    --accent: 240 95% 67%;  /* 6366F1 converted to HSL */
-    --accent-foreground: 0 0% 100%;
+    --muted: 0 0% 96%; /* Light gray */
+    --muted-foreground: 0 0% 40%; /* Darker gray */
     
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 40%;
+    --destructive: 0 84% 60%; /* Red */
+    --destructive-foreground: 0 0% 100%; /* White */
     
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 45 65% 80%; /* Light gold */
+    --input: 45 65% 80%; /* Light gold */
     --ring: 45 65% 52%;  /* Gold for ring focus */
     
     --radius: 1rem;
     
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 45 65% 52%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 0 0% 95%;
-    --sidebar-accent-foreground: 0 0% 15%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 45 65% 52%;
+    --sidebar-background: 0 0% 98%; /* Off-white */
+    --sidebar-foreground: 0 0% 20%; /* Dark gray */
+    --sidebar-primary: 45 65% 52%; /* Gold */
+    --sidebar-primary-foreground: 0 0% 0%; /* Black */
+    --sidebar-accent: 0 0% 95%; /* Light gray */
+    --sidebar-accent-foreground: 0 0% 15%; /* Darker gray */
+    --sidebar-border: 45 65% 80%; /* Light gold */
+    --sidebar-ring: 45 65% 52%; /* Gold */
   }
 
   .dark {
-    --background: 240 30% 10%;
-    --foreground: 0 0% 95%;
+    --background: 0 0% 10%; /* Almost black */
+    --foreground: 0 0% 95%; /* Almost white */
     
-    --card: 240 30% 15%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 15%; /* Very dark gray */
+    --card-foreground: 0 0% 95%; /* Almost white */
     
-    --popover: 240 30% 15%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 15%; /* Very dark gray */
+    --popover-foreground: 0 0% 95%; /* Almost white */
     
     /* Gold as primary in dark mode */
     --primary: 45 65% 52%;  /* D4AF37 */
-    --primary-foreground: 0 0% 0%;
+    --primary-foreground: 0 0% 0%; /* Black */
     
-    /* Cyan as secondary in dark mode - brighter */
-    --secondary: 187 90% 43%;  /* 06B6D4 */
-    --secondary-foreground: 0 0% 0%;
+    /* Light gold as secondary in dark mode */
+    --secondary: 45 80% 75%;  /* F5D76E converted to HSL */
+    --secondary-foreground: 0 0% 0%; /* Black */
     
-    /* Indigo as accent in dark mode - brighter */
-    --accent: 240 95% 67%;  /* 6366F1 */
-    --accent-foreground: 0 0% 100%;
+    --muted: 0 0% 20%; /* Dark gray */
+    --muted-foreground: 0 0% 70%; /* Light gray */
     
-    --muted: 240 30% 20%;
-    --muted-foreground: 0 0% 70%;
+    --destructive: 0 70% 30%; /* Dark red */
+    --destructive-foreground: 0 0% 95%; /* Almost white */
     
-    --destructive: 0 70% 30%;
-    --destructive-foreground: 0 0% 95%;
+    --border: 45 65% 40%; /* Darker gold */
+    --input: 45 65% 40%; /* Darker gold */
+    --ring: 45 65% 52%;  /* Gold */
     
-    --border: 240 30% 25%;
-    --input: 240 30% 25%;
-    --ring: 45 65% 52%;  /* Gold for ring focus */
-    
-    --sidebar-background: 240 30% 15%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 45 65% 52%;
-    --sidebar-primary-foreground: 0 0% 0%;
-    --sidebar-accent: 240 30% 20%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 30% 25%;
-    --sidebar-ring: 45 65% 52%;
+    --sidebar-background: 0 0% 15%; /* Very dark gray */
+    --sidebar-foreground: 0 0% 95%; /* Almost white */
+    --sidebar-primary: 45 65% 52%; /* Gold */
+    --sidebar-primary-foreground: 0 0% 0%; /* Black */
+    --sidebar-accent: 0 0% 20%; /* Dark gray */
+    --sidebar-accent-foreground: 0 0% 95%; /* Almost white */
+    --sidebar-border: 45 65% 40%; /* Darker gold */
+    --sidebar-ring: 45 65% 52%; /* Gold */
   }
 }
 
@@ -126,46 +119,46 @@
     @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light text-transparent bg-clip-text;
   }
 
-  .accent-gradient-bg {
-    @apply bg-gradient-to-r from-indigo via-indigo-light to-cyan;
-  }
-
-  .accent-gradient-text {
-    @apply bg-gradient-to-r from-indigo via-indigo-light to-cyan text-transparent bg-clip-text;
-  }
-
-  .royal-gradient-bg {
-    @apply bg-gradient-to-r from-indigo-dark via-indigo to-cyan-dark;
+  .royal-gold-gradient-bg {
+    @apply bg-gradient-to-r from-gold-darkest via-gold to-gold-lightest;
   }
   
+  .royal-gold-gradient-text {
+    @apply bg-gradient-to-r from-gold-darkest via-gold to-gold-lightest text-transparent bg-clip-text;
+  }
+
   .glow-effect {
     @apply relative;
   }
 
   .glow-effect::after {
     content: '';
-    @apply absolute inset-0 rounded-lg bg-secondary opacity-0 transition-opacity duration-700 blur-md -z-10;
+    @apply absolute inset-0 rounded-lg bg-gold/20 opacity-0 transition-opacity duration-700 blur-md -z-10;
   }
 
   .glow-effect:hover::after {
     @apply opacity-30;
   }
 
+  .gold-border {
+    @apply border border-gold/30 hover:border-gold/50 transition-colors duration-300;
+  }
+
   .card-hover {
     @apply transition-all duration-700 hover:shadow-lg hover:-translate-y-1;
   }
 
-  .donate-button {
-    @apply relative overflow-hidden gold-gradient-bg font-bold
+  .gold-button {
+    @apply relative overflow-hidden gold-gradient-bg text-black font-bold
            transition-all duration-500 shadow-md hover:shadow-xl;
   }
 
-  .donate-button::before {
+  .gold-button::before {
     content: '';
     @apply absolute top-0 left-0 w-full h-full bg-white opacity-0 transition-opacity duration-500;
   }
 
-  .donate-button:hover::before {
+  .gold-button:hover::before {
     @apply opacity-20;
   }
 
@@ -210,11 +203,57 @@
   }
 
   .hero-gradient {
-    @apply bg-gradient-to-br from-cyan-dark via-indigo to-cyan-dark dark:from-indigo-dark dark:via-indigo dark:to-cyan-dark;
+    @apply bg-gradient-to-br from-gold-darkest via-gold-dark to-gold-medium dark:from-gold-darkest dark:via-gold-dark dark:to-gold;
   }
 
   .footer-gradient {
-    @apply bg-gradient-to-br from-cyan-900 via-indigo-900 to-cyan-800 dark:from-indigo-dark dark:via-indigo dark:to-cyan-dark;
+    @apply bg-gradient-to-br from-gold-darkest via-gold-dark to-gold-dark/80 dark:from-gold-darkest dark:via-gold-dark dark:to-gold;
+  }
+
+  .ministry-gradient-text {
+    @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light text-transparent bg-clip-text animate-gold-shine-slow;
+  }
+
+  .royal-card {
+    @apply relative rounded-xl overflow-hidden border border-gold/20 
+           bg-white/5 dark:bg-black/5 backdrop-blur-sm
+           hover:border-gold/50 transition-all duration-500;
+  }
+
+  .royal-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-gold/5 to-gold/10 opacity-50;
+  }
+
+  .royal-button {
+    @apply relative overflow-hidden bg-gradient-to-r from-gold-dark via-gold to-gold-light
+           text-black font-bold px-6 py-3 rounded-full
+           transition-all duration-500 shadow-md hover:shadow-xl hover:shadow-gold/30
+           animate-pulse-glow;
+  }
+  
+  .royal-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-gold/20 to-gold-light/30 opacity-0 
+           transition-opacity duration-500;
+  }
+  
+  .royal-button:hover::before {
+    @apply opacity-100;
+  }
+
+  .heavenly-glow {
+    @apply relative;
+  }
+
+  .heavenly-glow::after {
+    content: '';
+    @apply absolute -inset-1 rounded-lg bg-gradient-to-r from-gold/40 via-gold-light/30 to-gold/40 
+           opacity-0 blur-lg transition-opacity duration-500 -z-10;
+  }
+
+  .heavenly-glow:hover::after {
+    @apply opacity-100;
   }
 }
 
@@ -291,5 +330,23 @@
 
 .animate-gold-shine-slow {
   background-size: 200% auto;
-  animation: gold-shine-slow 8s linear infinite;
+  animation: gold-shine-slow 12s linear infinite;
+}
+
+@keyframes royal-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.royal-shimmer {
+  background-size: 200% 200%;
+  animation: royal-shimmer 6s ease infinite;
+  @apply bg-gradient-to-r from-gold-light via-gold to-gold-light;
 }

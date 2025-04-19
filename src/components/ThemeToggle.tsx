@@ -16,7 +16,7 @@ export function ThemeToggle() {
         "rounded-full w-9 h-9 transition-colors",
         theme === "light"
           ? "bg-gray-100 hover:bg-gray-200 text-gray-900"
-          : "bg-white/10 hover:bg-white/20 text-gold"
+          : "bg-black/20 hover:bg-black/30 text-gold"
       )}
     >
       {theme === "light" ? (

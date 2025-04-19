@@ -26,24 +26,18 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         
-        // Core brand colors
+        // Core royal gold colors
         gold: {
-          light: '#F5D76E', // Lighter gold
-          DEFAULT: '#D4AF37', // Primary gold
-          dark: '#996515',   // Darker gold
-        },
-        cyan: {
-          light: '#67E8F9', // Lighter cyan
-          DEFAULT: '#06B6D4', // Primary cyan
-          dark: '#0891B2',  // Darker cyan
-        },
-        indigo: {
-          light: '#A5B4FC', // Lighter indigo
-          DEFAULT: '#6366F1', // Primary indigo
-          dark: '#4F46E5',  // Darker indigo
+          lightest: '#FFF6D8', // Very light gold/cream
+          lighter: '#FFE8A3', // Light gold
+          light: '#F5D76E', // Medium-light gold
+          DEFAULT: '#D4AF37', // Classic royal gold
+          medium: '#C5A028', // Medium gold
+          dark: '#AA8A19',   // Darker gold
+          darkest: '#886C01', // Very dark gold
         },
         
-        // System UI colors derived from our brand colors
+        // System UI colors derived from our gold palette
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
@@ -51,10 +45,6 @@ export default {
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -128,27 +118,41 @@ export default {
         },
         'glow': {
           '0%, 100%': {
-            boxShadow: '0 0 10px 2px rgba(99, 102, 241, 0.3)'
+            boxShadow: '0 0 10px 2px rgba(212, 175, 55, 0.3)'
           },
           '50%': {
-            boxShadow: '0 0 20px 6px rgba(99, 102, 241, 0.6)'
+            boxShadow: '0 0 20px 6px rgba(212, 175, 55, 0.6)'
           }
         },
         'pulse-glow': {
           '0%, 100%': {
             opacity: '1',
-            boxShadow: '0 0 10px 2px rgba(99, 102, 241, 0.3)'
+            boxShadow: '0 0 10px 2px rgba(212, 175, 55, 0.3)'
           },
           '50%': {
             opacity: '0.8',
-            boxShadow: '0 0 20px 6px rgba(99, 102, 241, 0.6)'
+            boxShadow: '0 0 20px 6px rgba(212, 175, 55, 0.6)'
           }
         },
         'gold-shine': {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' }
         },
-        'menorah-glow': {
+        'gold-shimmer': {
+          '0%': { 
+            backgroundPosition: '0% 50%',
+            opacity: 0.8
+          },
+          '50%': { 
+            backgroundPosition: '100% 50%',
+            opacity: 1
+          },
+          '100%': { 
+            backgroundPosition: '0% 50%',
+            opacity: 0.8
+          }
+        },
+        'royal-pulse': {
           '0%, 100%': {
             boxShadow: '0 0 15px rgba(212, 175, 55, 0.5)',
             borderColor: 'rgba(212, 175, 55, 0.6)'
@@ -167,7 +171,9 @@ export default {
         'glow': 'glow 3s ease-in-out infinite',
         'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
         'gold-shine': 'gold-shine 8s linear infinite',
-        'menorah-glow': 'menorah-glow 3s ease-in-out infinite'
+        'gold-shine-slow': 'gold-shine 12s linear infinite',
+        'gold-shimmer': 'gold-shimmer 6s ease-in-out infinite',
+        'royal-pulse': 'royal-pulse 3s ease-in-out infinite'
       }
     }
   },

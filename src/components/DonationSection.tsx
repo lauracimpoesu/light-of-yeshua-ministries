@@ -12,19 +12,21 @@ const donationOptions = [
   { amount: 1000, impact: "Supports a major international mission trip" },
 ];
 
-const BibleVerseSection = () => {
+export const BibleVerseSection = () => {
   return (
     <div className="mt-8 bg-gradient-to-br from-[#FFD700]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/20">
       <div className="flex items-start space-x-4 mb-4">
         <Quote className="text-[#FFD700] dark:text-[#00CED1] w-8 h-8 flex-shrink-0" />
         <div>
+          {/* 
           <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-            Supporting Ministry
-          </h4>
+            Thank you for your support!
+          </h4> */}
           <div className="space-y-4">
             <blockquote className="italic text-gray-700 dark:text-gray-300">
               <p className="mb-2">
-                "The one who receives instruction in the word should share all good things with their instructor."
+                "The one who receives instruction in the word should share all
+                good things with their instructor."
                 <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
                   - Galatians 6:6 (NIV)
                 </span>
@@ -32,7 +34,8 @@ const BibleVerseSection = () => {
             </blockquote>
             <blockquote className="italic text-gray-700 dark:text-gray-300">
               <p>
-                "In the same way, the Lord has commanded that those who preach the gospel should receive their living from the gospel."
+                "In the same way, the Lord has commanded that those who preach
+                the gospel should receive their living from the gospel."
                 <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
                   - 1 Corinthians 9:14 (NIV)
                 </span>
@@ -57,15 +60,16 @@ const DonationSection = () => {
   };
 
   const handleDonateClick = () => {
-    const amount = selectedAmount || (customAmount ? parseFloat(customAmount) : 0);
-    
+    const amount =
+      selectedAmount || (customAmount ? parseFloat(customAmount) : 0);
+
     if (!amount || amount <= 0) {
       toast.error("Please select or enter a valid donation amount");
       return;
     }
-    
+
     const paypalUrl = `https://paypal.me/loyministries/${amount}`;
-    window.open(paypalUrl, '_blank');
+    window.open(paypalUrl, "_blank");
   };
 
   return (
@@ -89,7 +93,8 @@ const DonationSection = () => {
               viewport={{ once: true }}
               className="text-lg text-gray-700 dark:text-gray-300"
             >
-              Your generous donation helps bring the light of Yeshua to the streets of nations worldwide.
+              Your generous donation helps bring the light of Yeshua to the
+              streets of nations worldwide.
             </motion.p>
           </div>
 
@@ -112,7 +117,9 @@ const DonationSection = () => {
                       : "border-gray-200 dark:border-gray-700 hover:border-ministry-purple/50"
                   }`}
                 >
-                  <span className="text-xl font-bold mb-1">${option.amount}</span>
+                  <span className="text-xl font-bold mb-1">
+                    ${option.amount}
+                  </span>
                   <span className="text-xs text-gray-600 dark:text-gray-400 text-center">
                     {option.impact}
                   </span>
@@ -142,7 +149,9 @@ const DonationSection = () => {
               <button
                 onClick={() => setIsMonthly(!isMonthly)}
                 className={`relative w-12 h-6 rounded-full transition-colors ${
-                  isMonthly ? "bg-ministry-purple" : "bg-gray-300 dark:bg-gray-600"
+                  isMonthly
+                    ? "bg-ministry-purple"
+                    : "bg-gray-300 dark:bg-gray-600"
                 }`}
               >
                 <span
@@ -165,9 +174,25 @@ const DonationSection = () => {
             >
               {isLoading ? (
                 <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                   Processing...
                 </>
@@ -185,8 +210,8 @@ const DonationSection = () => {
               All donations are secure and encrypted
             </p>
           </div>
-
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+          <BibleVerseSection />
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 my-10">
             <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
               Why Your Support Matters
             </h3>
@@ -202,14 +227,15 @@ const DonationSection = () => {
                   key={index}
                   className="flex items-start text-gray-700 dark:text-gray-300"
                 >
-                  <Check className="text-green-500 mr-2 mt-1 flex-shrink-0" size={18} />
+                  <Check
+                    className="text-green-500 mr-2 mt-1 flex-shrink-0"
+                    size={18}
+                  />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-
-          <BibleVerseSection />
         </div>
       </div>
     </section>

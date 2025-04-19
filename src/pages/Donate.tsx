@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Heart } from "lucide-react";
 import { toast } from "sonner";
+import { BibleVerseSection } from "@/components/DonationSection";
 
 const donationOptions = [
   { amount: 20, impact: "Sends evangelistic materials to the streets" },
@@ -69,8 +70,8 @@ const Donate = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 mb-8">
-              <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">
-                Make a Donation
+              <h2 className="text-2xl font-bold mb-6 text-center text-indigo-500 dark:text-white">
+                Join The Fight
               </h2>
 
               <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">
@@ -152,7 +153,7 @@ const Donate = () => {
                 All donations are secure and encrypted
               </p>
             </div>
-
+            <BibleVerseSection />
             <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
               <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                 Why Your Support Matters

@@ -154,7 +154,7 @@ const Donate = () => {
               </p>
             </div>
             <BibleVerseSection />
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-6">
+            <div className="bg-white mt-4 dark:bg-gray-800 rounded-xl p-6">
               <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
                 Why Your Support Matters
               </h3>

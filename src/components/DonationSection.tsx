@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Check, CircleDollarSign, Quote } from "lucide-react";
 import { motion } from "framer-motion";
@@ -112,19 +113,38 @@ const DonationSection = () => {
                     setSelectedAmount(option.amount);
                     setCustomAmount("");
                   }}
-                  className={`p-4 rounded-lg border-2 transition-all duration-800 flex flex-col items-center 
+                  className={`p-4 rounded-lg transition-all duration-500 flex flex-col items-center relative overflow-hidden group 
                     ${
                       selectedAmount === option.amount
-                        ? "border-ministry-gold bg-white/5 dark:bg-white/5 backdrop-blur-md animate-menorah-glow"
-                        : "border-gray-200 dark:border-gray-700 hover:border-ministry-gold hover:bg-white/5 dark:hover:bg-white/5 hover:backdrop-blur-md"
+                        ? "border-2 border-gold bg-gradient-to-br from-gold/5 to-gold/10 dark:from-gold/10 dark:to-gold/5 shadow-xl transform -translate-y-1 scale-[1.02]"
+                        : "border-2 border-gray-200 dark:border-gray-700 hover:border-gold/50"
                     }`}
                 >
-                  <span className="text-xl font-bold mb-1">
+                  <div 
+                    className={`absolute inset-0 bg-gradient-to-r from-gold/20 via-gold/10 to-gold/20 opacity-0 transition-opacity duration-500
+                      ${selectedAmount === option.amount ? 'animate-gold-shine-slow opacity-30' : 'group-hover:opacity-10'}`}
+                  />
+                  <span 
+                    className={`text-xl font-bold mb-1 relative z-10 transition-all duration-500 ${
+                      selectedAmount === option.amount 
+                        ? 'bg-gradient-to-r from-gold-dark via-gold to-gold-light bg-clip-text text-transparent scale-110'
+                        : 'text-gray-900 dark:text-white'
+                    }`}
+                  >
                     ${option.amount}
                   </span>
-                  <span className="text-xs text-gray-600 dark:text-gray-400 text-center">
+                  <span 
+                    className={`text-xs text-center relative z-10 transition-all duration-500 ${
+                      selectedAmount === option.amount
+                        ? 'text-gold'
+                        : 'text-gray-600 dark:text-gray-400'
+                    }`}
+                  >
                     {option.impact}
                   </span>
+                  {selectedAmount === option.amount && (
+                    <div className="absolute inset-0 bg-gold/5 dark:bg-gold/10 blur-sm animate-pulse-glow"/>
+                  )}
                 </button>
               ))}
             </div>

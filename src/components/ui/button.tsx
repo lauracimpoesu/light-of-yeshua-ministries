@@ -11,7 +11,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-gold-dark via-gold to-gold-light hover:from-gold hover:via-gold-light hover:to-gold text-black dark:text-black font-semibold",
+          "bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold hover:via-gold-light hover:to-gold text-black dark:text-black font-semibold animate-pulse-glow",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:

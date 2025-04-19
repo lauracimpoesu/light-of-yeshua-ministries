@@ -96,7 +96,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 py-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent animate-gold-shine text-center">
             Contact Us
           </h1>
 
@@ -108,8 +108,8 @@ const Contact = () => {
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark flex items-center justify-center mb-4">
-                  <Mail className="text-gray-900" size={24} />
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark flex items-center justify-center mb-4">
+                  <Mail className="text-gray-900 dark:text-gray-900" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Email Us</h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -123,8 +123,8 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark flex items-center justify-center mb-4">
-                  <MapPin className="text-gray-900" size={24} />
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark flex items-center justify-center mb-4">
+                  <MapPin className="text-gray-900 dark:text-gray-900" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Our Location</h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -138,8 +138,8 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
-                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark flex items-center justify-center mb-4">
-                  <Phone className="text-gray-900" size={24} />
+                <div className="w-14 h-14 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark flex items-center justify-center mb-4">
+                  <Phone className="text-gray-900 dark:text-gray-900" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Call Us</h3>
                 {/*  <p className="text-gray-600 dark:text-gray-400">

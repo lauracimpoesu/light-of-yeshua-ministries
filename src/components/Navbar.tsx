@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -89,7 +90,11 @@ const Navbar = () => {
           ))}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
-              <Button className="ml-2 text-white rounded-full">Donate</Button>
+              <Button 
+                className="ml-2 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-light text-black shadow-md hover:shadow-gold/30 font-bold transition-all duration-300 animate-pulse-glow"
+              >
+                Donate
+              </Button>
             </Link>
           </motion.div>
           <ThemeToggle />
@@ -139,7 +144,7 @@ const Navbar = () => {
               className="px-3 py-4 mt-2"
               onClick={() => setIsOpen(false)}
             >
-              <Button className="donate-button w-full text-black dark:text-black rounded-full">
+              <Button className="w-full text-black dark:text-black rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold hover:to-gold-light shadow-md hover:shadow-gold/30 animate-pulse-glow">
                 Donate
               </Button>
             </Link>

@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -67,7 +68,7 @@ const MissionSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 ministry-gradient-text">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-light via-cyan to-indigo text-transparent bg-clip-text">
             Our Mission
           </h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto">
@@ -118,7 +119,7 @@ const MissionSection = () => {
           className="text-center mt-12"
         >
           <Link to="/mission">
-            <Button className="bg-teal-600 hover:bg-teal-500 text-black dark:bg-[#dbff00] dark:text-black dark:hover:bg-[#dbff00]/90 rounded-full px-8 py-6 font-bold">
+            <Button className="bg-gradient-to-r from-indigo via-cyan to-indigo-light text-white hover:shadow-xl dark:text-white hover:from-indigo-light hover:via-cyan hover:to-indigo rounded-full px-8 py-6 animate-pulse-glow font-bold text-lg transform hover:scale-105 transition-all duration-300">
               Learn More About Our Mission
             </Button>
           </Link>

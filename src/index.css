@@ -171,9 +171,17 @@
   }
 
   .scripture-card {
-    @apply relative p-6 rounded-xl overflow-hidden card-hover border-0 bg-gradient-to-br from-white to-gray-50
-           dark:from-gray-800 dark:to-gray-900/90 backdrop-blur-sm shadow-md hover:shadow-lg
-           transition-all duration-500;
+    @apply relative p-6 rounded-xl overflow-hidden card-hover border-0 
+           bg-gradient-to-br from-gold/10 to-gold/5 dark:from-gold/10 dark:to-gold/5 backdrop-blur-sm shadow-md 
+           hover:shadow-gold/20 transition-all duration-500;
+  }
+
+  .scripture-text {
+    @apply text-gold-dark dark:text-gold-light font-medium;
+  }
+
+  .scripture-reference {
+    @apply text-gold font-semibold italic;
   }
 
   .instagram-card {
@@ -205,6 +213,10 @@
   .hero-gradient {
     @apply bg-gradient-to-br from-cyan-dark via-indigo to-cyan-dark dark:from-indigo-dark dark:via-indigo dark:to-cyan-dark;
   }
+
+  .footer-gradient {
+    @apply bg-gradient-to-br from-cyan-900 via-indigo-900 to-cyan-800 dark:from-indigo-dark dark:via-indigo dark:to-cyan-dark;
+  }
 }
 
 @keyframes float {
@@ -231,6 +243,29 @@
 
 .animate-pulse-slow {
   animation: pulse-slow 5s ease-in-out infinite;
+}
+
+@keyframes gold-shine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.animate-gold-shine {
+  background-size: 200% auto;
+  animation: gold-shine 4s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
 @keyframes like-animation {

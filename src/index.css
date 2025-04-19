@@ -4,38 +4,47 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
+@font-face {
+  font-family: 'The Seasons';
+  src: url('/fonts/TheSeasons-Regular.woff2') format('woff2'),
+       url('/fonts/TheSeasons-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
+    
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
+    
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 265 89% 66%;  /* Purple #8B5CF6 */
-    --primary-foreground: 0 0% 0%;  /* Changed to black for better contrast */
-
-    --secondary: 183 100% 40%; /* Darker version of #00e8ff */
-    --secondary-foreground: 0 0% 0%; /* Changed to black for better contrast */
-
-    --accent: 186 100% 29%; /* Darker version of #00ffba */
-    --accent-foreground: 0 0% 0%; /* Changed to black for better contrast */
-
+    
+    --primary: 41 100% 50%;    /* Gold */
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 43 100% 45%;  /* Darker gold */
+    --secondary-foreground: 0 0% 0%;
+    
+    --accent: 45 100% 55%;     /* Lighter gold */
+    --accent-foreground: 0 0% 0%;
+    
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
+    
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 183 100% 50%; /* #00e8ff */
-
+    
     --radius: 1rem;
-
+    
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -49,32 +58,32 @@
   .dark {
     --background: 260 30% 13%; /* More saturated purple-tinted dark background */
     --foreground: 210 40% 98%;
-
+    
     --card: 260 30% 18%; /* More saturated purple-tinted card */
     --card-foreground: 210 40% 98%;
-
+    
     --popover: 260 30% 18%; /* More saturated purple-tinted popover */
     --popover-foreground: 210 40% 98%;
-
+    
     --primary: 97 100% 50%; /* #dbff00 */
     --primary-foreground: 0 0% 0%;
-
+    
     --secondary: 183 100% 50%; /* #00e8ff */
     --secondary-foreground: 0 0% 0%;
-
+    
     --muted: 260 27% 25%;
     --muted-foreground: 215 20.2% 65.1%;
-
+    
     --accent: 162 100% 50%; /* #00ffba */
     --accent-foreground: 0 0% 0%;
-
+    
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
+    
     --border: 260 27% 27%; /* Purple-tinted border */
     --input: 260 27% 27%;  /* Purple-tinted input */
     --ring: 183 100% 50%; /* #00e8ff */
-
+    
     --sidebar-background: 260 30% 18%; /* More saturated purple-tinted sidebar */
     --sidebar-foreground: 210 40% 98%;
     --sidebar-primary: 97 100% 50%; /* #dbff00 */
@@ -103,12 +112,12 @@
 }
 
 @layer components {
-  .ministry-gradient-text {
-    @apply bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text;
+  .ministry-gradient-bg {
+    @apply bg-gradient-to-r from-ministry-gold-dark via-ministry-gold to-ministry-gold-light;
   }
 
-  .ministry-gradient-bg {
-    @apply bg-gradient-to-r from-teal-600 to-indigo-500;
+  .ministry-gradient-text {
+    @apply bg-gradient-to-r from-ministry-gold-dark via-ministry-gold to-ministry-gold-light text-transparent bg-clip-text;
   }
 
   .gold-gradient-text {

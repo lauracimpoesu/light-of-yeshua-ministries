@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
@@ -24,10 +23,8 @@ const Navbar = () => {
       }
     };
 
-    // Set initial scroll state based on route
     setScrolled(!isHomePage);
 
-    // Only add scroll listener on homepage
     if (isHomePage) {
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
@@ -57,32 +54,24 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center">
-          <h1 className="text-lg md:text-2xl font-heading font-bold">
-            <span
-              className={cn(
-                "font-light transition-colors",
-                scrolled || !isHomePage
-                  ? "text-black dark:text-white"
-                  : "text-yellow-100"
-              )}
-            >
-              Light of
-            </span>{" "}
-            <span
-              className={cn(
-                "italic transition-colors",
-                scrolled || !isHomePage
-                  ? "text-ministry-purple dark:text-teal-200"
-                  : "text-teal-200"
-              )}
-            >
-              Yeshua
+        <Link to="/" className="flex items-center gap-3">
+          <img 
+            src="/lovable-uploads/312a103f-ebf7-4902-80d8-c63317a38bf0.png" 
+            alt="Light of Yeshua Logo" 
+            className="h-12 w-auto"
+          />
+          <h1 className="text-lg md:text-2xl font-seasons">
+            <span className={cn(
+              "transition-colors",
+              scrolled || !isHomePage
+                ? "text-ministry-gold-dark dark:text-ministry-gold-light"
+                : "text-ministry-gold-light"
+            )}>
+              Light of Yeshua
             </span>
           </h1>
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-2">
           {navItems.map((item) => (
             <motion.div
@@ -107,7 +96,9 @@ const Navbar = () => {
           ))}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
-              <Button className="donate-button ml-2 text-white rounded-full">
+              <Button className="bg-gradient-to-r from 
+                ministry-gold-dark to-ministry-gold hover:from-ministry-gold 
+                hover:to-ministry-gold-light text-white rounded-full">
                 Donate
               </Button>
             </Link>
@@ -115,7 +106,6 @@ const Navbar = () => {
           <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center">
           <ThemeToggle />
           <button
@@ -134,7 +124,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu - Instagram-inspired design */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}

@@ -15,7 +15,6 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Light mode uses purple instead of yellow */
     --primary: 265 89% 66%;  /* Purple #8B5CF6 */
     --primary-foreground: 0 0% 0%;  /* Changed to black for better contrast */
 
@@ -94,11 +93,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 }
 
@@ -140,7 +140,6 @@
     @apply transition-all duration-700 hover:shadow-lg hover:-translate-y-1;
   }
 
-  /* Updated donate button with improved design */
   .donate-button {
     @apply relative overflow-hidden ministry-gradient-bg dark:text-white font-bold
            transition-all duration-500 shadow-md hover:shadow-xl dark:shadow-purple-500/30;
@@ -161,7 +160,6 @@
            transition-all duration-500;
   }
 
-  /* Instagram-like card styles */
   .instagram-card {
     @apply rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300
            bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700;
@@ -179,12 +177,10 @@
     @apply p-3 border-t border-gray-100 dark:border-gray-700 flex justify-between;
   }
   
-  /* Modern smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
   
-  /* Improved intro background with better transition */
   .intro-background-transition {
     @apply absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t 
            from-background via-background/80 to-transparent;
@@ -217,7 +213,6 @@
   animation: pulse-slow 5s ease-in-out infinite;
 }
 
-/* Instagram-inspired animations */
 @keyframes like-animation {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.2); }
@@ -227,7 +222,6 @@
   animation: like-animation 0.3s ease-in-out;
 }
 
-/* Subtle image zoom on hover */
 .img-zoom {
   @apply transition-transform duration-700;
 }

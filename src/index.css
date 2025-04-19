@@ -116,6 +116,10 @@
     @apply bg-gradient-to-r from-ministry-gold-dark via-ministry-gold to-ministry-gold-light;
   }
 
+  .donate-button2 {
+    @apply bg-gradient-to-r from-teal-600 to-indigo-500;
+  }
+
   .ministry-gradient-text {
     @apply bg-gradient-to-r from-ministry-gold-dark via-ministry-gold to-ministry-gold-light text-transparent bg-clip-text;
   }

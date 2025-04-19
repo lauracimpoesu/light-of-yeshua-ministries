@@ -7,10 +7,10 @@ const Hero = () => {
     <div className="relative min-h-screen flex items-center overflow-hidden">
       {/* Static Purple Gradient Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/90 via-indigo-800/80 to-cyan-500/90 dark:from-indigo-800 dark:via-indigo-700 dark:to-indigo-900"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/90 via-indigo-800/80 to-cyan-500/90 dark:from-cyan-700/90 dark:via-indigo-900/80 dark:to-cyan-600/90"></div>
 
         {/* Static Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-indigo-900/60 to-purple/50 dark:from-cyan-900 dark:via-purple-900 dark:to-[#1e172b]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-600/90 via-indigo-600/80 to-cyan-600/90 dark:from-cyan-800/90 dark:via-indigo-700/80 dark:to-teal-700/90"></div>
 
         {/* Subtle Particle Effect */}
         {[...Array(40)].map((_, i) => (
@@ -66,7 +66,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             Take the{" "}
-            <span className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold-dark to-ministry-gold-light bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-ministry-gold to-cyan-400 bg-clip-text text-transparent">
               Light of Yeshua
             </span>{" "}
             to the Nations

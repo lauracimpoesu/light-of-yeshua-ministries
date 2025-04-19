@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, CircleDollarSign } from "lucide-react";
+import { Check, CircleDollarSign, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 
@@ -11,6 +11,39 @@ const donationOptions = [
   { amount: 500, impact: "Funds a missionary for a week-long outreach" },
   { amount: 1000, impact: "Supports a major international mission trip" },
 ];
+
+const BibleVerseSection = () => {
+  return (
+    <div className="mt-8 bg-gradient-to-br from-[#FFD700]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/20">
+      <div className="flex items-start space-x-4 mb-4">
+        <Quote className="text-[#FFD700] dark:text-[#00CED1] w-8 h-8 flex-shrink-0" />
+        <div>
+          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+            Supporting Ministry
+          </h4>
+          <div className="space-y-4">
+            <blockquote className="italic text-gray-700 dark:text-gray-300">
+              <p className="mb-2">
+                "The one who receives instruction in the word should share all good things with their instructor."
+                <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
+                  - Galatians 6:6 (NIV)
+                </span>
+              </p>
+            </blockquote>
+            <blockquote className="italic text-gray-700 dark:text-gray-300">
+              <p>
+                "In the same way, the Lord has commanded that those who preach the gospel should receive their living from the gospel."
+                <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
+                  - 1 Corinthians 9:14 (NIV)
+                </span>
+              </p>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const DonationSection = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
@@ -31,7 +64,6 @@ const DonationSection = () => {
       return;
     }
     
-    // Redirect to PayPal.me with the specified amount
     const paypalUrl = `https://paypal.me/loyministries/${amount}`;
     window.open(paypalUrl, '_blank');
   };
@@ -176,6 +208,8 @@ const DonationSection = () => {
               ))}
             </ul>
           </div>
+
+          <BibleVerseSection />
         </div>
       </div>
     </section>

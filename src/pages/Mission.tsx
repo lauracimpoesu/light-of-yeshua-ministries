@@ -10,7 +10,7 @@ const Mission = () => {
 
   const missionStatements = [
     {
-      title: "Global Streets. Eternal Souls.",
+      title: "Eternal Souls.",
       description:
         "We take the message of salvation to the streets of nations worldwide, reaching those who need to hear the Good News. Every soul matters in the eyes of God.",
     },
@@ -87,7 +87,7 @@ const Mission = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <blockquote className="text-2xl md:text-3xl font-semibold italic max-w-3xl mx-auto dark:bg-gradient-to-r dark:from-ministry-gold-light dark:via-cyan-300 dark:to-purple-300 dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-ministry-gold via-cyan-500 to-indigo-600 bg-clip-text text-transparent">
+              <blockquote className="text-xl md:text-3xl font-semibold italic max-w-3xl mx-auto dark:bg-gradient-to-r dark:from-ministry-gold-light dark:via-cyan-300 dark:to-purple-300 dark:bg-clip-text dark:text-transparent bg-gradient-to-r from-ministry-gold via-cyan-500 to-indigo-600 bg-clip-text text-transparent">
                 "The harvest is plentiful, but the workers are few. Ask the Lord
                 of the harvest, therefore, to send out workers into his harvest
                 field."

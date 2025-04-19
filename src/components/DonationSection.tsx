@@ -127,7 +127,7 @@ const DonationSection = () => {
                   <span 
                     className={`text-xl font-bold mb-1 relative z-10 transition-all duration-500 ${
                       selectedAmount === option.amount 
-                        ? 'bg-gradient-to-r from-gold-dark via-gold to-gold-light bg-clip-text text-transparent scale-110'
+                        ? 'bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 bg-clip-text text-transparent scale-110'
                         : 'text-gray-900 dark:text-white'
                     }`}
                   >
@@ -136,7 +136,7 @@ const DonationSection = () => {
                   <span 
                     className={`text-xs text-center relative z-10 transition-all duration-500 ${
                       selectedAmount === option.amount
-                        ? 'text-gold'
+                        ? 'text-cyan-600 dark:text-cyan-400'
                         : 'text-gray-600 dark:text-gray-400'
                     }`}
                   >
@@ -185,7 +185,7 @@ const DonationSection = () => {
               <span
                 className={`ml-3 text-sm ${
                   isMonthly
-                    ? "bg-gradient-to-r from-gold-dark via-gold to-gold-light bg-clip-text text-transparent font-semibold"
+                    ? "bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 bg-clip-text text-transparent font-semibold"
                     : "text-gray-700 dark:text-gray-300"
                 }`}
               >

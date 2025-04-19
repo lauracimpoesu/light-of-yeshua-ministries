@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -86,18 +87,38 @@ const Donate = () => {
                       setSelectedAmount(option.amount);
                       setCustomAmount("");
                     }}
-                    className={`p-4 rounded-lg border-2 transition-all duration-500 flex flex-col items-center ${
-                      selectedAmount === option.amount
-                        ? "border-secondary bg-secondary/10 dark:border-[#00e8ff] dark:bg-[#00e8ff]/10"
-                        : "border-gray-200 dark:border-gray-700 dark:hover:border-[#00e8ff]/50"
-                    }`}
+                    className={`p-4 rounded-lg transition-all duration-500 flex flex-col items-center relative overflow-hidden group 
+                      ${
+                        selectedAmount === option.amount
+                          ? "border-2 border-gold bg-gradient-to-br from-gold/5 to-gold/10 dark:from-gold/10 dark:to-gold/5 shadow-xl transform -translate-y-1 scale-[1.02]"
+                          : "border-2 border-gray-200 dark:border-gray-700 hover:border-gold/50"
+                      }`}
                   >
-                    <span className="text-xl font-bold mb-1 text-gray-900 dark:text-white">
+                    <div 
+                      className={`absolute inset-0 bg-gradient-to-r from-gold/20 via-gold/10 to-gold/20 opacity-0 transition-opacity duration-500
+                        ${selectedAmount === option.amount ? 'animate-gold-shine-slow opacity-30' : 'group-hover:opacity-10'}`}
+                    />
+                    <span 
+                      className={`text-xl font-bold mb-1 relative z-10 transition-all duration-500 ${
+                        selectedAmount === option.amount 
+                          ? 'bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 bg-clip-text text-transparent scale-110'
+                          : 'text-gray-900 dark:text-white'
+                      }`}
+                    >
                       ${option.amount}
                     </span>
-                    <span className="text-xs text-gray-600 dark:text-gray-300 text-center">
+                    <span 
+                      className={`text-xs text-center relative z-10 transition-all duration-500 ${
+                        selectedAmount === option.amount
+                          ? 'text-cyan-600 dark:text-cyan-400'
+                          : 'text-gray-600 dark:text-gray-400'
+                      }`}
+                    >
                       {option.impact}
                     </span>
+                    {selectedAmount === option.amount && (
+                      <div className="absolute inset-0 bg-gold/5 dark:bg-gold/10 blur-sm animate-pulse-glow"/>
+                    )}
                   </button>
                 ))}
               </div>
@@ -123,19 +144,25 @@ const Donate = () => {
               <div className="flex items-center mb-8">
                 <button
                   onClick={() => setIsMonthly(!isMonthly)}
-                  className={`relative w-12 h-6 rounded-full transition-colors duration-500 ${
+                  className={`relative w-12 h-6 rounded-full transition-all duration-500 ${
                     isMonthly
-                      ? "bg-gradient-to-r from-gold-light via-gold to-gold-dark animate-gold-shine-slow shadow-lg shadow-gold/30"
+                      ? "bg-gradient-to-r from-gold-darkest via-gold to-gold-light animate-gold-shine-slow shadow-lg shadow-gold/30"
                       : "bg-gray-300 dark:bg-gray-600"
                   }`}
                 >
                   <span
                     className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${
-                      isMonthly ? "transform translate-x-6" : ""
+                      isMonthly ? "transform translate-x-6 animate-pulse-glow shadow-gold/50" : ""
                     }`}
                   ></span>
                 </button>
-                <span className="ml-3 text-sm text-gray-700 dark:text-gray-300">
+                <span 
+                  className={`ml-3 text-sm ${
+                    isMonthly
+                      ? "bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 bg-clip-text text-transparent font-semibold"
+                      : "text-gray-700 dark:text-gray-300"
+                  }`}
+                >
                   Make this a monthly donation
                 </span>
               </div>

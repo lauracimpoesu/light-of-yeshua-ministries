@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { m, motion } from "framer-motion";
@@ -10,30 +10,28 @@ import { useTheme } from "next-themes";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [pastHeroSection, setPastHeroSection] = useState(false);
+  const { pathname } = useLocation();
+  const isHomePage = pathname === "/";
   const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      // Basic scrolled detection for navbar background
       if (window.scrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
-
-      // Detect when we've scrolled past the hero section
-      // Assuming hero section height is around 100vh (adjust as needed)
-      if (window.scrollY > window.innerHeight * 0.7) {
-        setPastHeroSection(true);
-      } else {
-        setPastHeroSection(false);
-      }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // Set initial scroll state based on route
+    setScrolled(!isHomePage);
+
+    // Only add scroll listener on homepage
+    if (isHomePage) {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [isHomePage]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -48,20 +46,11 @@ const Navbar = () => {
 
   const isLightMode = theme === "light";
 
-  // Dynamic text color logic for light mode
-  const getTextColor = () => {
-    if (isLightMode) {
-      return pastHeroSection || scrolled ? "text-gray-900" : "text-white";
-    } else {
-      return "text-white"; // Dark mode always uses white text
-    }
-  };
-
   return (
     <nav
       className={cn(
-        "fixed w-full z-50 transition-all duration-500 text-white",
-        scrolled
+        "fixed w-full z-50 transition-all duration-500",
+        scrolled || !isHomePage
           ? "bg-white/90 text-black dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2"
           : "bg-transparent py-4"
       )}
@@ -72,10 +61,11 @@ const Navbar = () => {
             <span
               className={cn(
                 "font-light transition-colors",
-                isLightMode && pastHeroSection
-                  ? "text-purple-600" // Purple in light mode past hero
-                  : "text-yellow-100",
-                scrolled && "text-black"
+                (!isHomePage || scrolled) && isLightMode
+                  ? "text-purple-600"
+                  : isHomePage && !scrolled && isLightMode
+                  ? "text-yellow-100"
+                  : "text-yellow-100"
               )}
             >
               Light of
@@ -83,10 +73,11 @@ const Navbar = () => {
             <span
               className={cn(
                 "italic transition-colors",
-                isLightMode && pastHeroSection
-                  ? "text-blue-500" // Blueish in light mode past hero
-                  : "text-teal-200",
-                scrolled && "text-indigo-400"
+                (!isHomePage || scrolled) && isLightMode
+                  ? "text-blue-500"
+                  : isHomePage && !scrolled && isLightMode
+                  ? "text-teal-200"
+                  : "text-teal-200"
               )}
             >
               Yeshua
@@ -94,7 +85,7 @@ const Navbar = () => {
           </h1>
         </Link>
 
-        {/* Desktop Menu with improved animations */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-2">
           {navItems.map((item) => (
             <motion.div
@@ -105,8 +96,8 @@ const Navbar = () => {
               <Link
                 to={item.path}
                 className={cn(
-                  "px-3 py-2 text-sm font-medium rounded-full transition-colors dartext-white",
-                  scrolled || pastHeroSection
+                  "px-3 py-2 text-sm font-medium rounded-full transition-colors",
+                  (!isHomePage || scrolled)
                     ? isLightMode
                       ? "text-gray-900 hover:bg-gray-100"
                       : "dark:text-white dark:hover:bg-white/15"
@@ -136,7 +127,7 @@ const Navbar = () => {
             onClick={toggleMenu}
             className={cn(
               "ml-2 p-2 rounded-full",
-              scrolled || pastHeroSection
+              (!isHomePage || scrolled)
                 ? isLightMode
                   ? "text-gray-900 hover:bg-gray-100"
                   : "dark:text-white dark:hover:bg-white/15"

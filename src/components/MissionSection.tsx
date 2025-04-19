@@ -115,10 +115,10 @@ const MissionSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-center mt-12"
+          className="text-center mt-12 flex justify-center"
         >
           <Link to="/mission">
-            <Button className="bg-gradient-to-r from-indigo-500 via-cyan-600 to-indigo-400 hover:shadow-xl dark:text-white rounded-full px-8 py-6 font-bold text-lg transform hover:scale-105 transition-all duration-900 text-white hover:text-black dark:hover:text-black">
+            <Button className="bg-gradient-to-r from-indigo-500 via-cyan-600 to-indigo-400 hover:shadow-xl dark:text-white rounded-full px-8 py-6 font-bold text-lg transform hover:scale-105 transition-all duration-900 text-white hover:text-black dark:hover:text-black text-center">
               Learn More About Our Mission
             </Button>
           </Link>

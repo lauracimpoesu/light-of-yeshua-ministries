@@ -12,7 +12,7 @@ const About = () => {
   return (
     <>
       <Navbar />
-      <div className="pt-20">
+      <div className="pt-20 dark:bg-[#101827]">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

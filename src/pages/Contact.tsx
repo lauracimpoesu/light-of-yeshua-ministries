@@ -89,7 +89,7 @@ const Contact = () => {
   return (
     <>
       <Navbar />
-      <div className="pt-20">
+      <div className="pt-20 bg-gold-light/10 dark:bg-[#151921]">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -109,10 +109,7 @@ const Contact = () => {
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
                 <div className="w-14 h-14 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark flex items-center justify-center mb-4">
-                  <Mail
-                    className="text-gray-900 dark:text-gray-900"
-                    size={24}
-                  />
+                  <Mail className="text-white dark:text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Email Us</h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -127,10 +124,7 @@ const Contact = () => {
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
                 <div className="w-14 h-14 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark flex items-center justify-center mb-4">
-                  <MapPin
-                    className="text-gray-900 dark:text-gray-900"
-                    size={24}
-                  />
+                  <MapPin className="text-white dark:text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Our Location</h3>
                 <p className="text-gray-600 dark:text-gray-400">
@@ -145,10 +139,7 @@ const Contact = () => {
                 className="flex flex-col items-center text-center p-6 rounded-lg bg-white dark:bg-gray-800 shadow-md"
               >
                 <div className="w-14 h-14 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark flex items-center justify-center mb-4">
-                  <Phone
-                    className="text-gray-900 dark:text-gray-900"
-                    size={24}
-                  />
+                  <Phone className="text-white dark:text-white" size={24} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Call Us</h3>
                 {/*  <p className="text-gray-600 dark:text-gray-400">
@@ -157,7 +148,7 @@ const Contact = () => {
               </motion.div>
             </div>
 
-            <div className="bg-white dark:bg-gray-900/90 rounded-lg shadow-lg p-8 mb-12">
+            <div className="bg-white dark:bg-[#101827] rounded-lg shadow-lg p-8 mb-12">
               <h2 className="text-2xl font-bold mb-6 text-center">
                 Send Us a Message
               </h2>
@@ -281,7 +272,7 @@ const Contact = () => {
               </form>
             </div>
 
-            <div className="bg-white dark:bg-gray-900/90 rounded-lg shadow-lg p-8">
+            <div className="bg-white dark:bg-[#101827] rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6 text-center">
                 Subscribe to Our Newsletter
               </h2>

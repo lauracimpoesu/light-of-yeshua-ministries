@@ -15,55 +15,37 @@ const donationOptions = [
 
 export const BibleVerseSection = () => {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="mt-8 relative overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-ministry-gold/5 via-ministry-gold/10 to-ministry-gold/5 dark:from-ministry-gold/10 dark:via-ministry-gold/5 dark:to-ministry-gold/10 animate-gradient-shift" />
-      
-      <div className="relative backdrop-blur-sm rounded-xl border border-ministry-gold/20 dark:border-ministry-gold/10 transform hover:scale-[1.02] transition-all duration-500">
-        <div className="absolute inset-0 bg-white/5 dark:bg-black/5" />
-        
-        <div className="relative p-8">
-          <div className="flex items-start space-x-4 mb-6">
-            <Quote className="text-ministry-gold dark:text-ministry-gold w-8 h-8 flex-shrink-0 animate-pulse-slow" />
-            <div className="space-y-6">
-              <motion.blockquote 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="group"
-              >
-                <p className="text-lg text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
-                  "Let him that is taught in the word communicate unto him that teacheth in all good things."
-                </p>
-                <div className="mt-2 flex items-center space-x-2 text-ministry-gold dark:text-ministry-gold/90">
-                  <span className="h-px w-8 bg-ministry-gold/50 group-hover:w-12 transition-all duration-300" />
-                  <span className="text-sm font-semibold">Galatians 6:6 (KJV)</span>
-                </div>
-              </motion.blockquote>
-
-              <motion.blockquote
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="group"
-              >
-                <p className="text-lg text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
-                  "Even so hath the Lord ordained that they which preach the gospel should live of the gospel."
-                </p>
-                <div className="mt-2 flex items-center space-x-2 text-ministry-gold dark:text-ministry-gold/90">
-                  <span className="h-px w-8 bg-ministry-gold/50 group-hover:w-12 transition-all duration-300" />
-                  <span className="text-sm font-semibold">1 Corinthians 9:14 (KJV)</span>
-                </div>
-              </motion.blockquote>
-            </div>
+    <div className="mt-8 bg-gradient-to-br from-[#FFD700]/10 to-[#00CED1]/10 rounded-xl p-6 border border-[#FFD700]/20 dark:border-[#00CED1]/10">
+      <div className="flex items-start space-x-4 mb-4">
+        <Quote className="text-[#FFD700] dark:text-purple-800 w-8 h-8 flex-shrink-0" />
+        <div>
+          {/* 
+          <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+            Thank you for your support!
+          </h4> */}
+          <div className="space-y-4">
+            <blockquote className="italic text-gray-700 dark:text-gray-300">
+              <p className="mb-2">
+                "Let him that is taught in the word communicate unto him that
+                teacheth in all good things."
+                <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
+                  - Galatians 6:6 (KJV)
+                </span>
+              </p>
+            </blockquote>
+            <blockquote className="italic text-gray-700 dark:text-gray-300">
+              <p>
+                "Even so hath the Lord ordained that they which preach the
+                gospel should live of the gospel."
+                <span className="block text-sm mt-1 text-gray-500 dark:text-gray-400">
+                  - 1 Corinthians 9:14 (KJV)
+                </span>
+              </p>
+            </blockquote>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

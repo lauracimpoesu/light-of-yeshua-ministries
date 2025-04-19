@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import whitelogo from "../assets/white.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,20 +56,20 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3">
-          <img 
-            src="/lovable-uploads/312a103f-ebf7-4902-80d8-c63317a38bf0.png" 
-            alt="Light of Yeshua Logo" 
+          <img
+            src={whitelogo}
+            alt="Light of Yeshua Logo"
             className="h-12 w-auto"
           />
           <h1 className="text-lg md:text-2xl font-seasons">
-            <span className={cn(
+            {/*  <span className={cn(
               "transition-colors",
               scrolled || !isHomePage
                 ? "text-ministry-gold-dark dark:text-ministry-gold-light"
                 : "text-ministry-gold-light"
             )}>
               Light of Yeshua
-            </span>
+            </span> */}
           </h1>
         </Link>
 
@@ -83,7 +84,7 @@ const Navbar = () => {
                 to={item.path}
                 className={cn(
                   "px-3 py-2 text-sm font-medium rounded-full transition-colors",
-                  (!isHomePage || scrolled)
+                  !isHomePage || scrolled
                     ? isLightMode
                       ? "text-gray-900 hover:bg-gray-100"
                       : "dark:text-white dark:hover:bg-white/15"
@@ -96,9 +97,11 @@ const Navbar = () => {
           ))}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
-              <Button className="bg-gradient-to-r from 
+              <Button
+                className="bg-gradient-to-r from 
                 ministry-gold-dark to-ministry-gold hover:from-ministry-gold 
-                hover:to-ministry-gold-light text-white rounded-full">
+                hover:to-ministry-gold-light text-white rounded-full"
+              >
                 Donate
               </Button>
             </Link>
@@ -112,7 +115,7 @@ const Navbar = () => {
             onClick={toggleMenu}
             className={cn(
               "ml-2 p-2 rounded-full",
-              (!isHomePage || scrolled)
+              !isHomePage || scrolled
                 ? isLightMode
                   ? "text-gray-900 hover:bg-gray-100"
                   : "dark:text-white dark:hover:bg-white/15"

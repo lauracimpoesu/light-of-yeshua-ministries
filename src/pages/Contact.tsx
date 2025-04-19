@@ -291,7 +291,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     disabled={isSubscribing}
-                    className="ministry-gradient-bg px-6 py-3 rounded-lg text-gray-900 font-bold hover:shadow-lg disabled:opacity-70"
+                    className="ministry-gradient-bg px-6 py-3 rounded-lg text-white font-bold hover:shadow-lg disabled:opacity-70"
                   >
                     {isSubscribing ? (
                       <span className="flex items-center">

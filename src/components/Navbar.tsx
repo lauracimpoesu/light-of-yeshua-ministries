@@ -60,7 +60,7 @@ const Navbar = () => {
           <img
             src={!isHomePage || scrolled ? blacklogo : whitelogo}
             alt="Light of Yeshua Logo"
-            className="h-16 w-auto transition-opacity duration-300"
+            className="h-12 w-auto transition-opacity duration-300"
           />
           <h1 className="text-lg md:text-2xl font-seasons"></h1>
         </Link>

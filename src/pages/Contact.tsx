@@ -34,13 +34,14 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const subject = encodeURIComponent(formData.subject);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
+      const mailtoLink = `mailto:lightofyeshuaministries@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
 
-      // In a real app, you would send the data to your backend here
-      console.log("Form submitted:", formData);
-
-      toast.success("Message sent successfully! We'll get back to you soon.");
+      toast.success("Opening your email client...");
       setFormData({
         name: "",
         email: "",
@@ -48,8 +49,8 @@ const Contact = () => {
         message: "",
       });
     } catch (error) {
-      console.error("Error submitting form:", error);
-      toast.error("Failed to send message. Please try again later.");
+      console.error("Error handling form:", error);
+      toast.error("Failed to open email client. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -71,10 +72,8 @@ const Contact = () => {
     setIsSubscribing(true);
 
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // In a real app, you would send the email to your newsletter service
       console.log("Newsletter subscription:", newsletterEmail);
 
       toast.success("Thank you for subscribing to our newsletter!");
@@ -149,7 +148,7 @@ const Contact = () => {
               </motion.div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-12">
+            <div className="bg-white dark:bg-gray-900/90 rounded-lg shadow-lg p-8 mb-12">
               <h2 className="text-2xl font-bold mb-6 text-center">
                 Send Us a Message
               </h2>
@@ -270,7 +269,7 @@ const Contact = () => {
               </form>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+            <div className="bg-white dark:bg-gray-900/90 rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-bold mb-6 text-center">
                 Subscribe to Our Newsletter
               </h2>

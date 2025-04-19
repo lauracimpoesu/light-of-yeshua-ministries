@@ -1,3 +1,4 @@
+
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -5,12 +6,12 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Static Purple Gradient Background */}
+      {/* Hero Gradient Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/90 via-indigo-800/80 to-cyan-500/90 dark:from-cyan-700/90 dark:via-indigo-900/80 dark:to-cyan-600/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-dark via-indigo to-cyan-dark dark:from-indigo-dark dark:via-indigo dark:to-cyan-dark"></div>
 
-        {/* Static Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-600/90 via-indigo-600/80 to-cyan-600/90 dark:from-cyan-800/90 dark:via-indigo-700/80 dark:to-teal-700/90"></div>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan via-indigo-light to-cyan-dark dark:from-indigo dark:via-indigo-light dark:to-cyan-dark opacity-80"></div>
 
         {/* Subtle Particle Effect */}
         {[...Array(40)].map((_, i) => (
@@ -18,11 +19,11 @@ const Hero = () => {
             key={i}
             className={`absolute rounded-full ${
               i % 4 === 0
-                ? "bg-[#dbff00]/50 dark:bg-[#8B5CF6]/60"
+                ? "bg-gold/50 dark:bg-gold/60"
                 : i % 4 === 1
-                ? "bg-[#00e8ff]/40"
+                ? "bg-cyan/40"
                 : i % 4 === 2
-                ? "bg-[#00ffba]/30"
+                ? "bg-indigo-light/30"
                 : "bg-white/40"
             }`}
             style={{
@@ -66,7 +67,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             Take the{" "}
-            <span className="bg-gradient-to-r from-ministry-gold to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent">
               Light of Yeshua
             </span>{" "}
             to the Nations
@@ -88,7 +89,7 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/donate">
-                <button className="bg-gradient-to-r from-ministry-gold-light via-ministry-gold to-ministry-gold-dark hover:from-ministry-gold-dark hover:via-ministry-gold hover:to-ministry-gold-light text-black  flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-ministry-gold/50 font-bold">
+                <button className="bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-light text-black flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-gold/50 font-bold">
                   Donate Now
                   <ArrowRight size={18} />
                 </button>

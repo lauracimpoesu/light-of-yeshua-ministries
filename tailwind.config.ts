@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,24 +25,25 @@ export default {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        ministry: {
-          blue: '#3B82F6',
-          indigo: {
-            light: '#818CF8',
-            DEFAULT: '#6366F1',
-            dark: '#4F46E5',
-          },
-          gold: {
-            light: '#FFD700',
-            DEFAULT: '#D4AF37',
-            dark: '#996515',
-          },
-          menorah: {
-            light: '#FFC857',
-            DEFAULT: '#C49102',
-            dark: '#8B6914',
-          }
+        
+        // Core brand colors
+        gold: {
+          light: '#F5D76E', // Lighter gold
+          DEFAULT: '#D4AF37', // Primary gold
+          dark: '#996515',   // Darker gold
         },
+        cyan: {
+          light: '#67E8F9', // Lighter cyan
+          DEFAULT: '#06B6D4', // Primary cyan
+          dark: '#0891B2',  // Darker cyan
+        },
+        indigo: {
+          light: '#A5B4FC', // Lighter indigo
+          DEFAULT: '#6366F1', // Primary indigo
+          dark: '#4F46E5',  // Darker indigo
+        },
+        
+        // System UI colors derived from our brand colors
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
@@ -50,17 +52,17 @@ export default {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'
         },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))'
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))'
         },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))'
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
@@ -126,20 +128,20 @@ export default {
         },
         'glow': {
           '0%, 100%': {
-            boxShadow: '0 0 10px 2px rgba(139, 92, 246, 0.3)'
+            boxShadow: '0 0 10px 2px rgba(99, 102, 241, 0.3)'
           },
           '50%': {
-            boxShadow: '0 0 20px 6px rgba(139, 92, 246, 0.6)'
+            boxShadow: '0 0 20px 6px rgba(99, 102, 241, 0.6)'
           }
         },
         'pulse-glow': {
           '0%, 100%': {
             opacity: '1',
-            boxShadow: '0 0 10px 2px rgba(139, 92, 246, 0.3)'
+            boxShadow: '0 0 10px 2px rgba(99, 102, 241, 0.3)'
           },
           '50%': {
             opacity: '0.8',
-            boxShadow: '0 0 20px 6px rgba(139, 92, 246, 0.6)'
+            boxShadow: '0 0 20px 6px rgba(99, 102, 241, 0.6)'
           }
         },
         'gold-shine': {

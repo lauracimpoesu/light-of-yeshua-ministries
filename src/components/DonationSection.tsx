@@ -150,22 +150,22 @@ const DonationSection = () => {
             <div className="flex items-center mb-8">
               <button
                 onClick={() => setIsMonthly(!isMonthly)}
-                className={`relative w-12 h-6 rounded-full transition-colors ${
+                className={`relative w-12 h-6 rounded-full transition-all duration-500 ${
                   isMonthly
-                    ? "bg-ministry-gold shadow-lg shadow-ministry-gold/30"
+                    ? "bg-gradient-to-r from-gold-darkest via-gold to-gold-light animate-gold-shine-slow shadow-lg shadow-gold/30"
                     : "bg-gray-300 dark:bg-gray-600"
                 }`}
               >
                 <span
-                  className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${
-                    isMonthly ? "transform translate-x-6" : ""
+                  className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-all duration-500 ${
+                    isMonthly ? "transform translate-x-6 animate-pulse-glow shadow-gold/50" : ""
                   }`}
                 ></span>
               </button>
               <span
                 className={`ml-3 text-sm ${
                   isMonthly
-                    ? "text-ministry-gold font-semibold"
+                    ? "bg-gradient-to-r from-gold-dark via-gold to-gold-light bg-clip-text text-transparent font-semibold"
                     : "text-gray-700 dark:text-gray-300"
                 }`}
               >

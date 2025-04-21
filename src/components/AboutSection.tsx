@@ -96,7 +96,7 @@ const AboutSection = () => {
               whileHover="hover"
               className="h-full"
             >
-              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-gold-dark/10 relative rounded-lg">
+              <Card className="border-0 overflow-hidden h-full shadow-md dark:shadow-gold-dark/10 relative rounded-lg hover:shadow-none">
                 <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 -z-10 rounded-lg" />
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold-light via-gold to-gold-dark animate-gold-shine-slow rounded-t-lg" />
 
@@ -131,3 +131,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import ContactBackground from "@/components/ContactBackground";
 
 const Contact = () => {
   useEffect(() => {
@@ -89,7 +90,8 @@ const Contact = () => {
   return (
     <>
       <Navbar />
-      <div className="pt-20 bg-gold-light/10 dark:bg-[#151921]">
+      <div className="relative pt-20 min-h-screen flex flex-col items-stretch justify-start">
+        <ContactBackground />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

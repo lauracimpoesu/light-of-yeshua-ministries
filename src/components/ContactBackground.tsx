@@ -2,44 +2,109 @@
 import React from "react";
 
 /**
- * A vibrant, minimal, creative static background for the Contact page.
- * Uses bold gradients and colorful blurred spots, inspired by the Hero section—no animation, just color pop.
+ * ContactBackground
+ * - Minimal, vibrant, and color-matched to the main site palette.
+ * - Lighter (almost white) in light mode with pops of cyan, teal, and indigo.
+ * - Dramatic but deep in dark mode with lush, vivid gradients (teal, cyan, indigo).
+ * - No animations, just clean glassy gradients and minimal design.
  */
 const ContactBackground = () => (
   <div
-    className="absolute inset-0 -z-10 overflow-hidden"
+    className="absolute inset-0 -z-10 overflow-hidden transition-colors duration-700"
     aria-hidden="true"
     style={{
       pointerEvents: "none",
-      background:
-        // Layered vibrant gradient base
-        "linear-gradient(120deg, #f97316 15%, #8B5CF6 60%, #0EA5E9 100%)",
     }}
   >
-    {/* Vivid magenta orange fade top left */}
-    <div className="absolute -top-32 -left-32 w-[34rem] h-[30rem] rounded-full bg-gradient-to-br from-pink-400/60 via-orange-400/40 to-transparent blur-[110px] opacity-60 pointer-events-none" />
+    {/* Main gradient base layers */}
+    {/* LIGHT MODE: almost white with teal/cyan/indigo fade. DARK MODE: deep navy/indigo/blacks. */}
+    <div
+      className="
+        absolute inset-0
+        bg-gradient-to-br
+        from-white via-cyan-50 to-teal-50
+        dark:from-[#0a1021] dark:via-[#10213f] dark:to-[#091724]
+        transition-colors duration-700"
+    />
 
-    {/* Deep violet/blue soft spot top right */}
-    <div className="absolute -top-24 right-0 w-[30rem] h-[20rem] rounded-full bg-gradient-to-tr from-indigo-500/70 via-purple-500/40 to-transparent blur-[100px] opacity-50 pointer-events-none" />
+    {/* Teal/Indigo blobs - GLASSY, big and subtle in light, punchier in dark */}
+    {/* Top left spot */}
+    <div
+      className="
+        absolute -top-28 -left-20
+        w-[28rem] h-[18rem] rounded-full
+        bg-gradient-to-br
+        from-teal-400/25 via-cyan-200/20 to-indigo-300/10
+        blur-[90px] opacity-60
+        dark:from-cyan-600/30 dark:via-teal-600/20 dark:to-indigo-700/30
+        dark:opacity-70
+        pointer-events-none
+      "
+    />
+    {/* Bottom right bright spot */}
+    <div
+      className="
+        absolute bottom-0 -right-20
+        w-[30rem] h-[18rem] rounded-full
+        bg-gradient-to-tr
+        from-cyan-300/25 via-indigo-200/25 to-teal-300/10
+        blur-[90px] opacity-60
+        dark:from-indigo-700/30 dark:via-cyan-500/25 dark:to-teal-800/30
+        pointer-events-none
+      "
+    />
+    {/* Top right concentrated indigo/cyan small puff */}
+    <div
+      className="
+        absolute -top-24 right-20
+        w-[13rem] h-[11rem] rounded-full
+        bg-gradient-to-br
+        from-indigo-300/30 via-cyan-400/20 to-transparent
+        blur-[60px] opacity-30
+        dark:from-indigo-600/50 dark:via-cyan-700/30 dark:to-transparent dark:opacity-40
+        pointer-events-none
+      "
+    />
+    {/* Center faint ellipse for 3D feeling */}
+    <div
+      className="
+        absolute left-1/2 top-[44%]
+        -translate-x-1/2 -translate-y-1/2
+        w-[55vw] h-48
+        bg-gradient-to-tr
+        from-cyan-200/10 via-white/30 to-indigo-50/10
+        dark:from-teal-800/30 dark:via-cyan-600/5 dark:to-indigo-800/10
+        blur-3xl opacity-30
+        rounded-full pointer-events-none
+      "
+    />
 
-    {/* Bright blue/cyan splash bottom right */}
-    <div className="absolute bottom-0 -right-24 w-[32rem] h-80 rounded-full bg-gradient-to-br from-cyan-400/70 via-blue-500/60 to-transparent blur-[90px] opacity-50 pointer-events-none" />
+    {/* Minimal geometry: two lightly-colored, *very soft* diagonal lines */}
+    <div
+      className="
+        absolute left-[28vw] top-28
+        w-2/3 h-1
+        bg-gradient-to-r
+        from-cyan-500/10 via-indigo-400/10 to-transparent
+        rounded pointer-events-none
+        dark:from-cyan-400/20 dark:to-transparent
+      "
+    />
+    <div
+      className="
+        absolute right-[15vw] bottom-16
+        w-1/2 h-1
+        bg-gradient-to-l
+        from-teal-400/10 via-cyan-300/10 to-transparent
+        rounded pointer-events-none
+        dark:from-teal-400/20 dark:to-transparent
+      "
+    />
 
-    {/* Vivid gold/yellow glow bottom left */}
-    <div className="absolute -bottom-28 -left-20 w-[24rem] h-[18rem] rounded-full bg-gradient-to-tr from-yellow-400/60 via-orange-300/40 to-transparent blur-3xl opacity-50 pointer-events-none" />
-
-    {/* Fine, barely-there pink line for depth */}
-    <div className="absolute left-1/3 top-16 w-1/2 h-1 bg-gradient-to-r from-pink-400/25 via-purple-500/10 to-transparent rounded pointer-events-none" />
-
-    {/* Fine bright blue line bottom right for accent */}
-    <div className="absolute right-1/4 bottom-8 w-1/3 h-1 bg-gradient-to-r from-cyan-400/20 via-blue-500/10 to-transparent rounded pointer-events-none" />
-
-    {/* Subtle glassmorphism overlay fade at the bottom */}
-    <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white/60 via-white/30 to-transparent dark:from-background/90 dark:via-background/50 dark:to-transparent" />
-
-    {/* Optional: a faint central blurred ellipse for focus */}
-    <div className="absolute left-1/2 top-[55%] -translate-x-1/2 -translate-y-1/2 w-2/3 h-64 bg-gradient-to-r from-indigo-200/20 via-cyan-100/10 to-pink-100/10 blur-3xl opacity-40 rounded-full pointer-events-none" />
+    {/* Glassy overlay at bottom to improve panel readability */}
+    <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-white/75 via-white/40 to-transparent dark:from-[#191A24]/90 dark:via-[#191A24]/60 dark:to-transparent pointer-events-none" />
   </div>
 );
 
 export default ContactBackground;
+

@@ -79,27 +79,7 @@ const ContactBackground = () => (
       "
     />
 
-    {/* Minimal geometry: two lightly-colored, *very soft* diagonal lines */}
-    <div
-      className="
-        absolute left-[28vw] top-28
-        w-2/3 h-1
-        bg-gradient-to-r
-        from-cyan-500/10 via-indigo-400/10 to-transparent
-        rounded pointer-events-none
-        dark:from-cyan-400/20 dark:to-transparent
-      "
-    />
-    <div
-      className="
-        absolute right-[15vw] bottom-16
-        w-1/2 h-1
-        bg-gradient-to-l
-        from-teal-400/10 via-cyan-300/10 to-transparent
-        rounded pointer-events-none
-        dark:from-teal-400/20 dark:to-transparent
-      "
-    />
+    {/* Removed the two very soft diagonal lines for cleaner background */}
 
     {/* Glassy overlay at bottom to improve panel readability */}
     <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-white/75 via-white/40 to-transparent dark:from-[#191A24]/90 dark:via-[#191A24]/60 dark:to-transparent pointer-events-none" />

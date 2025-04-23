@@ -31,7 +31,7 @@ serve(async (req) => {
     }
 
     // Initialize Stripe with your secret key
-    const stripeKey = "sk_test_51RFQexPUpliuo3lStjmOXqA62aqrvVRB7Vi8oDwgLcmlzhR3FT0ZJSpK2jl4QN2WzI4eNgUecDOCbpguYZioke7H00PVnjU6gG";
+    const stripeKey = "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";
     const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-08-16",
     });

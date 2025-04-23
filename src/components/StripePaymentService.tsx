@@ -1,10 +1,9 @@
-
 import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
 // Initialize Stripe with your publishable key
-const stripePromise = loadStripe("pk_test_51RFQexPUpliuo3lSgotCgDTn50H5NTwyEyWNUWhTminronSSSlATYKMsTq27xnUXgNkU7YSZ2lgVBMADs2xRB8KN00fCB3cQxU");
+const stripePromise = loadStripe("pk_live_51RH0YjG3klR9z0xVwrZvfM2HoTdx6U14sCv1ULjOlxSFFEcLr5Kmdhx0A4FgzKsETzjHX9TVep9vQC9lqHv7Fdc600yI2Znvjd");
 
 export const StripePaymentService = {
   // Function to create a payment intent or checkout session

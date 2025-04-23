@@ -179,7 +179,7 @@ const Donate = () => {
                 onClick={handlePayNow}
                 className="w-full rounded-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 text-white hover:shadow-xl font-bold text-lg py-4 px-8 transition-all duration-300"
               >
-                Pay Now
+                Donate Now
               </motion.button>
 
               <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">

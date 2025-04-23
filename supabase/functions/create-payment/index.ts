@@ -31,7 +31,6 @@ serve(async (req) => {
     }
 
     // Initialize Stripe with your secret key
-    // For this example, we're using the test key provided by the user
     const stripeKey = "sk_test_51RFQexPUpliuo3lStjmOXqA62aqrvVRB7Vi8oDwgLcmlzhR3FT0ZJSpK2jl4QN2WzI4eNgUecDOCbpguYZioke7H00PVnjU6gG";
     const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-08-16",

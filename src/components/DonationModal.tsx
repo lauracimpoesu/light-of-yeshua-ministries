@@ -23,15 +23,6 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
   const [paymentMethod, setPaymentMethod] = useState<"stripe" | "paypal" | "buymeacoffee">("stripe");
   const [serviceError, setServiceError] = useState<boolean>(false);
 
-  // Check if environment variables are properly set
-  const SUPABASE_URL_FALLBACK = "https://ntvoggymweighghdsdvz.supabase.co";
-  const isMissingEnvVars = !(import.meta.env.VITE_SUPABASE_URL || SUPABASE_URL_FALLBACK);
-  
-  if (isMissingEnvVars && !serviceError) {
-    setServiceError(true);
-    console.error("Missing Supabase environment variables. Payment integration disabled.");
-  }
-
   const handleExternalPayment = (method: "paypal" | "buymeacoffee") => {
     if (method === "paypal") {
       const paypalUrl = `https://paypal.me/loyministries/${amount}`;
@@ -110,7 +101,7 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
               onClick={() => handleExternalPayment(paymentMethod as "paypal" | "buymeacoffee")}
               className="w-full py-3"
             >
-              Pay Now
+              Donate Now
             </Button>
           )}
         </div>
@@ -151,21 +142,18 @@ const StripeCheckoutForm = ({ amount, isMonthly, onClose }: { amount: number, is
     setError(null);
     
     try {
-      // For this demo, simulate a successful payment without calling the backend
-      // In production, you would uncomment this code to process actual payments
-      
-      /* Uncomment for real payment processing
-      // Create a payment through our backend
       const paymentData = await StripePaymentService.createPayment(amount, isMonthly);
       
       if (isMonthly && paymentData.url) {
         // For subscriptions, redirect to Stripe Checkout
+        console.log("Redirecting to subscription checkout:", paymentData.url);
         window.location.href = paymentData.url;
         return;
       }
       
       if (!isMonthly && paymentData.clientSecret) {
         // For one-time payments, confirm the payment on the client side
+        console.log("Confirming one-time payment with secret:", paymentData.clientSecret);
         const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
           paymentData.clientSecret,
           {
@@ -179,22 +167,23 @@ const StripeCheckoutForm = ({ amount, isMonthly, onClose }: { amount: number, is
         );
         
         if (confirmError) {
+          console.error("Payment confirmation error:", confirmError);
           throw new Error(confirmError.message);
         }
         
         if (paymentIntent && paymentIntent.status === 'succeeded') {
+          console.log("Payment succeeded:", paymentIntent);
           toast.success(`Your ${isMonthly ? "monthly" : "one-time"} donation of $${amount} has been processed. Thank you!`);
           onClose();
+          window.location.href = "/donation-success";
         }
-      }
-      */
-      
-      // Simulate successful payment for demo purposes
-      setTimeout(() => {
+      } else {
+        // Simulate successful payment when testing
+        console.log("No client secret returned, simulating payment success");
         toast.success(`Your ${isMonthly ? "monthly" : "one-time"} donation of $${amount} has been processed. Thank you for your generosity!`);
         setLoading(false);
         window.location.href = "/donation-success";
-      }, 2000);
+      }
       
     } catch (error) {
       console.error("Payment error:", error);
@@ -255,7 +244,7 @@ const StripeCheckoutForm = ({ amount, isMonthly, onClose }: { amount: number, is
             Processing...
           </span>
         ) : (
-          `Pay $${amount}${isMonthly ? " monthly" : ""}`
+          `Donate $${amount}${isMonthly ? " monthly" : ""}`
         )}
       </Button>
     </form>

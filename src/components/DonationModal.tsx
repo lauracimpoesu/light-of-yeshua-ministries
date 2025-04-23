@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader, Di
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Button } from "@/components/ui/button";
-import { Check, CreditCard, Coffee, PaypalLogo } from "lucide-react";
+import { Check, CreditCard, Coffee, Wallet } from "lucide-react";
 import { toast } from "sonner";
 
 // Initialize Stripe with the publishable key
@@ -58,7 +58,7 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
               onClick={() => setPaymentMethod("paypal")}
               className="flex flex-col items-center p-4 h-auto"
             >
-              <PaypalLogo className="h-6 w-6 mb-2" />
+              <Wallet className="h-6 w-6 mb-2" />
               <span>PayPal</span>
             </Button>
             <Button

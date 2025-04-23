@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Button } from "@/components/ui/button";
-import { Check, CreditCard, Coffee, Wallet } from "lucide-react";
+import { Check, CreditCard, Coffee, Wallet, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
 import { StripePaymentService } from "./StripePaymentService";
 
@@ -21,6 +20,15 @@ interface DonationModalProps {
 // Wrapper component for the modal
 export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationModalProps) => {
   const [paymentMethod, setPaymentMethod] = useState<"stripe" | "paypal" | "buymeacoffee">("stripe");
+  const [serviceError, setServiceError] = useState<boolean>(false);
+
+  // Check if environment variables are properly set
+  const isMissingEnvVars = !import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_ANON_KEY;
+  
+  if (isMissingEnvVars && !serviceError) {
+    setServiceError(true);
+    console.error("Missing Supabase environment variables. Payment integration disabled.");
+  }
 
   const handleExternalPayment = (method: "paypal" | "buymeacoffee") => {
     if (method === "paypal") {
@@ -44,12 +52,28 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
           </DialogDescription>
         </DialogHeader>
 
+        {serviceError && (
+          <div className="bg-amber-50 border-l-4 border-amber-500 p-4 mb-4">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <AlertCircle className="h-5 w-5 text-amber-500" />
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-amber-700">
+                  Payment service is currently in development mode. Please choose PayPal or Buy Me a Coffee options.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="flex flex-col space-y-4 py-4">
           <div className="grid grid-cols-3 gap-2">
             <Button
               variant={paymentMethod === "stripe" ? "default" : "outline"}
               onClick={() => setPaymentMethod("stripe")}
               className="flex flex-col items-center p-4 h-auto"
+              disabled={serviceError}
             >
               <CreditCard className="h-6 w-6 mb-2" />
               <span>Credit Card</span>
@@ -72,15 +96,15 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
             </Button>
           </div>
 
-          {paymentMethod === "stripe" && (
+          {paymentMethod === "stripe" && !serviceError && (
             <Elements stripe={stripePromise}>
               <StripeCheckoutForm amount={amount} isMonthly={isMonthly} onClose={onClose} />
             </Elements>
           )}
 
-          {paymentMethod !== "stripe" && (
+          {(paymentMethod !== "stripe" || serviceError) && (
             <Button 
-              onClick={() => handleExternalPayment(paymentMethod)}
+              onClick={() => handleExternalPayment(paymentMethod as "paypal" | "buymeacoffee")}
               className="w-full py-3"
             >
               Continue to {paymentMethod === "paypal" ? "PayPal" : "Buy Me a Coffee"}

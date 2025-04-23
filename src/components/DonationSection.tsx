@@ -1,8 +1,10 @@
+
 import { useState } from "react";
 import { Check, CircleDollarSign, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import blacklogo from "../assets/black.png";
+import { DonationModal } from "./DonationModal";
 
 const donationOptions = [
   { amount: 20, impact: "Sends evangelistic materials to the streets" },

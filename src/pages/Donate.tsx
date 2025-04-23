@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -32,7 +31,7 @@ const Donate = () => {
     setSelectedAmount(null);
   };
 
-  const handleContinue = async () => {
+  const handlePayNow = () => {
     if (!selectedAmount && !customAmount) {
       toast.error("Please select or enter a donation amount");
       return;
@@ -45,7 +44,6 @@ const Donate = () => {
       return;
     }
 
-    // Open the donation modal instead of redirecting
     setIsModalOpen(true);
   };
 
@@ -178,10 +176,10 @@ const Donate = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={handleContinue}
+                onClick={handlePayNow}
                 className="w-full rounded-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-400 text-white hover:shadow-xl font-bold text-lg py-4 px-8 transition-all duration-300"
               >
-                Continue to Payment
+                Pay Now
               </motion.button>
 
               <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-4">

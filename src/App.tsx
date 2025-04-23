@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Mission from "./pages/Mission";
 import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
+import DonationSuccess from "./pages/DonationSuccess";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
@@ -41,10 +42,9 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/mission" element={<Mission />} />
-              {/*  <Route path="/media" element={<Media />} />
-              <Route path="/events" element={<Events />} /> */}
               <Route path="/contact" element={<Contact />} />
               <Route path="/donate" element={<Donate />} />
+              <Route path="/donation-success" element={<DonationSuccess />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

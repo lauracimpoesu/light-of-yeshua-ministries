@@ -6,6 +6,7 @@ import { Elements, CardElement, useStripe, useElements } from "@stripe/react-str
 import { Button } from "@/components/ui/button";
 import { Check, CreditCard, Coffee, Wallet } from "lucide-react";
 import { toast } from "sonner";
+import { StripePaymentService } from "./StripePaymentService";
 
 // Initialize Stripe with the publishable key
 const stripePromise = loadStripe("pk_test_51RFQexPUpliuo3lSgotCgDTn50H5NTwyEyWNUWhTminronSSSlATYKMsTq27xnUXgNkU7YSZ2lgVBMADs2xRB8KN00fCB3cQxU");
@@ -123,49 +124,44 @@ const StripeCheckoutForm = ({ amount, isMonthly, onClose }: { amount: number, is
     setError(null);
     
     try {
-      // Create a payment method using the card element
-      const { error: paymentMethodError, paymentMethod } = await stripe.createPaymentMethod({
-        type: 'card',
-        card: cardElement,
-      });
-
-      if (paymentMethodError) {
-        throw new Error(paymentMethodError.message);
+      // Create a payment through our backend
+      const paymentData = await StripePaymentService.createPayment(amount, isMonthly);
+      
+      if (isMonthly && paymentData.url) {
+        // For subscriptions, redirect to Stripe Checkout
+        window.location.href = paymentData.url;
+        return;
       }
-
-      if (!paymentMethod) {
-        throw new Error("Failed to create payment method");
-      }
-
-      // Create a payment intent directly using Stripe.js
-      // For test mode, this will charge the card successfully with no actual money transfer
-      const { error: confirmError } = await stripe.confirmCardPayment(
-        // In production, this would come from your server
-        // Using a hardcoded client secret for test mode only
-        'pi_1Abc123_secret_test',
-        {
-          payment_method: paymentMethod.id,
+      
+      if (!isMonthly && paymentData.clientSecret) {
+        // For one-time payments, confirm the payment on the client side
+        const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
+          paymentData.clientSecret,
+          {
+            payment_method: {
+              card: cardElement,
+              billing_details: {
+                // These details can be collected from the user if needed
+                name: 'Anonymous Donor',
+              },
+            }
+          }
+        );
+        
+        if (confirmError) {
+          throw new Error(confirmError.message);
         }
-      ).then(() => {
-        // In a real app, we would verify payment on the server
-        // For test mode, we simulate a successful payment
-        toast.success(`Your ${isMonthly ? "monthly" : "one-time"} donation of $${amount} has been processed. Thank you!`);
-        setLoading(false);
-        onClose();
-        return { error: null };
-      }).catch(error => {
-        console.error("Payment confirmation error:", error);
-        return { error };
-      });
-      
-      if (confirmError) {
-        throw confirmError;
+        
+        if (paymentIntent && paymentIntent.status === 'succeeded') {
+          toast.success(`Your ${isMonthly ? "monthly" : "one-time"} donation of $${amount} has been processed. Thank you!`);
+          onClose();
+        }
       }
-      
     } catch (error) {
       console.error("Payment error:", error);
       setError(error instanceof Error ? error.message : "Payment failed. Please try again.");
       toast.error("Payment failed. Please try again.");
+    } finally {
       setLoading(false);
     }
   };

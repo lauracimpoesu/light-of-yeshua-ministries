@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -5,6 +6,7 @@ import { motion } from "framer-motion";
 import { Check, ArrowRight, Heart } from "lucide-react";
 import { toast } from "sonner";
 import { BibleVerseSection } from "@/components/DonationSection";
+import { DonationModal } from "@/components/DonationModal";
 
 const donationOptions = [
   { amount: 20, impact: "Sends evangelistic materials to the streets" },
@@ -23,6 +25,7 @@ const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState("");
   const [isMonthly, setIsMonthly] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomAmount(e.target.value);
@@ -42,8 +45,8 @@ const Donate = () => {
       return;
     }
 
-    const paypalUrl = `https://paypal.me/loyministries/${donationAmount}`;
-    window.open(paypalUrl, "_blank");
+    // Open the donation modal instead of redirecting
+    setIsModalOpen(true);
   };
 
   return (
@@ -214,6 +217,15 @@ const Donate = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Donation Modal */}
+      <DonationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        amount={selectedAmount || (customAmount ? parseFloat(customAmount) : 0)}
+        isMonthly={isMonthly}
+      />
+
       <Footer />
     </>
   );

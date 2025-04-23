@@ -15,6 +15,9 @@ serve(async (req) => {
 
   try {
     const { amount, isMonthly } = await req.json();
+    
+    // Log request details for debugging
+    console.log("Received payment request:", { amount, isMonthly });
 
     // Validate amount
     if (!amount || amount <= 0) {
@@ -28,7 +31,9 @@ serve(async (req) => {
     }
 
     // Initialize Stripe with your secret key
-    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+    // For this example, we're using the test key provided by the user
+    const stripeKey = "sk_test_51RFQexPUpliuo3lStjmOXqA62aqrvVRB7Vi8oDwgLcmlzhR3FT0ZJSpK2jl4QN2WzI4eNgUecDOCbpguYZioke7H00PVnjU6gG";
+    const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-08-16",
     });
 
@@ -55,6 +60,8 @@ serve(async (req) => {
         cancel_url: `${req.headers.get("origin")}/donate`,
       });
 
+      console.log("Created subscription session:", session.id);
+      
       return new Response(
         JSON.stringify({ sessionId: session.id, url: session.url }),
         {
@@ -73,6 +80,8 @@ serve(async (req) => {
         },
       });
 
+      console.log("Created payment intent:", paymentIntent.id);
+      
       return new Response(
         JSON.stringify({ 
           clientSecret: paymentIntent.client_secret 
@@ -84,7 +93,7 @@ serve(async (req) => {
       );
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error processing payment:", error);
     return new Response(
       JSON.stringify({ error: error.message }),
       {

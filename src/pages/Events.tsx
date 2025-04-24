@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Clock, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const events = [
   {
@@ -43,6 +44,8 @@ const events = [
 ];
 
 const Events = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -87,32 +90,15 @@ const Events = () => {
                       <span className="italic">{event.date}</span>
                     </div>
 
-                    {/*   <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
-                      <Clock size={16} className="mr-2" />
-                      <span>{event.time}</span>
-                    </div> */}
-
-                    {/*   <div className="flex items-center text-gray-600 dark:text-gray-400 mb-4">
-                      <MapPin size={16} className="mr-2" />
-                      <span>{event.location}</span>
-                    </div> */}
-
-                    {/* <p className="mb-4 text-gray-700 dark:text-gray-300">
-                      {event.description}
-                    </p> */}
-
                     <div className="flex justify-between items-center">
                       <div className="flex items-center text-ministry-purple">
-                        {/*  <Users size={16} className="mr-1" />
-                        <span className="text-sm">
-                          {event.attendees} attending
-                        </span> */}
                         <p className="">Contact us to join!</p>
                       </div>
 
                       <Button
                         variant="outline"
                         className="hover:bg-ministry-purple/10 hover:text-ministry-purple transition-all duration-500"
+                        onClick={() => navigate('/contact')}
                       >
                         Contact Now
                       </Button>

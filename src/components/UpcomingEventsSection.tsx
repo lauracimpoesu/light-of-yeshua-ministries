@@ -52,9 +52,9 @@ const UpcomingEventsSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full hover:shadow-xl transition-all duration-500">
-                  <CardContent className="p-6 flex flex-col h-full">
-                    <h3 className="text-xl font-semibold mb-3">{event.title}</h3>
+                <Card className="group h-full transition-all duration-500 border-gold/30 hover:border-gold/50 relative">
+                  <div className="p-6 flex flex-col h-full">
+                    <h3 className="text-xl font-semibold mb-3 ministry-gradient-text">{event.title}</h3>
                     
                     <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
                       <Calendar className="h-4 w-4 mr-2" />
@@ -70,10 +70,12 @@ const UpcomingEventsSection = () => {
                       {event.description}
                     </p>
                     
-                    <Button className="w-full" variant="outline">
+                    <Button variant="outline" className="w-full ministry-gradient-text hover:bg-gold/5">
                       Learn More
                     </Button>
-                  </CardContent>
+                  </div>
+                  <div className="absolute inset-0 ring-1 ring-gold/10 ring-inset rounded-lg group-hover:ring-gold/30 transition-all duration-500"></div>
+                  <div className="absolute inset-0 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-500"></div>
                 </Card>
               </motion.div>
             ))}

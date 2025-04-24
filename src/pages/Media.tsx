@@ -3,60 +3,17 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-const mediaItems = [
-  {
-    type: "video",
-    title: "Street Preaching in New York",
-    thumbnail: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1470",
-    description: "Sharing the Gospel in Times Square"
-  },
-  {
-    type: "video",
-    title: "Outreach in Los Angeles",
-    thumbnail: "https://images.unsplash.com/photo-1576633565574-e9209b7e34bb?q=80&w=687",
-    description: "Ministry on the streets of LA"
-  },
-  {
-    type: "testimony",
-    title: "Sarah's Testimony",
-    thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=688",
-    description: "How the Gospel changed her life"
-  },
-  {
-    type: "testimony",
-    title: "John's Transformation",
-    thumbnail: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688",
-    description: "From darkness to light"
-  },
-  {
-    type: "video",
-    title: "Ministry in London",
-    thumbnail: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?q=80&w=1470",
-    description: "Preaching in Trafalgar Square"
-  },
-  {
-    type: "testimony",
-    title: "Michael's Journey",
-    thumbnail: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470",
-    description: "Finding Christ on the streets"
-  }
-];
+import { gallery } from "@/data/gallery";
 
 const Media = () => {
-  const [filter, setFilter] = useState("all");
-  const [filteredMedia, setFilteredMedia] = useState(mediaItems);
+  const [filter, setFilter] = useState("photos");
+  const [filteredMedia, setFilteredMedia] = useState(gallery);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    if (filter === "all") {
-      setFilteredMedia(mediaItems);
-    } else {
-      setFilteredMedia(mediaItems.filter(item => item.type === filter));
-    }
+    setFilteredMedia(filter === "photos" ? gallery : []);
   }, [filter]);
 
   return (
@@ -73,14 +30,13 @@ const Media = () => {
             Media Gallery
           </h1>
           
-          <Tabs defaultValue="all" className="max-w-3xl mx-auto">
-            <TabsList className="grid w-full grid-cols-3 mb-12">
-              <TabsTrigger value="all" onClick={() => setFilter("all")}>All</TabsTrigger>
-              <TabsTrigger value="video" onClick={() => setFilter("video")}>Videos</TabsTrigger>
-              <TabsTrigger value="testimony" onClick={() => setFilter("testimony")}>Testimonies</TabsTrigger>
+          <Tabs defaultValue="photos" className="max-w-7xl mx-auto">
+            <TabsList className="grid w-full grid-cols-2 mb-12">
+              <TabsTrigger value="photos" onClick={() => setFilter("photos")}>Photos</TabsTrigger>
+              <TabsTrigger value="videos" onClick={() => setFilter("videos")}>Videos</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="all" className="mt-0">
+            <TabsContent value="photos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredMedia.map((item, index) => (
                   <MediaCard key={index} item={item} index={index} />
@@ -88,19 +44,12 @@ const Media = () => {
               </div>
             </TabsContent>
             
-            <TabsContent value="video" className="mt-0">
+            <TabsContent value="videos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredMedia.map((item, index) => (
-                  <MediaCard key={index} item={item} index={index} />
-                ))}
-              </div>
-            </TabsContent>
-            
-            <TabsContent value="testimony" className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredMedia.map((item, index) => (
-                  <MediaCard key={index} item={item} index={index} />
-                ))}
+                {/* Placeholder cards for future videos */}
+                <div className="h-64 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"></div>
+                <div className="h-64 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"></div>
+                <div className="h-64 bg-gray-100 dark:bg-gray-800 rounded-lg animate-pulse"></div>
               </div>
             </TabsContent>
           </Tabs>
@@ -117,21 +66,19 @@ const MediaCard = ({ item, index }: { item: any, index: number }) => (
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
   >
-    <Card className="overflow-hidden hover:shadow-lg transition-all duration-500">
-      <div className="relative h-48 overflow-hidden">
+    <Card className="group overflow-hidden transition-all duration-500 border-gold/30 hover:border-gold/50">
+      <div className="relative aspect-[4/3] overflow-hidden">
         <img 
-          src={item.thumbnail} 
-          alt={item.title} 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          src={item.imageUrl} 
+          alt={item.location} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute top-2 right-2 bg-ministry-purple text-white text-xs px-2 py-1 rounded">
-          {item.type === "video" ? "Video" : "Testimony"}
+        <div className="absolute top-2 right-2 bg-gold/80 text-black text-xs px-2 py-1 rounded-full font-medium">
+          {item.location}
         </div>
       </div>
-      <CardContent className="p-4">
-        <h3 className="font-bold text-lg mb-1">{item.title}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{item.description}</p>
-      </CardContent>
+      <div className="absolute inset-0 ring-1 ring-gold/10 ring-inset rounded-lg group-hover:ring-gold/30 transition-all duration-500"></div>
+      <div className="absolute inset-0 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-500"></div>
     </Card>
   </motion.div>
 );

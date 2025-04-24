@@ -22,8 +22,6 @@ type VideoItem = {
   category: string;
 };
 
-type MediaItem = PhotoItem | VideoItem;
-
 const Media = () => {
   const [filter, setFilter] = useState("photos");
 
@@ -80,7 +78,7 @@ const MediaCard = ({ item, index }: { item: PhotoItem, index: number }) => (
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
   >
-    <Card className="group overflow-hidden aspect-[4/3]">
+    <Card className="overflow-hidden aspect-[4/3]">
       <div className="relative h-full">
         <img 
           src={item.imageUrl} 
@@ -100,7 +98,7 @@ const VideoCard = ({ item, index }: { item: VideoItem, index: number }) => (
   >
     <Dialog>
       <DialogTrigger asChild>
-        <Card className="group overflow-hidden aspect-[4/3] cursor-pointer">
+        <Card className="overflow-hidden aspect-[4/3] cursor-pointer">
           <div className="relative h-full flex items-center justify-center bg-gray-800">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="rounded-full bg-black/50 w-16 h-16 flex items-center justify-center">

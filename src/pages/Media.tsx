@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@/components/ui/dialog";
 import { X, Play } from "lucide-react";
 import { gallery, videos } from "@/data/gallery";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Define types for our media items
 type PhotoItem = {
@@ -96,6 +96,7 @@ const MediaCard = ({ item, index }: { item: PhotoItem; index: number }) => (
 
 const VideoCard = ({ item, index }: { item: VideoItem; index: number }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useIsMobile();
   
   return (
     <motion.div
@@ -108,16 +109,16 @@ const VideoCard = ({ item, index }: { item: VideoItem; index: number }) => {
           <Card className="overflow-hidden aspect-[4/3] cursor-pointer">
             <div className="relative h-full flex items-center justify-center bg-gray-800">
               <div className="absolute inset-0 flex items-center justify-center z-10">
-                <div className="rounded-full bg-black/50 w-16 h-16 flex items-center justify-center">
-                  <Play className="w-8 h-8 text-white ml-1" />
+                <div className="rounded-full bg-black/50 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center hover:bg-black/70 transition-colors">
+                  <Play className="w-6 h-6 md:w-8 md:h-8 text-white ml-1" />
                 </div>
               </div>
-              {/* We're using a video element as a preview/thumbnail but with controls disabled */}
               <video
                 src={item.videoUrl}
                 className="w-full h-full object-cover opacity-50"
                 muted
                 playsInline
+                preload="metadata"
                 onClick={(e) => {
                   e.preventDefault();
                   setIsOpen(true);
@@ -127,20 +128,21 @@ const VideoCard = ({ item, index }: { item: VideoItem; index: number }) => {
             </div>
           </Card>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[900px] max-h-[80vh] p-0 border-none bg-transparent shadow-none">
+        <DialogContent className="sm:max-w-[90vw] md:max-w-[900px] max-h-[90vh] p-0 border-none bg-transparent shadow-none">
           <div className="relative w-full h-full flex items-center justify-center bg-black/90 rounded-lg">
             <DialogClose className="absolute top-2 right-2 z-50 bg-black/70 text-white p-2 rounded-full hover:bg-black/90">
               <X className="h-6 w-6" />
             </DialogClose>
-            <div className="w-full max-h-[70vh] flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center p-4">
               {item.videoUrl.includes(".MOV") || item.videoUrl.includes(".MP4") ? (
                 <video
                   src={item.videoUrl}
                   controls
                   controlsList="nodownload"
-                  className="max-w-full max-h-[70vh] rounded-lg"
+                  className="max-w-full max-h-[80vh] rounded-lg"
                   style={{ objectFit: "contain" }}
                   onContextMenu={(e) => e.preventDefault()}
+                  playsInline
                 />
               ) : (
                 <iframe

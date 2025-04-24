@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,16 +15,14 @@ import DonationSuccess from "./pages/DonationSuccess";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
+import Events from "./pages/Events";
+import Media from "./pages/Media";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Ensure font loading is prioritized
   useEffect(() => {
-    // Add a class to indicate fonts are loaded
     document.documentElement.classList.add('fonts-loaded');
-    
-    // Optional: You can add font loading detection if needed
     document.fonts.ready.then(() => {
       console.log('Fonts are loaded and ready');
     });
@@ -45,9 +42,10 @@ const App = () => {
               <Route path="/contact" element={<Contact />} />
               <Route path="/donate" element={<Donate />} />
               <Route path="/donation-success" element={<DonationSuccess />} />
+              <Route path="/media" element={<Media />} />
+              <Route path="/events" element={<Events />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

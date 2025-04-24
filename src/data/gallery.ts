@@ -84,17 +84,17 @@ export const gallery = [
 
 export const videos = [
   {
-    videoUrl: "https://www.youtube.com/embed/example1",
+    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     location: "London",
     category: "video"
   },
   {
-    videoUrl: "https://www.youtube.com/embed/example2",
+    videoUrl: "https://www.youtube.com/embed/jNQXAC9IVRw",
     location: "Oslo",
     category: "video"
   },
   {
-    videoUrl: "https://www.youtube.com/embed/example3",
+    videoUrl: "https://www.youtube.com/embed/b6_IZK-1naY",
     location: "Israel",
     category: "video"
   }

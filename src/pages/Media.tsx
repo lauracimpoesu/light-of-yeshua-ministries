@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { X } from "lucide-react";
 import { gallery, videos } from "@/data/gallery";
 
 // Define types for our media items
@@ -24,12 +26,10 @@ type MediaItem = PhotoItem | VideoItem;
 
 const Media = () => {
   const [filter, setFilter] = useState("photos");
-  const [filteredMedia, setFilteredMedia] = useState<MediaItem[]>(gallery);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setFilteredMedia(filter === "photos" ? gallery : videos);
-  }, [filter]);
+  }, []);
 
   return (
     <>
@@ -53,7 +53,7 @@ const Media = () => {
             
             <TabsContent value="photos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filter === "photos" && gallery.map((item, index) => (
+                {gallery.map((item, index) => (
                   <MediaCard key={index} item={item} index={index} />
                 ))}
               </div>
@@ -61,7 +61,7 @@ const Media = () => {
             
             <TabsContent value="videos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filter === "videos" && videos.map((item, index) => (
+                {videos.map((item, index) => (
                   <VideoCard key={index} item={item} index={index} />
                 ))}
               </div>
@@ -87,12 +87,7 @@ const MediaCard = ({ item, index }: { item: PhotoItem, index: number }) => (
           alt={item.location} 
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-2 right-2 bg-gold/80 text-black text-xs px-2 py-1 rounded-full font-medium">
-          {item.location}
-        </div>
       </div>
-      <div className="absolute inset-0 ring-1 ring-gold/10 ring-inset rounded-lg group-hover:ring-gold/30 transition-all duration-500"></div>
-      <div className="absolute inset-0 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-500"></div>
     </Card>
   </motion.div>
 );
@@ -103,22 +98,43 @@ const VideoCard = ({ item, index }: { item: VideoItem, index: number }) => (
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: index * 0.1 }}
   >
-    <Card className="group overflow-hidden aspect-[4/3]">
-      <div className="relative h-full">
-        <iframe
-          src={item.videoUrl}
-          title={`Video from ${item.location}`}
-          className="w-full h-full object-cover"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-        <div className="absolute top-2 right-2 bg-gold/80 text-black text-xs px-2 py-1 rounded-full font-medium">
-          {item.location}
+    <Dialog>
+      <DialogTrigger asChild>
+        <Card className="group overflow-hidden aspect-[4/3] cursor-pointer">
+          <div className="relative h-full flex items-center justify-center bg-gray-800">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="rounded-full bg-black/50 w-16 h-16 flex items-center justify-center">
+                <div className="w-0 h-0 border-y-8 border-y-transparent border-l-16 border-l-white ml-1"></div>
+              </div>
+            </div>
+            <div className="w-full h-full bg-gray-800 opacity-80">
+              <img 
+                src="/placeholder.svg" 
+                alt={`Video thumbnail from ${item.location}`} 
+                className="w-full h-full object-contain opacity-50"
+              />
+            </div>
+          </div>
+        </Card>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[900px] h-[80vh] p-0 border-none bg-transparent shadow-none">
+        <div className="relative w-full h-full flex items-center justify-center">
+          <button 
+            className="absolute top-2 right-2 bg-black/70 text-white p-2 rounded-full z-10"
+            onClick={() => document.querySelector('[data-state="open"]')?.dispatchEvent(new Event('close', { bubbles: true }))}
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <iframe
+            src={item.videoUrl}
+            title={`Video from ${item.location}`}
+            className="w-full h-full rounded-lg"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
-      </div>
-      <div className="absolute inset-0 ring-1 ring-gold/10 ring-inset rounded-lg group-hover:ring-gold/30 transition-all duration-500"></div>
-      <div className="absolute inset-0 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] transition-all duration-500"></div>
-    </Card>
+      </DialogContent>
+    </Dialog>
   </motion.div>
 );
 

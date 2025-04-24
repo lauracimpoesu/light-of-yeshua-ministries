@@ -85,13 +85,8 @@ export const gallery = [
 
 export const videos = [
   {
-    videoUrl: "/videos/vid1.MOV",
-    location: "London",
-    category: "video"
-  },
-  {
-    videoUrl: "/videos/vid2.MOV",
-    location: "Oslo",
+    videoUrl: "/videos/vid4.MP4",
+    location: "Israel",
     category: "video"
   },
   {
@@ -100,8 +95,13 @@ export const videos = [
     category: "video"
   },
   {
-    videoUrl: "/videos/vid4.MP4",
-    location: "Israel",
+    videoUrl: "/videos/vid2.MOV",
+    location: "Oslo",
+    category: "video"
+  },
+  {
+    videoUrl: "/videos/vid1.MOV",
+    location: "London",
     category: "video"
   },
 ];

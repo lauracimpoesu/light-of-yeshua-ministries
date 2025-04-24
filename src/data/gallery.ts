@@ -81,3 +81,21 @@ export const gallery = [
     category: "photo"
   }
 ];
+
+export const videos = [
+  {
+    videoUrl: "https://www.youtube.com/embed/example1",
+    location: "London",
+    category: "video"
+  },
+  {
+    videoUrl: "https://www.youtube.com/embed/example2",
+    location: "Oslo",
+    category: "video"
+  },
+  {
+    videoUrl: "https://www.youtube.com/embed/example3",
+    location: "Israel",
+    category: "video"
+  }
+];

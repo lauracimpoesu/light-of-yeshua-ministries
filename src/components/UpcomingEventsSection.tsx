@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Calendar, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -51,8 +51,9 @@ const UpcomingEventsSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="h-full"
               >
-                <Card className="group h-full transition-all duration-500 border-gold/30 hover:border-gold/50 relative">
+                <Card className="group h-full transition-all duration-500 relative">
                   <div className="p-6 flex flex-col h-full">
                     <h3 className="text-xl font-semibold mb-3 ministry-gradient-text">{event.title}</h3>
                     

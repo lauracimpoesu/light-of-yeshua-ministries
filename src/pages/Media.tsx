@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -33,7 +32,7 @@ const Media = () => {
     <>
       <Navbar />
       <div className="pt-20">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -42,13 +41,17 @@ const Media = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-8 ministry-gradient-text text-center">
             Media Gallery
           </h1>
-          
+
           <Tabs defaultValue="photos" className="max-w-7xl mx-auto">
             <TabsList className="grid w-full grid-cols-2 mb-12">
-              <TabsTrigger value="photos" onClick={() => setFilter("photos")}>Photos</TabsTrigger>
-              <TabsTrigger value="videos" onClick={() => setFilter("videos")}>Videos</TabsTrigger>
+              <TabsTrigger value="photos" onClick={() => setFilter("photos")}>
+                Photos
+              </TabsTrigger>
+              <TabsTrigger value="videos" onClick={() => setFilter("videos")}>
+                Videos
+              </TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="photos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {gallery.map((item, index) => (
@@ -56,7 +59,7 @@ const Media = () => {
                 ))}
               </div>
             </TabsContent>
-            
+
             <TabsContent value="videos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {videos.map((item, index) => (
@@ -72,7 +75,7 @@ const Media = () => {
   );
 };
 
-const MediaCard = ({ item, index }: { item: PhotoItem, index: number }) => (
+const MediaCard = ({ item, index }: { item: PhotoItem; index: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -80,9 +83,9 @@ const MediaCard = ({ item, index }: { item: PhotoItem, index: number }) => (
   >
     <Card className="overflow-hidden aspect-[4/3]">
       <div className="relative h-full">
-        <img 
-          src={item.imageUrl} 
-          alt={item.location} 
+        <img
+          src={item.imageUrl}
+          alt={item.location}
           className="w-full h-full object-cover"
         />
       </div>
@@ -90,7 +93,7 @@ const MediaCard = ({ item, index }: { item: PhotoItem, index: number }) => (
   </motion.div>
 );
 
-const VideoCard = ({ item, index }: { item: VideoItem, index: number }) => (
+const VideoCard = ({ item, index }: { item: VideoItem; index: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -106,9 +109,9 @@ const VideoCard = ({ item, index }: { item: VideoItem, index: number }) => (
               </div>
             </div>
             <div className="w-full h-full bg-gray-800 opacity-80">
-              <img 
-                src="/placeholder.svg" 
-                alt={`Video thumbnail from ${item.location}`} 
+              <img
+                src="/placeholder.svg"
+                alt={`Video thumbnail from ${item.location}`}
                 className="w-full h-full object-contain opacity-50"
               />
             </div>
@@ -117,19 +120,31 @@ const VideoCard = ({ item, index }: { item: VideoItem, index: number }) => (
       </DialogTrigger>
       <DialogContent className="sm:max-w-[900px] h-[80vh] p-0 border-none bg-transparent shadow-none">
         <div className="relative w-full h-full flex items-center justify-center">
-          <button 
+          <button
             className="absolute top-2 right-2 bg-black/70 text-white p-2 rounded-full z-10"
-            onClick={() => document.querySelector('[data-state="open"]')?.dispatchEvent(new Event('close', { bubbles: true }))}
+            onClick={() =>
+              document
+                .querySelector('[data-state="open"]')
+                ?.dispatchEvent(new Event("close", { bubbles: true }))
+            }
           >
             <X className="h-6 w-6" />
           </button>
-          <iframe
-            src={item.videoUrl}
-            title={`Video from ${item.location}`}
-            className="w-full h-full rounded-lg"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          {item.videoUrl.endsWith(".MOV") ? (
+            <video
+              src={item.videoUrl}
+              controls
+              className="w-full h-full rounded-lg object-contain"
+            />
+          ) : (
+            <iframe
+              src={item.videoUrl}
+              title={`Video from ${item.location}`}
+              className="w-full h-full rounded-lg"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          )}
         </div>
       </DialogContent>
     </Dialog>

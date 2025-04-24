@@ -1,10 +1,6 @@
 
+
 export const gallery = [
-  {
-    imageUrl: "/lovable-uploads/c26a185e-78d9-4ba9-9219-c0846d943900.png",
-    location: "Israel",
-    category: "photo"
-  },
   {
     imageUrl: "/lovable-uploads/939583fb-d445-4575-ad39-2870a6bcf44e.png",
     location: "London",
@@ -16,23 +12,33 @@ export const gallery = [
     category: "photo"
   },
   {
-    imageUrl: "/lovable-uploads/ec842c6e-d6f9-45bf-b7d2-fa8476b4fee3.png",
-    location: "Mission Van",
-    category: "photo"
-  },
-  {
     imageUrl: "/lovable-uploads/0dcb2083-858d-4ba5-9222-3c374694b7c7.png",
     location: "Ministry Materials",
     category: "photo"
   },
   {
-    imageUrl: "/lovable-uploads/c8a6619e-01ca-4ffb-b2b0-435921f45117.png",
-    location: "London",
+    imageUrl: "/lovable-uploads/4f71b83c-c4d4-46c3-963b-73611995fcae.png",
+    location: "Jerusalem",
     category: "photo"
   },
   {
-    imageUrl: "/lovable-uploads/30224363-e5c1-439f-8916-bc9978f63ae7.png",
-    location: "Oslo",
+    imageUrl: "/lovable-uploads/b481a28e-54f1-440f-96fc-6f2f3d0f2b95.png",
+    location: "Israel",
+    category: "photo"
+  },
+  {
+    imageUrl: "/lovable-uploads/c26a185e-78d9-4ba9-9219-c0846d943900.png",
+    location: "Israel",
+    category: "photo"
+  },
+  {
+    imageUrl: "/lovable-uploads/ec842c6e-d6f9-45bf-b7d2-fa8476b4fee3.png",
+    location: "Mission Van",
+    category: "photo"
+  },
+  {
+    imageUrl: "/lovable-uploads/c8a6619e-01ca-4ffb-b2b0-435921f45117.png",
+    location: "London",
     category: "photo"
   },
   {
@@ -45,8 +51,13 @@ export const gallery = [
     location: "Oslo",
     category: "photo"
   },
-  {
+/*   {
     imageUrl: "/lovable-uploads/41adff86-af51-40fa-9475-11dfa23e75cd.png",
+    location: "Oslo",
+    category: "photo"
+  }, */
+  {
+    imageUrl: "/lovable-uploads/30224363-e5c1-439f-8916-bc9978f63ae7.png",
     location: "Oslo",
     category: "photo"
   },
@@ -70,32 +81,27 @@ export const gallery = [
     location: "Mount Hermon",
     category: "photo"
   },
-  {
-    imageUrl: "/lovable-uploads/4f71b83c-c4d4-46c3-963b-73611995fcae.png",
-    location: "Jerusalem",
-    category: "photo"
-  },
-  {
-    imageUrl: "/lovable-uploads/b481a28e-54f1-440f-96fc-6f2f3d0f2b95.png",
-    location: "Israel",
-    category: "photo"
-  }
 ];
 
 export const videos = [
   {
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "/videos/vid1.MOV",
     location: "London",
     category: "video"
   },
   {
-    videoUrl: "https://www.youtube.com/embed/jNQXAC9IVRw",
+    videoUrl: "/videos/vid2.MOV",
     location: "Oslo",
     category: "video"
   },
   {
-    videoUrl: "https://www.youtube.com/embed/b6_IZK-1naY",
+    videoUrl: "/videos/vid3.MP4",
     location: "Israel",
     category: "video"
-  }
+  },
+  {
+    videoUrl: "/videos/vid4.MP4",
+    location: "Israel",
+    category: "video"
+  },
 ];

@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -5,7 +6,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogTrigger, DialogClose } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { X, Play } from "lucide-react";
 import { gallery, videos } from "@/data/gallery";
 
 // Define types for our media items
@@ -106,40 +107,51 @@ const VideoCard = ({ item, index }: { item: VideoItem; index: number }) => {
         <DialogTrigger asChild>
           <Card className="overflow-hidden aspect-[4/3] cursor-pointer">
             <div className="relative h-full flex items-center justify-center bg-gray-800">
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="rounded-full bg-black/50 w-16 h-16 flex items-center justify-center">
-                  <div className="w-0 h-0 border-y-8 border-y-transparent border-l-16 border-l-white ml-1"></div>
+                  <Play className="w-8 h-8 text-white ml-1" />
                 </div>
               </div>
+              {/* We're using a video element as a preview/thumbnail but with controls disabled */}
               <video
                 src={item.videoUrl}
                 className="w-full h-full object-cover opacity-50"
                 muted
                 playsInline
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpen(true);
+                }}
+                onContextMenu={(e) => e.preventDefault()}
               />
             </div>
           </Card>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[900px] h-[80vh] p-0 border-none bg-transparent shadow-none">
-          <div className="relative w-full h-full flex items-center justify-center">
-            <DialogClose className="absolute top-2 right-2 bg-black/70 text-white p-2 rounded-full z-10">
+        <DialogContent className="sm:max-w-[900px] max-h-[80vh] p-0 border-none bg-transparent shadow-none">
+          <div className="relative w-full h-full flex items-center justify-center bg-black/90 rounded-lg">
+            <DialogClose className="absolute top-2 right-2 z-50 bg-black/70 text-white p-2 rounded-full hover:bg-black/90">
               <X className="h-6 w-6" />
             </DialogClose>
-            {item.videoUrl.endsWith(".MOV") ? (
-              <video
-                src={item.videoUrl}
-                controls
-                className="w-full h-full rounded-lg object-contain"
-              />
-            ) : (
-              <iframe
-                src={item.videoUrl}
-                title={`Video from ${item.location}`}
-                className="w-full h-full rounded-lg"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            )}
+            <div className="w-full max-h-[70vh] flex items-center justify-center">
+              {item.videoUrl.includes(".MOV") || item.videoUrl.includes(".MP4") ? (
+                <video
+                  src={item.videoUrl}
+                  controls
+                  controlsList="nodownload"
+                  className="max-w-full max-h-[70vh] rounded-lg"
+                  style={{ objectFit: "contain" }}
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+              ) : (
+                <iframe
+                  src={item.videoUrl}
+                  title={`Video from ${item.location}`}
+                  className="w-full aspect-video rounded-lg"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+            </div>
           </div>
         </DialogContent>
       </Dialog>

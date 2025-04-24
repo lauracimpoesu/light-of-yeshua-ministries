@@ -7,9 +7,24 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { gallery, videos } from "@/data/gallery";
 
+// Define types for our media items
+type PhotoItem = {
+  imageUrl: string;
+  location: string;
+  category: string;
+};
+
+type VideoItem = {
+  videoUrl: string;
+  location: string;
+  category: string;
+};
+
+type MediaItem = PhotoItem | VideoItem;
+
 const Media = () => {
   const [filter, setFilter] = useState("photos");
-  const [filteredMedia, setFilteredMedia] = useState(gallery);
+  const [filteredMedia, setFilteredMedia] = useState<MediaItem[]>(gallery);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,7 +53,7 @@ const Media = () => {
             
             <TabsContent value="photos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredMedia.map((item, index) => (
+                {filter === "photos" && gallery.map((item, index) => (
                   <MediaCard key={index} item={item} index={index} />
                 ))}
               </div>
@@ -46,7 +61,7 @@ const Media = () => {
             
             <TabsContent value="videos" className="mt-0">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredMedia.map((item: any, index) => (
+                {filter === "videos" && videos.map((item, index) => (
                   <VideoCard key={index} item={item} index={index} />
                 ))}
               </div>
@@ -59,7 +74,7 @@ const Media = () => {
   );
 };
 
-const MediaCard = ({ item, index }: { item: any, index: number }) => (
+const MediaCard = ({ item, index }: { item: PhotoItem, index: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -82,7 +97,7 @@ const MediaCard = ({ item, index }: { item: any, index: number }) => (
   </motion.div>
 );
 
-const VideoCard = ({ item, index }: { item: any, index: number }) => (
+const VideoCard = ({ item, index }: { item: VideoItem, index: number }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}

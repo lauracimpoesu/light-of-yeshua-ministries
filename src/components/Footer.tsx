@@ -101,7 +101,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="http://instagram.com/light.of.yeshua"
+                href="http://instagram.com/lightofyeshuaministries"
                 className="hover:text-gold transition-colors transform hover:scale-110 duration-300"
                 aria-label="Instagram"
               >

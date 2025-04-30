@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Hero from "@/components/Hero";
 import AboutSection from "@/components/AboutSection";
 import MissionSection from "@/components/MissionSection";
-import DonationSection from "@/components/DonationSection";
+// import DonationSection from "@/components/DonationSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -18,7 +18,7 @@ const Index = () => {
       <Hero />
       <AboutSection />
       <MissionSection />
-      <DonationSection />
+      {/* <DonationSection /> */}
       <Footer />
     </>
   );

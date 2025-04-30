@@ -3,10 +3,12 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://ntvoggymweighghdsdvz.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im50dm9nZ3ltd2VpZ2hnaGRzZHZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU0MDEzNTQsImV4cCI6MjA2MDk3NzM1NH0.GGKXQevXzaParBk0qBDmYtESonSomqQuberSHmGx2vQ";
+// Supabase connection temporarily disabled
+const SUPABASE_URL = "";
+const SUPABASE_PUBLISHABLE_KEY = "";
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
+// Client temporarily disabled
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);

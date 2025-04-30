@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import { loadStripe } from "@stripe/stripe-js";
@@ -7,8 +8,8 @@ import { Check, CreditCard, Coffee, Wallet, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
 import { StripePaymentService } from "./StripePaymentService";
 
-// Initialize Stripe with the publishable key
-const stripePromise = loadStripe("pk_live_51RH0YjG3klR9z0xVwrZvfM2HoTdx6U14sCv1ULjOlxSFFEcLr5Kmdhx0A4FgzKsETzjHX9TVep9vQC9lqHv7Fdc600yI2Znvjd");
+// Stripe integration temporarily disabled
+const stripePromise = Promise.resolve(null);
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -20,17 +21,11 @@ interface DonationModalProps {
 // Wrapper component for the modal
 export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationModalProps) => {
   const [paymentMethod, setPaymentMethod] = useState<"stripe" | "paypal" | "buymeacoffee">("stripe");
-  const [serviceError, setServiceError] = useState<boolean>(false);
+  const [serviceError, setServiceError] = useState<boolean>(true); // Set to true to show warning
 
   const handleExternalPayment = (method: "paypal" | "buymeacoffee") => {
-    if (method === "paypal") {
-      const paypalUrl = `https://paypal.me/loyministries/${amount}`;
-      window.open(paypalUrl, "_blank");
-    } else if (method === "buymeacoffee") {
-      window.open("https://buymeacoffee.com/lightofyeshua", "_blank");
-    }
+    toast.info("Donation functionality is currently disabled");
     onClose();
-    toast.success("Thank you for your support!");
   };
 
   return (
@@ -38,10 +33,10 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent">
-            Complete Your Donation
+            Donation Functionality Disabled
           </DialogTitle>
           <DialogDescription className="text-center">
-            Thank you for supporting our ministry with ${amount}{isMonthly ? " monthly" : ""}
+            The donation system is currently under maintenance
           </DialogDescription>
         </DialogHeader>
 
@@ -53,7 +48,7 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
               </div>
               <div className="ml-3">
                 <p className="text-sm text-amber-700">
-                  Payment service is currently in development mode. Please choose PayPal or Buy Me a Coffee options.
+                  Donation functionality is temporarily disabled.
                 </p>
               </div>
             </div>
@@ -61,48 +56,7 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
         )}
 
         <div className="flex flex-col space-y-4 py-4">
-          <div className="grid grid-cols-3 gap-2">
-            <Button
-              variant={paymentMethod === "stripe" ? "default" : "outline"}
-              onClick={() => setPaymentMethod("stripe")}
-              className="flex flex-col items-center p-4 h-auto"
-              disabled={serviceError}
-            >
-              <CreditCard className="h-6 w-6 mb-2" />
-              <span>Credit Card</span>
-            </Button>
-            <Button
-              variant={paymentMethod === "paypal" ? "default" : "outline"}
-              onClick={() => setPaymentMethod("paypal")}
-              className="flex flex-col items-center p-4 h-auto"
-            >
-              <Wallet className="h-6 w-6 mb-2" />
-              <span>PayPal</span>
-            </Button>
-            <Button
-              variant={paymentMethod === "buymeacoffee" ? "default" : "outline"}
-              onClick={() => setPaymentMethod("buymeacoffee")}
-              className="flex flex-col items-center p-4 h-auto"
-            >
-              <Coffee className="h-6 w-6 mb-2" />
-              <span>Buy Me a Coffee</span>
-            </Button>
-          </div>
-
-          {paymentMethod === "stripe" && !serviceError && (
-            <Elements stripe={stripePromise}>
-              <StripeCheckoutForm amount={amount} isMonthly={isMonthly} onClose={onClose} />
-            </Elements>
-          )}
-
-          {(paymentMethod !== "stripe" || serviceError) && (
-            <Button 
-              onClick={() => handleExternalPayment(paymentMethod as "paypal" | "buymeacoffee")}
-              className="w-full py-3"
-            >
-              Donate Now
-            </Button>
-          )}
+          <Button onClick={onClose}>Close</Button>
         </div>
       </DialogContent>
     </Dialog>
@@ -119,77 +73,8 @@ const StripeCheckoutForm = ({ amount, isMonthly, onClose }: { amount: number, is
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!stripe || !elements) {
-      toast.error("Stripe has not initialized yet. Please try again.");
-      return;
-    }
-    
-    const cardElement = elements.getElement(CardElement);
-    
-    if (!cardElement) {
-      toast.error("Card information is missing. Please try again.");
-      return;
-    }
-    
-    if (!cardComplete) {
-      toast.error("Please complete your card information.");
-      return;
-    }
-    
-    setLoading(true);
-    setError(null);
-    
-    try {
-      const paymentData = await StripePaymentService.createPayment(amount, isMonthly);
-      
-      if (isMonthly && paymentData.url) {
-        // For subscriptions, redirect to Stripe Checkout
-        console.log("Redirecting to subscription checkout:", paymentData.url);
-        window.location.href = paymentData.url;
-        return;
-      }
-      
-      if (!isMonthly && paymentData.clientSecret) {
-        // For one-time payments, confirm the payment on the client side
-        console.log("Confirming one-time payment with secret:", paymentData.clientSecret);
-        const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
-          paymentData.clientSecret,
-          {
-            payment_method: {
-              card: cardElement,
-              billing_details: {
-                name: 'Anonymous Donor',
-              },
-            }
-          }
-        );
-        
-        if (confirmError) {
-          console.error("Payment confirmation error:", confirmError);
-          throw new Error(confirmError.message);
-        }
-        
-        if (paymentIntent && paymentIntent.status === 'succeeded') {
-          console.log("Payment succeeded:", paymentIntent);
-          toast.success(`Your ${isMonthly ? "monthly" : "one-time"} donation of $${amount} has been processed. Thank you!`);
-          onClose();
-          window.location.href = "/donation-success";
-        }
-      } else {
-        // Simulate successful payment when testing
-        console.log("No client secret returned, simulating payment success");
-        toast.success(`Your ${isMonthly ? "monthly" : "one-time"} donation of $${amount} has been processed. Thank you for your generosity!`);
-        setLoading(false);
-        window.location.href = "/donation-success";
-      }
-      
-    } catch (error) {
-      console.error("Payment error:", error);
-      setError(error instanceof Error ? error.message : "Payment failed. Please try again.");
-      toast.error("Payment failed. Please try again.");
-      setLoading(false);
-    }
+    toast.info("Donation functionality is currently disabled");
+    onClose();
   };
 
   return (
@@ -231,20 +116,10 @@ const StripeCheckoutForm = ({ amount, isMonthly, onClose }: { amount: number, is
       
       <Button 
         type="submit"
-        disabled={!stripe || loading || !cardComplete}
+        disabled={true}
         className="w-full"
       >
-        {loading ? (
-          <span className="flex items-center">
-            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            Processing...
-          </span>
-        ) : (
-          `Donate $${amount}${isMonthly ? " monthly" : ""}`
-        )}
+        Donations Disabled
       </Button>
     </form>
   );

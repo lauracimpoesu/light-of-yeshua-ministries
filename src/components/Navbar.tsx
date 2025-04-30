@@ -43,7 +43,7 @@ const Navbar = () => {
     { name: "About", path: "/about" },
     { name: "Mission", path: "/mission" },
     { name: "Media", path: "/media" },
-    { name: "Events", path: "/events" },
+    // { name: "Events", path: "/events" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -90,7 +90,7 @@ const Navbar = () => {
               </Link>
             </motion.div>
           ))}
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          {/* <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link to="/donate">
               <Button 
                 className="ml-2 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-light text-black shadow-md hover:shadow-gold/30 font-bold transition-all duration-300 animate-pulse-glow"
@@ -98,7 +98,7 @@ const Navbar = () => {
                 Donate
               </Button>
             </Link>
-          </motion.div>
+          </motion.div> */}
           <ThemeToggle />
         </div>
 
@@ -141,7 +141,7 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Link
+            {/* <Link
               to="/donate"
               className="px-3 py-4 mt-2"
               onClick={() => setIsOpen(false)}
@@ -149,7 +149,7 @@ const Navbar = () => {
               <Button className="w-full text-black dark:text-black rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-dark hover:from-gold hover:to-gold-light shadow-md hover:shadow-gold/30 animate-pulse-glow">
                 Donate
               </Button>
-            </Link>
+            </Link> */}
           </div>
         </motion.div>
       )}

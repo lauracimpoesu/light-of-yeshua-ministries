@@ -1,4 +1,6 @@
 
+// This file has been commented out as donations functionality is currently hidden
+/*
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@12.7.0";
 
@@ -30,8 +32,8 @@ serve(async (req) => {
       );
     }
 
-    // Initialize Stripe with your secret key
-    const stripeKey = "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";
+    // Initialize Stripe with your secret key - REMOVED FOR SECURITY
+    const stripeKey = "REMOVED";
     const stripe = new Stripe(stripeKey, {
       apiVersion: "2023-08-16",
     });
@@ -101,4 +103,27 @@ serve(async (req) => {
       }
     );
   }
+});
+*/
+
+// Placeholder for edge function
+import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
+
+serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response("ok", { headers: corsHeaders });
+  }
+  
+  return new Response(
+    JSON.stringify({ message: "Payment functionality is currently disabled" }),
+    {
+      status: 200,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    }
+  );
 });

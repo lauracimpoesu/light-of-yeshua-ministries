@@ -1,5 +1,8 @@
 
-project_id = "ntvoggymweighghdsdvz"
+# Supabase configuration file
+# Sensitive information has been removed
+
+project_id = ""
 
 [functions.create-payment]
 verify_jwt = false

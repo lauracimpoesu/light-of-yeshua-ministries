@@ -1,9 +1,12 @@
+
+// This file has been commented out as donations functionality is currently hidden
+/*
 import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 
-// Initialize Stripe with your publishable key
-const stripePromise = loadStripe("pk_live_51RH0YjG3klR9z0xVwrZvfM2HoTdx6U14sCv1ULjOlxSFFEcLr5Kmdhx0A4FgzKsETzjHX9TVep9vQC9lqHv7Fdc600yI2Znvjd");
+// Initialize Stripe with your publishable key - REMOVED FOR SECURITY
+const stripePromise = loadStripe("REMOVED");
 
 export const StripePaymentService = {
   // Function to create a payment intent or checkout session
@@ -40,6 +43,15 @@ export const StripePaymentService = {
 
   // Get Stripe instance
   getStripe: () => stripePromise,
+};
+
+export default StripePaymentService;
+*/
+
+// Placeholder export to avoid import errors in other files
+export const StripePaymentService = {
+  createPayment: async () => ({}),
+  getStripe: () => null,
 };
 
 export default StripePaymentService;

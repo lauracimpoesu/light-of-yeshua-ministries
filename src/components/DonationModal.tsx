@@ -18,7 +18,7 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
   
   const handleRevolutPayment = () => {
     // Open Revolut link in a new tab
-    window.open("https://revolut.me/lightofyeshua", "_blank");
+    window.open("https://revolut.me/tavo144", "_blank");
     toast.success("Thank you for your support!");
     onClose();
   };

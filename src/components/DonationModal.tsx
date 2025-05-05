@@ -1,14 +1,9 @@
 
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter } from "@/components/ui/dialog";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Button } from "@/components/ui/button";
-import { Check, CreditCard, Coffee, Wallet, AlertCircle, ExternalLink } from "lucide-react";
+import { CreditCard, Mail, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
-
-// Temporarily removed sensitive information
-const stripePromise = Promise.resolve(null);
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -19,11 +14,18 @@ interface DonationModalProps {
 
 // Wrapper component for the modal
 export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationModalProps) => {
-  const [paymentMethod, setPaymentMethod] = useState<"revolut" | "direct">("revolut");
+  const [paymentMethod, setPaymentMethod] = useState<"paypal" | "revolut" | "other">("revolut");
   
   const handleRevolutPayment = () => {
     // Open Revolut link in a new tab
     window.open("https://revolut.me/lightofyeshua", "_blank");
+    toast.success("Thank you for your support!");
+    onClose();
+  };
+
+  const handlePayPalPayment = () => {
+    // Open PayPal link in a new tab
+    window.open("https://www.paypal.me/lightofyeshua", "_blank");
     toast.success("Thank you for your support!");
     onClose();
   };
@@ -33,7 +35,7 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center bg-gradient-to-r from-gold-light via-gold to-gold-dark bg-clip-text text-transparent">
-            Donate via Revolut
+            Choose Payment Method
           </DialogTitle>
           <DialogDescription className="text-center">
             Support our ministry with your donation
@@ -43,12 +45,20 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
         <div className="flex flex-col space-y-4 py-4 items-center">
           <div className="bg-blue-50/50 dark:bg-blue-900/20 p-6 rounded-lg text-center w-full">
             <p className="text-lg font-medium mb-2">
-              {isMonthly ? `${amount} monthly donation` : `${amount} one-time donation`}
+              {isMonthly ? `$${amount} monthly donation` : `$${amount} one-time donation`}
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Your support helps us spread the Light of Yeshua
             </p>
           </div>
+          
+          <Button 
+            onClick={handlePayPalPayment}
+            className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700"
+          >
+            <CreditCard size={18} />
+            Donate with PayPal
+          </Button>
           
           <Button 
             onClick={handleRevolutPayment}
@@ -58,9 +68,19 @@ export const DonationModal = ({ isOpen, onClose, amount, isMonthly }: DonationMo
             Donate with Revolut
           </Button>
           
-          <p className="text-sm text-gray-500 text-center">
-            You'll be redirected to our Revolut page to complete your donation
-          </p>
+          <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg w-full text-center my-2">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              <Mail size={16} className="inline mr-2" />
+              If you prefer other methods, email us at: 
+              <a href="mailto:lightofyeshuaministries@gmail.com" className="ml-1 text-blue-600 dark:text-blue-400 hover:underline">
+                lightofyeshuaministries@gmail.com
+              </a>
+              <br />
+              <span className="text-xs mt-1 block">
+                We can provide IBAN or other payment methods
+              </span>
+            </p>
+          </div>
           
           <Button variant="outline" onClick={onClose}>
             Cancel

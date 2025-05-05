@@ -1,8 +1,17 @@
+
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Hero = () => {
+  // Function to scroll to donation section
+  const scrollToDonation = () => {
+    const donationSection = document.getElementById('donation-section');
+    if (donationSection) {
+      donationSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
       {/* Hero Gradient Background - Gold tones */}
@@ -87,12 +96,12 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Link to="/about">
-                <button className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-lightest text-black flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-gold/50 font-bold animate-royal-pulse">
-                  Learn More
+              <button onClick={scrollToDonation}>
+                <div className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-lightest text-black flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-gold/50 font-bold animate-royal-pulse">
+                  Donate
                   <ArrowRight size={18} />
-                </button>
-              </Link>
+                </div>
+              </button>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}

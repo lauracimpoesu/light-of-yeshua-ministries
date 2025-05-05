@@ -95,9 +95,13 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto"
             >
-              <button onClick={scrollToDonation}>
-                <div className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-lightest text-black flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-gold/50 font-bold animate-royal-pulse">
+              <button 
+                onClick={scrollToDonation}
+                className="w-full"
+              >
+                <div className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-lightest text-black flex items-center justify-center gap-2 w-full px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-gold/50 font-bold animate-royal-pulse">
                   Donate
                   <ArrowRight size={18} />
                 </div>
@@ -109,9 +113,10 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.5 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto"
             >
-              <Link to="/mission">
-                <button className="bg-white/15 backdrop-blur-md text-white border border-gold/30 font-bold py-4 px-8 rounded-full transition-all duration-500 hover:bg-gold/20 hover:border-gold w-full sm:w-auto">
+              <Link to="/mission" className="w-full">
+                <button className="bg-white/15 backdrop-blur-md text-white border border-gold/30 font-bold py-4 px-8 rounded-full transition-all duration-500 hover:bg-gold/20 hover:border-gold w-full">
                   Our Mission
                 </button>
               </Link>

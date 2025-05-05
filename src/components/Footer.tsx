@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, ArrowRight } from "lucide-react";
@@ -101,9 +102,11 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="http://instagram.com/lightofyeshuaministries"
+                href="https://instagram.com/lightofyeshuaministries"
                 className="hover:text-gold transition-colors transform hover:scale-110 duration-300"
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Instagram size={24} />
               </a>
@@ -111,6 +114,8 @@ const Footer = () => {
                 href="https://www.youtube.com/@LightOfYeshuaMinistries"
                 className="hover:text-gold transition-colors transform hover:scale-110 duration-300"
                 aria-label="YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Youtube size={24} />
               </a>
@@ -118,6 +123,8 @@ const Footer = () => {
                 href="https://www.tiktok.com/@light.of.yeshua"
                 className="hover:text-gold transition-colors transform hover:scale-110 duration-300"
                 aria-label="TikTok"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <TiktokIcon size={24} />
               </a>

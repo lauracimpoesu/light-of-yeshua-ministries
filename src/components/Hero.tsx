@@ -102,7 +102,7 @@ const Hero = () => {
                 className="w-full"
               >
                 <div className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-lightest text-black flex items-center justify-center gap-2 w-full px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-gold/50 font-bold animate-royal-pulse">
-                  Donate
+                  Donate Now
                   <ArrowRight size={18} />
                 </div>
               </button>

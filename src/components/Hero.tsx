@@ -1,4 +1,3 @@
-
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -6,9 +5,9 @@ import { motion } from "framer-motion";
 const Hero = () => {
   // Function to scroll to donation section
   const scrollToDonation = () => {
-    const donationSection = document.getElementById('donation-section');
+    const donationSection = document.getElementById("donation-section");
     if (donationSection) {
-      donationSection.scrollIntoView({ behavior: 'smooth' });
+      donationSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -97,12 +96,9 @@ const Hero = () => {
               whileTap={{ scale: 0.95 }}
               className="w-full sm:w-auto"
             >
-              <button 
-                onClick={scrollToDonation}
-                className="w-full"
-              >
+              <button onClick={scrollToDonation} className="w-full">
                 <div className="bg-gradient-to-r from-gold-lightest via-gold to-gold-dark hover:from-gold-dark hover:via-gold hover:to-gold-lightest text-black flex items-center justify-center gap-2 w-full px-8 py-4 rounded-full transition-all duration-500 shadow-lg hover:shadow-gold/50 font-bold animate-royal-pulse">
-                  Donate Now
+                  Support & Join The Fight
                   <ArrowRight size={18} />
                 </div>
               </button>
